@@ -1,11 +1,10 @@
 import React from 'react'
+import WelcomePage from './containers/WelcomePage'
 
-function App() {
-  return (
+const App = (): JSX.Element => (
     <div className="App">
-
+        <WelcomePage/>
     </div>
-  )
-}
+)
 
 export default App
