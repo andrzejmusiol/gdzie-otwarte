@@ -1,35 +1,31 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { MapStore } from "../store"
 import { ObjectsType } from "../types/types"
-import axios from "axios"
 import "leaflet/dist/leaflet.css"
 import { MapContainer, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
-import pin from "../assets/icons/pin.svg"
+import pinBar from "../assets/icons/pin-bar.svg"
+import pinRestaurant from "../assets/icons/pin-other.svg"
+import pinOther from "../assets/icons/pin-restaurant.svg"
 
-const pinIcon = new L.Icon({
-  iconUrl: pin,
-  iconRetinaUrl: pin,
-  iconSize: [30, 30],
-  iconAnchor: [15, 15],
-  className: "leaflet-pin-icon",
-})
+const setIcon = (iconDir: string) => {
+  return new L.Icon({
+    iconUrl: iconDir,
+    iconRetinaUrl: iconDir,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    className: "leaflet-pin-icon",
+  })
+}
 
 const Map = (): JSX.Element => {
-  const [mapObjects, setMapObjects] = useState([])
+  const { mapObjects } = useContext(MapStore)
   const ln = process.env.REACT_APP_LN
   const lt = process.env.REACT_APP_LT
   const name = process.env.REACT_APP_NAME
   const cat = process.env.REACT_APP_CAT
   const address = process.env.REACT_APP_ADDRESS
-
-  useEffect(() => {
-    const url: string | undefined = process.env.REACT_APP_OBJECTS_API_ENDPOINT
-    if (url)
-      axios.get(url).then((response) => {
-        setMapObjects(response.data)
-      })
-  }, [])
 
   return (
     <MapContainer
@@ -44,13 +40,20 @@ const Map = (): JSX.Element => {
 
       <div>
         {mapObjects.map((object: ObjectsType) => {
+          const iconType =
+              object.kategoria === "Bar"
+                  ? setIcon(pinBar)
+                  : object.kategoria === "Restauracja"
+                  ? setIcon(pinRestaurant)
+                  : setIcon(pinOther)
+
           return (
             <MapMarker
               key={object.id}
               id={object.id}
               ln={object[`${ln}`]}
               lt={object[`${lt}`]}
-              icon={pinIcon}
+              icon={iconType}
               name={object[`${name}`]}
               cat={object[`${cat}`]}
               address={object[`${address}`]}

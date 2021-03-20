@@ -3,33 +3,32 @@ import "leaflet/dist/leaflet.css"
 import { Marker, Popup } from "react-leaflet"
 import { MarkerType } from "../../types/types"
 import styled from "styled-components"
-import {colors} from "../../utils/colors"
+import { colors } from "../../utils/colors"
 
 const MarkerTitle = styled.h3`
   font-size: 16px;
 `
 const MarkerCategory = styled.div`
   font-size: 14px;
-  color: ${colors.grey}
+  color: ${colors.grey};
 `
 const MarkerDescription = styled.div`
   font-size: 14px;
 `
 
 const MapMarker: React.VFC<MarkerType> = ({
-  id,
   ln,
   lt,
   icon,
   name,
-    cat,
-                                            address,
+  cat,
+  address,
 }): JSX.Element => {
   return (
     <Marker position={[ln, lt]} icon={icon}>
       <Popup>
         <MarkerTitle>{name}</MarkerTitle>
-          <MarkerCategory>{cat}</MarkerCategory>
+        <MarkerCategory>{cat}</MarkerCategory>
         <MarkerDescription>{address}</MarkerDescription>
       </Popup>
     </Marker>
