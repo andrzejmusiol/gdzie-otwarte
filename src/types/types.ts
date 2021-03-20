@@ -1,3 +1,8 @@
 export interface ButtonTypes {
-    text: string
+  text: string
+}
+
+export interface ObjectsType {
+  main: string
+  [key:string]: any
 }

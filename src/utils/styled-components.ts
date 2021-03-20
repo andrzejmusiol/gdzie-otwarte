@@ -1,26 +1,26 @@
 import styled from "styled-components"
-import {colors} from "./colors"
+import { colors } from "./colors"
 
 export const WelcomePageWrapper = styled.div`
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const LeftSide = styled.div`
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const RightSide = styled.div`
-    width: 50%;
-    img {
-        width: 28vw;
-        height: auto
-    }
+  width: 50%;
+  img {
+    width: 28vw;
+    height: auto;
+  }
 `
 
 export const TextContainer = styled.div`
