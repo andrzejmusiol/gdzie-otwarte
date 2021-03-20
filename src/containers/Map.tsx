@@ -28,7 +28,6 @@ const Map = (): JSX.Element => {
     if (url)
       axios.get(url).then((response) => {
         setMapObjects(response.data)
-        console.warn(response.data)
       })
   }, [])
 
