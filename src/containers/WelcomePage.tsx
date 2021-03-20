@@ -3,6 +3,7 @@ import Header from '../components/header/Header'
 import startImage from '../assets/icons/meditation.svg'
 import {WelcomePageWrapper, LeftSide, TextContainer, RightSide} from '../utils/styled-components'
 import BlueButton from "../components/buttons/BlueButton"
+import {Link} from "react-router-dom"
 
 const WelcomePage = (): JSX.Element => {
     return (
@@ -20,7 +21,7 @@ const WelcomePage = (): JSX.Element => {
                             Przejdź do mapy, wybierz kategorię lub przeszukaj wszystkie
                             otwarte lokale w Twojej okolicy i baw się dobrze!
                         </p>
-                        <BlueButton text="mapy"/>
+                        <Link to="/map"> <BlueButton text="mapy"/></Link>
                     </TextContainer>
                 </LeftSide>
                 <RightSide>
