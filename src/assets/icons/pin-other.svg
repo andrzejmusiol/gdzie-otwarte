@@ -3,14 +3,13 @@
 <svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#72C2DA;}
+	.st0{fill:#FFFEFE;}
+	.st1{fill:#262626;}
 </style>
 <g>
-	
-		<image style="overflow:visible;opacity:0.4;enable-background:new    ;" width="59" height="59" xlink:href="9E77812C.png"  transform="matrix(1 0 0 1 -4 -5)">
-	</image>
-	<g>
-		<circle class="st0" cx="25.5" cy="22.5" r="20"/>
-	</g>
+	<circle class="st0" cx="25" cy="25" r="25"/>
+</g>
+<g>
+	<path class="st1" d="M22.1,38.4V10.9h5.8v27.5H22.1z"/>
 </g>
 </svg>

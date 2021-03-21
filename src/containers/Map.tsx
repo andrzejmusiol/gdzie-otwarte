@@ -7,6 +7,7 @@ import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
 import pinBar from "../assets/icons/pin-bar.svg"
 import pinRestaurant from "../assets/icons/pin-other.svg"
+import pinFitness from "../assets/icons/pin-other.svg"
 import pinOther from "../assets/icons/pin-restaurant.svg"
 
 const setIcon = (iconDir: string) => {
@@ -26,6 +27,9 @@ const Map = (): JSX.Element => {
   const name = process.env.REACT_APP_NAME
   const cat = process.env.REACT_APP_CAT
   const address = process.env.REACT_APP_ADDRESS
+  const type_1 = process.env.REACT_APP_TYPE_1
+  const type_2 = process.env.REACT_APP_TYPE_2
+  const type_3 = process.env.REACT_APP_TYPE_3
 
   return (
     <MapContainer
@@ -41,10 +45,12 @@ const Map = (): JSX.Element => {
       <div>
         {mapObjects.map((object: ObjectsType) => {
           const iconType =
-              object.kategoria === "Bar"
+              object.kategoria === type_1
                   ? setIcon(pinBar)
-                  : object.kategoria === "Restauracja"
+                  : object.kategoria === type_2
                   ? setIcon(pinRestaurant)
+                  : object.kategoria === type_3
+                  ? setIcon(pinFitness)
                   : setIcon(pinOther)
 
           return (
