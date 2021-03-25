@@ -18,3 +18,8 @@ export interface MarkerType {
   cat: string
   address: string
 }
+
+export interface LegendCircleType {
+  background: string
+  name: string
+}

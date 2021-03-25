@@ -1,24 +1,33 @@
 import React from "react"
 import logo from "../../assets/icons/logo.svg"
-import styled from "styled-components"
+import { Link } from "react-router-dom"
+import { colors } from "../../utils/colors"
+import {
+  HeaderContainer,
+  LogoWrapper,
+  LinksWrapper,
+} from "../../utils/styled-components"
+import LegendCircle from "../map/LegendCircle"
 
-const LogoContainer = styled.div`
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  img {
-    width: 20px;
-    height: auto;
-    display: inline-block;
-  }
-`
+const theme = {
+  bar: colors.bar,
+  restaurant: colors.restaurant,
+  fit: colors.fit,
+  other: colors.other,
+}
 
 const Header = (): JSX.Element => (
-  <LogoContainer>
-    <img src={logo} alt="Logo" />
-  </LogoContainer>
+  <HeaderContainer>
+    <LogoWrapper>
+      <Link to="/">
+        <img src={logo} alt="Logo" />
+      </Link>
+    </LogoWrapper>
+    <LinksWrapper>
+      <Link to="/logowanie">Logowanie</Link>
+      <Link to="/rejestracja">Dodaj punkt</Link>
+    </LinksWrapper>
+  </HeaderContainer>
 )
 
 export default Header
