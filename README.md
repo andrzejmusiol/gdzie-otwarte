@@ -1,4 +1,4 @@
-# [Otwarci.pl](https://otwarci.pl). is a project against irresponsibility of polish govenrnement
+# [Otwarci.pl](https://otwarci.pl). is a project against irresponsibility of Polish Government
 
 ## Why?
 
