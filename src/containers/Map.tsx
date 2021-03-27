@@ -11,7 +11,6 @@ import pinFitness from "../assets/icons/pin-other.svg"
 import pinBeauty from "../assets/icons/pin-beauty.svg"
 import pinOther from "../assets/icons/pin-restaurant.svg"
 import Header from "../components/header/Header"
-import SideBar from "../components/map/SideBar"
 
 const Map = (): JSX.Element => {
   const { mapObjects } = useContext(MapStore)
@@ -38,7 +37,6 @@ const Map = (): JSX.Element => {
   return (
     <>
       <Header />
-      <SideBar />
       <MapContainer
         center={[52.20386307153011, 19.137394372476308]}
         zoom={7}
