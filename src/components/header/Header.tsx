@@ -47,10 +47,12 @@ const Header = (): JSX.Element => {
           />
         </FilterWrapper>
       ) : null}
-      <LinksWrapper>
-        <Link to="/logowanie">Logowanie</Link>
-        <Link to="/rejestracja">Dodaj punkt</Link>
-      </LinksWrapper>
+      {location.pathname !== "/rejestracja" ? (
+        <LinksWrapper>
+          <Link to="/logowanie">Logowanie</Link>
+          <Link to="/rejestracja">Dodaj punkt</Link>
+        </LinksWrapper>
+      ) : null}
     </HeaderContainer>
   )
 }

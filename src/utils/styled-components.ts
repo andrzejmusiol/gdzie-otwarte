@@ -81,7 +81,7 @@ export const LinksWrapper = styled.div`
     color: ${colors.grey};
     text-decoration: none;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 20px;
     font-size: 14px;
     &: hover {
       color: ${colors.blue};
@@ -93,6 +93,7 @@ export const LinksWrapper = styled.div`
     background: ${colors.blue};
     padding: 10px 15px;
     border-radius: 5px;
+    font-weight: 700;
     &: hover {
       box-shadow: 0 0 20px rgba(0, 69, 218, 0.5);
       transition: 0.3s ease;
@@ -114,5 +115,67 @@ export const Button = styled.button`
   &: hover {
     box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
     transition: 0.3s ease;
+  }
+`
+
+export const SignInUpForm = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-center;
+  align-items: center;
+  flex-wrap: wrap;
+  .sign-in-up-left-side,
+  .sign-in-up-right-side {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+  .sign-in-up-right-side {
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+  h1,
+  p {
+    width: 100%;
+  }
+  form {
+    width: 300px;
+    text-align: center;
+  }
+  input {
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid ${colors.grey};
+    margin: 10px;
+    border-radius: 3px;
+  }
+  input[type="submit"] {
+    padding: 15px 20px;
+    text-transform: uppercase;
+    color: ${colors.white};
+    background: ${colors.blue};
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 20px 0;
+    cursor: pointer;
+    &: hover {
+      box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
+      transition: 0.3s ease;
+    }
+  }
+  .error-wrapper {
+    width: 100%;
+    color: ${colors.blue};
+    font-weight: 700;
   }
 `

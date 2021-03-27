@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import { MapStore } from "../store"
 import { ObjectsType } from "../types/types"
 import "leaflet/dist/leaflet.css"

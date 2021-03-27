@@ -23,3 +23,9 @@ export interface LegendCircleType {
   background: string
   name: string
 }
+
+export interface FormValues {
+  name: string
+  email: string
+  password: string
+}
