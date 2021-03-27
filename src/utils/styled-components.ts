@@ -61,19 +61,19 @@ export const LogoWrapper = styled.div`
 `
 
 export const Circle = styled.div`
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    background: ${colors.blue};
-    margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: ${colors.blue};
+  margin-right: 10px;
 `
 
 export const FilterWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0 10px;
-    cursor: pointer
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 10px;
+  cursor: pointer;
 `
 
 export const LinksWrapper = styled.div`
@@ -113,6 +113,6 @@ export const Button = styled.button`
   cursor: pointer;
   &: hover {
     box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
-    transition: .3s ease;
+    transition: 0.3s ease;
   }
 `
