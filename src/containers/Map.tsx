@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { MapStore } from "../store"
+import { GlobalContext } from "../store"
 import { ObjectsType } from "../types/types"
 import "leaflet/dist/leaflet.css"
 import { MapContainer, TileLayer } from "react-leaflet"
@@ -13,7 +13,7 @@ import pinOther from "../assets/icons/pin-restaurant.svg"
 import Header from "../components/header/Header"
 
 const Map = (): JSX.Element => {
-  const { mapObjects } = useContext(MapStore)
+  const { mapObjects } = useContext(GlobalContext)
   const ln = process.env.REACT_APP_LN
   const lt = process.env.REACT_APP_LT
   const name = process.env.REACT_APP_NAME

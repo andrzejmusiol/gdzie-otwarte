@@ -77,6 +77,9 @@ export const FilterWrapper = styled.div`
 `
 
 export const LinksWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
   a {
     color: ${colors.grey};
     text-decoration: none;
@@ -178,4 +181,17 @@ export const SignInUpForm = styled.div`
     color: ${colors.blue};
     font-weight: 700;
   }
+`
+export const LogoutButton = styled.div`
+    text-transform: uppercase;
+    color: ${colors.blue};
+    border: none;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+     transition: 0.3s ease;
+    &:hover {
+      color: ${colors.grey};
+    }
 `

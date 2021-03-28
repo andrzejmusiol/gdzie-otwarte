@@ -1,29 +1,31 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { FormValues } from "../../types/types"
 import axios from "axios"
+import { GlobalContext } from "../../store"
 import Cookie from "js-cookie"
 import {useHistory} from "react-router-dom"
 
-const SignUpForm = (): JSX.Element => {
+const SignInForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<FormValues>()
+  const loginContext = useContext(GlobalContext)
   const [status, setStatus] = useState("")
-    const history = useHistory()
-  const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
+  const REGISTER_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
+  const history = useHistory()
 
   const onSubmit = handleSubmit((data) => {
     if (REGISTER_ENDPOINT)
       axios
         .post(REGISTER_ENDPOINT.toString(), {
-          username: data.name,
-          email: data.email,
-          password: data.password,
+            identifier: data.email,
+            password: data.password,
         })
         .then((response) => {
-          setStatus("Rejestracja przebiegła pomyślnie!")
-            Cookie.set("token", response.data.jwt)
-            sessionStorage.setItem('token', response.data.jwt)
-            history.push("/map")
+          setStatus("Zalogowano!")
+          loginContext.setAuth(true)
+          Cookie.set("token", response.data.jwt)
+          sessionStorage.setItem('token', response.data.jwt)
+          history.push("/map")
         })
         .catch(() => {
           setStatus("Błąd, sprawdź poprawność danych")
@@ -33,18 +35,6 @@ const SignUpForm = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <input
-          name="name"
-          placeholder="Imię.."
-          ref={register({ required: true, minLength: 3, maxLength: 25 })}
-        />
-        {errors.name?.type === "required" && <p>Imię jest wymagane</p>}
-        {errors.name?.type === "minLength" && (
-          <p>Imię musi mieć min 3 znaków</p>
-        )}
-        {errors.name?.type === "maxLength" && (
-          <p>Imię może mieć max 25 znaków</p>
-        )}
         <input
           name="email"
           placeholder="E-mail"
@@ -73,4 +63,4 @@ const SignUpForm = (): JSX.Element => {
   )
 }
 
-export default SignUpForm
+export default SignInForm

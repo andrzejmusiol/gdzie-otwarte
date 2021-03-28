@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 
-const initialState = { mapObjects: [] }
-
-const MapStore = React.createContext(initialState)
+const GlobalContext: React.Context<any> = React.createContext({})
 
 interface ChildrenPropsType {
   children: JSX.Element[] | JSX.Element
 }
 
-const MapStoreProvider: React.FC<ChildrenPropsType> = ({
+const ContextProvider: React.FC<ChildrenPropsType> = ({
   children,
 }): JSX.Element => {
   const [mapObjects, setMapObjects] = useState([])
+  const [auth, setAuth] = useState(false)
 
   useEffect(() => {
     const url: string | undefined = process.env.REACT_APP_OBJECTS_API_ENDPOINT
@@ -23,8 +22,12 @@ const MapStoreProvider: React.FC<ChildrenPropsType> = ({
   }, [])
 
   return (
-    <MapStore.Provider value={{ mapObjects }}>{children}</MapStore.Provider>
+    <GlobalContext.Provider value={{
+      mapObjects,
+      auth,
+      setAuth
+    }}>{children}</GlobalContext.Provider>
   )
 }
 
-export { MapStore, MapStoreProvider }
+export { GlobalContext, ContextProvider }
