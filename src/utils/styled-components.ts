@@ -77,9 +77,9 @@ export const FilterWrapper = styled.div`
 `
 
 export const LinksWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   a {
     color: ${colors.grey};
     text-decoration: none;
@@ -183,15 +183,79 @@ export const SignInUpForm = styled.div`
   }
 `
 export const LogoutButton = styled.div`
+  text-transform: uppercase;
+  color: ${colors.blue};
+  border: none;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    color: ${colors.grey};
+  }
+`
+
+export const PostForm = styled.div`
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  h1,
+  p {
+    width: 100%;
+  }
+  .post-left-side,
+  .post-right-side {
+    padding: 50px;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+  .post-left-side {
+    width: 30%;
+  }
+  .post-right-side {
+    width: 70%;
+  }
+  form {
+    max-width: 300px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  input,
+  select,
+  option {
+    padding: 10px;
+    max-width: 300px;
+    border: 1px solid ${colors.grey};
+    margin: 10px;
+    border-radius: 3px;
+    width: 100%;
+  }
+  input[type="submit"] {
+    padding: 15px 20px;
+    width: fit-content;
     text-transform: uppercase;
-    color: ${colors.blue};
+    color: ${colors.white};
+    background: ${colors.blue};
     border: none;
-    margin-left: 10px;
+    border-radius: 5px;
+    margin: 10px;
     font-size: 14px;
     font-weight: 700;
+    margin: 20px 0;
     cursor: pointer;
-     transition: 0.3s ease;
-    &:hover {
-      color: ${colors.grey};
+    &: hover {
+      box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
+      transition: 0.3s ease;
     }
+  }
+  .error-wrapper {
+    width: 100%;
+    color: ${colors.blue};
+    font-weight: 700;
+    text-align: center;
+  }
 `

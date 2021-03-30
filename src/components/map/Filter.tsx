@@ -15,7 +15,6 @@ const Filter: React.VFC<FilterType> = ({
   placeholder,
 }): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState()
-
   const handleChange = (e: { value: React.SetStateAction<undefined> }) => {
     setSelectedValue(e.value)
   }

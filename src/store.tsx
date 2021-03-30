@@ -12,6 +12,7 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
 }): JSX.Element => {
   const [mapObjects, setMapObjects] = useState([])
   const [auth, setAuth] = useState(false)
+  const [user, setUser] = useState()
 
   useEffect(() => {
     const url: string | undefined = process.env.REACT_APP_OBJECTS_API_ENDPOINT
@@ -22,11 +23,17 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
   }, [])
 
   return (
-    <GlobalContext.Provider value={{
-      mapObjects,
-      auth,
-      setAuth
-    }}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider
+      value={{
+        mapObjects,
+        auth,
+        setAuth,
+        user,
+        setUser,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
   )
 }
 

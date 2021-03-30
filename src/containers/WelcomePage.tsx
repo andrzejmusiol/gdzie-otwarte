@@ -28,7 +28,7 @@ const WelcomePage = (): JSX.Element => {
             </p>
             <Link to="/map">
               {" "}
-              <BlueButton text="mapy" />
+              <BlueButton text="mapa" />
             </Link>
           </TextContainer>
         </LeftSide>

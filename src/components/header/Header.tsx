@@ -1,13 +1,13 @@
 import React, { useContext } from "react"
 import logo from "../../assets/icons/logo.svg"
-import {Link, Redirect, useHistory} from "react-router-dom"
+import { Link, Redirect, useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import {
   HeaderContainer,
   LogoWrapper,
   LinksWrapper,
   FilterWrapper,
-  LogoutButton
+  LogoutButton,
 } from "../../utils/styled-components"
 import Filter from "../map/Filter"
 import { GlobalContext } from "../../store"
@@ -27,16 +27,15 @@ const renderFiltersCategoryOptions = () => {
   return categories
 }
 
-
 const Header = (): JSX.Element => {
   const location = useLocation()
   const { auth, setAuth } = useContext(GlobalContext)
-  const loginStorage = sessionStorage.getItem('token')
+  const loginStorage = sessionStorage.getItem("token")
   const history = useHistory()
 
   const handleLogout = () => {
     Cookie.remove("token")
-    sessionStorage.removeItem('token')
+    sessionStorage.removeItem("token")
     setAuth(false)
     history.push("/map")
   }
@@ -60,26 +59,22 @@ const Header = (): JSX.Element => {
           />
         </FilterWrapper>
       ) : null}
-      {location.pathname === "/rejestracja" || location.pathname === "/logowanie"
-          ? null : (
-              <LinksWrapper>
-                {!auth && !loginStorage
-                    ? (
-                        <>
-                          <Link to="/logowanie">Logowanie</Link>
-                          <Link to="/rejestracja">Dodaj punkt</Link>
-                        </>
-                     )
-                    : (
-                        <>
-                          <Link to="/dodaj-punkt">Dodaj punkt</Link>
-                          <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
-                        </>
-                    )
-                }
-
-              </LinksWrapper>
+      {location.pathname === "/rejestracja" ||
+      location.pathname === "/logowanie" ? null : (
+        <LinksWrapper>
+          {!auth && !loginStorage ? (
+            <>
+              <Link to="/logowanie">Logowanie</Link>
+              <Link to="/rejestracja">Dodaj punkt</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/dodaj-punkt">Dodaj punkt</Link>
+              <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
+            </>
           )}
+        </LinksWrapper>
+      )}
     </HeaderContainer>
   )
 }

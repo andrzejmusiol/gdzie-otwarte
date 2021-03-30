@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form"
 import { FormValues } from "../../types/types"
 import axios from "axios"
 import Cookie from "js-cookie"
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const SignUpForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<FormValues>()
   const [status, setStatus] = useState("")
-    const history = useHistory()
+  const history = useHistory()
   const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
 
   const onSubmit = handleSubmit((data) => {
@@ -21,9 +21,9 @@ const SignUpForm = (): JSX.Element => {
         })
         .then((response) => {
           setStatus("Rejestracja przebiegła pomyślnie!")
-            Cookie.set("token", response.data.jwt)
-            sessionStorage.setItem('token', response.data.jwt)
-            history.push("/map")
+          Cookie.set("token", response.data.jwt)
+          sessionStorage.setItem("token", response.data.jwt)
+          history.push("/map")
         })
         .catch(() => {
           setStatus("Błąd, sprawdź poprawność danych")
@@ -51,9 +51,7 @@ const SignUpForm = (): JSX.Element => {
           ref={register({ required: true, maxLength: 50 })}
         />
         {errors.email?.type === "required" && <p>E-mail jest wymagany</p>}
-        {errors.email?.type === "maxLength" && (
-          <p>E-mail może mieć max 25</p>
-        )}
+        {errors.email?.type === "maxLength" && <p>E-mail może mieć max 25</p>}
         <input
           name="password"
           placeholder="Hasło..."
