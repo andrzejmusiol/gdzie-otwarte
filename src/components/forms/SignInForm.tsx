@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom"
 
 const SignInForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<FormValues>()
-  const { setAuth, setUser } = useContext(GlobalContext)
   const [status, setStatus] = useState("")
   const REGISTER_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
   const history = useHistory()
@@ -22,10 +21,10 @@ const SignInForm = (): JSX.Element => {
         })
         .then((response) => {
           setStatus("Zalogowano!")
-          setAuth(true)
-          setUser(response.data.user)
           Cookie.set("token", response.data.jwt)
           sessionStorage.setItem("token", response.data.jwt)
+          sessionStorage.setItem("user", JSON.stringify(response.data.user))
+          sessionStorage.setItem("auth", String(true))
           history.push("/map")
         })
         .catch(() => {

@@ -29,14 +29,15 @@ const renderFiltersCategoryOptions = () => {
 
 const Header = (): JSX.Element => {
   const location = useLocation()
-  const { auth, setAuth } = useContext(GlobalContext)
+  const auth = Boolean(sessionStorage.getItem("auth"))
   const loginStorage = sessionStorage.getItem("token")
   const history = useHistory()
 
   const handleLogout = () => {
     Cookie.remove("token")
     sessionStorage.removeItem("token")
-    setAuth(false)
+    sessionStorage.removeItem("auth")
+    sessionStorage.removeItem("user")
     history.push("/map")
   }
 

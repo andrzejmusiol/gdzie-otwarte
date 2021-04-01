@@ -24,8 +24,6 @@ const MapUI = (): JSX.Element => {
   const type_3 = process.env.REACT_APP_TYPE_3
   const type_4 = process.env.REACT_APP_TYPE_4
 
-  console.warn(mapObjects)
-
   const setIcon = (iconDir: string) => {
     return new L.Icon({
       iconUrl: iconDir,

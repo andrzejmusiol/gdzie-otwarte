@@ -12,8 +12,6 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
 }): JSX.Element => {
   const [mapObjects, setMapObjects] = useState([])
   const [categories, setCategories] = useState([])
-  const [auth, setAuth] = useState(false)
-  const [user, setUser] = useState()
 
   useEffect(() => {
     const objectsUrl: string | any = process.env.REACT_APP_OBJECTS_API_ENDPOINT
@@ -37,10 +35,6 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
         mapObjects,
         categories,
         setCategories,
-        auth,
-        setAuth,
-        user,
-        setUser,
       }}
     >
       {children}
