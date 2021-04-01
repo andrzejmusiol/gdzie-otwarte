@@ -11,8 +11,8 @@ export interface ObjectsType {
 
 export interface MarkerType {
   id: number
-  ln: number
-  lt: number
+  lat: number
+  lng: number
   icon: Icon<IconOptions> | DivIcon | undefined
   name: string
   cat: string
@@ -34,4 +34,6 @@ export interface PostFormValues {
   object_address: string
   object_city: string
   object_type: string
+  object_lat: number
+  object_lng: number
 }

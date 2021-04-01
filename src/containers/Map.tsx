@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { GlobalContext } from "../store"
 import { ObjectsType } from "../types/types"
 import "leaflet/dist/leaflet.css"
-import { MapContainer, TileLayer } from "react-leaflet"
+import { Map, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
 import pinBar from "../assets/icons/pin-bar.svg"
@@ -12,10 +12,10 @@ import pinBeauty from "../assets/icons/pin-beauty.svg"
 import pinOther from "../assets/icons/pin-restaurant.svg"
 import Header from "../components/header/Header"
 
-const Map = (): JSX.Element => {
+const MapUI = (): JSX.Element => {
   const { mapObjects } = useContext(GlobalContext)
-  const ln = process.env.REACT_APP_LN
-  const lt = process.env.REACT_APP_LT
+  const lat = process.env.REACT_APP_LAT
+  const lng = process.env.REACT_APP_LNG
   const name = process.env.REACT_APP_NAME
   const cat = process.env.REACT_APP_CAT
   const address = process.env.REACT_APP_ADDRESS
@@ -23,6 +23,8 @@ const Map = (): JSX.Element => {
   const type_2 = process.env.REACT_APP_TYPE_2
   const type_3 = process.env.REACT_APP_TYPE_3
   const type_4 = process.env.REACT_APP_TYPE_4
+
+  console.warn(mapObjects)
 
   const setIcon = (iconDir: string) => {
     return new L.Icon({
@@ -37,7 +39,7 @@ const Map = (): JSX.Element => {
   return (
     <>
       <Header />
-      <MapContainer
+      <Map
         center={[52.20386307153011, 19.137394372476308]}
         zoom={7}
         scrollWheelZoom
@@ -46,8 +48,8 @@ const Map = (): JSX.Element => {
         attributionControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
         />
 
         <div>
@@ -67,8 +69,8 @@ const Map = (): JSX.Element => {
               <MapMarker
                 key={object.id}
                 id={object.id}
-                ln={object[`${ln}`]}
-                lt={object[`${lt}`]}
+                lat={object[`${lat}`]}
+                lng={object[`${lng}`]}
                 icon={iconType}
                 name={object[`${name}`]}
                 cat={object[`${cat}`]}
@@ -77,9 +79,9 @@ const Map = (): JSX.Element => {
             )
           })}
         </div>
-      </MapContainer>
+      </Map>
     </>
   )
 }
 
-export default Map
+export default MapUI

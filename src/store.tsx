@@ -11,21 +11,32 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
   children,
 }): JSX.Element => {
   const [mapObjects, setMapObjects] = useState([])
+  const [categories, setCategories] = useState([])
   const [auth, setAuth] = useState(false)
   const [user, setUser] = useState()
 
   useEffect(() => {
-    const url: string | undefined = process.env.REACT_APP_OBJECTS_API_ENDPOINT
-    if (url)
-      axios.get(url).then((response) => {
-        setMapObjects(response.data)
-      })
+    const objectsUrl: string | any = process.env.REACT_APP_OBJECTS_API_ENDPOINT
+    const categoriesUrl: string | any =
+      process.env.REACT_APP_CATEGORIES_API_ENDPOINT
+    const objectRequest = axios.get(objectsUrl)
+    const categoriesRequest = axios.get(categoriesUrl)
+
+    if (objectsUrl)
+      axios.all([objectRequest, categoriesRequest]).then(
+        axios.spread((...responses) => {
+          setMapObjects(responses[0].data)
+          setCategories(responses[1].data)
+        })
+      )
   }, [])
 
   return (
     <GlobalContext.Provider
       value={{
         mapObjects,
+        categories,
+        setCategories,
         auth,
         setAuth,
         user,

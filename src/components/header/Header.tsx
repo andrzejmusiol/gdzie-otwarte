@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import logo from "../../assets/icons/logo.svg"
-import { Link, Redirect, useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import {
   HeaderContainer,
@@ -16,15 +16,15 @@ import Cookie from "js-cookie"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
-  const { mapObjects } = useContext(GlobalContext)
-  const categories: { value: never; label: never }[] = []
+  const { categories } = useContext(GlobalContext)
+  const categoriesArray: { value: never; label: never }[] = []
 
-  mapObjects.map((object: { [x: string]: never }) => {
-    const structure = { value: object[`${cat}`], label: object[`${cat}`] }
-    categories.push(structure)
+  categories.map((category: { [x: string]: never }) => {
+    const structure = { value: category[`${cat}`], label: category[`${cat}`] }
+    categoriesArray.push(structure)
   })
 
-  return categories
+  return categoriesArray
 }
 
 const Header = (): JSX.Element => {

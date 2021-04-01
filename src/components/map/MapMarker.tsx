@@ -17,15 +17,15 @@ const MarkerDescription = styled.div`
 `
 
 const MapMarker: React.VFC<MarkerType> = ({
-  ln,
-  lt,
+  lat,
+  lng,
   icon,
   name,
   cat,
   address,
 }): JSX.Element => {
   return (
-    <Marker position={[ln, lt]} icon={icon}>
+    <Marker position={[lat, lng]} icon={icon}>
       <Popup>
         <MarkerTitle>{name}</MarkerTitle>
         <MarkerCategory>{cat}</MarkerCategory>

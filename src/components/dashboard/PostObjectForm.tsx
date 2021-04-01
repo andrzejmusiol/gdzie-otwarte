@@ -3,10 +3,24 @@ import { useForm } from "react-hook-form"
 import { PostFormValues } from "../../types/types"
 import axios from "axios"
 import { GlobalContext } from "../../store"
+import { Map, TileLayer, Circle } from "react-leaflet"
+import "leaflet/dist/leaflet.css"
+import Search from "react-leaflet-search"
 
 const PostObjectForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<PostFormValues>()
   const [status, setStatus] = useState("")
+  const addressCoordinatesInitialState: {
+    latLng: { lat: number; lng: number }
+  } = {
+    latLng: {
+      lat: 0,
+      lng: 0,
+    },
+  }
+  const [addressCoordinates, setAddressCoordinates] = useState(
+    addressCoordinatesInitialState
+  )
   const REGISTER_ENDPOINT = process.env.REACT_APP_POST_ENDPOINT
   const token = sessionStorage.getItem("token")
 
@@ -20,6 +34,8 @@ const PostObjectForm = (): JSX.Element => {
             city: data.object_city,
             address: data.object_address,
             category: data.object_type,
+            lat: data.object_lat,
+            lng: data.object_lng,
             published_at: null,
           },
           {
@@ -40,12 +56,12 @@ const PostObjectForm = (): JSX.Element => {
   const renderOptionsCategoryOptions = (): ReactNode => {
     const name = process.env.REACT_APP_NAME
     const cat = process.env.REACT_APP_CAT
-    const { mapObjects } = useContext(GlobalContext)
+    const { categories } = useContext(GlobalContext)
 
-    return mapObjects.map((object: { [x: string]: never }) => {
+    return categories.map((category: { [x: string]: never }) => {
       return (
-        <option key={object[`${name}`]} value={object[`${cat}`]}>
-          {object[`${cat}`]}
+        <option key={category[`${name}`]} value={category[`${cat}`]}>
+          {category[`${cat}`]}
         </option>
       )
     })
@@ -70,6 +86,18 @@ const PostObjectForm = (): JSX.Element => {
           placeholder="Miasto..."
           ref={register({ required: true, minLength: 3, maxLength: 25 })}
         />
+        <input
+          name="object_lat"
+          className="coordinates-input"
+          value={addressCoordinates.latLng.lat}
+          ref={register}
+        />
+        <input
+          name="object_lng"
+          className="coordinates-input"
+          value={addressCoordinates.latLng.lng}
+          ref={register}
+        />
         {errors.object_city?.type === "required" && <p>Miasto jest wymagane</p>}
         {errors.object_city?.type === "minLength" && (
           <p>Miasto musi mieć min 3 znaki</p>
@@ -77,9 +105,41 @@ const PostObjectForm = (): JSX.Element => {
         {errors.object_city?.type === "maxLength" && (
           <p> Adres może mieć max 25 znaków</p>
         )}
+        <Map
+          center={[52.20386307153011, 19.137394372476308]}
+          zoom={7}
+          className="form-map"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+          />
+          <Search
+            onChange={(addressData) => {
+              setAddressCoordinates(addressData)
+            }}
+            position="topright"
+            inputPlaceholder="Wpisz adres..."
+            showMarker={false}
+            zoom={16}
+            closeResultsOnClick={true}
+            openSearchOnLoad={false}
+            providerOptions={{
+              region: "pl",
+            }}
+          >
+            {(info) => (
+              <Circle
+                center={info?.latLng}
+                pathOptions={{ fillColor: "blue" }}
+                radius={50}
+              />
+            )}
+          </Search>
+        </Map>
         <input
           name="object_address"
-          placeholder="Adres..."
+          placeholder="Powtórz adres..."
           ref={register({ required: true, minLength: 8, maxLength: 100 })}
         />
         {errors.object_address?.type === "required" && (
