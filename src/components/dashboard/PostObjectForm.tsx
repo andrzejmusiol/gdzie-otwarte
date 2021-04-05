@@ -6,6 +6,7 @@ import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
+import {Col, Row} from "antd"
 
 const PostObjectForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<PostFormValues>()
@@ -70,22 +71,63 @@ const PostObjectForm = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <input
-          name="object_name"
-          placeholder="Nazwa lokalu..."
-          ref={register({ required: true, maxLength: 50 })}
-        />
-        {errors.object_name?.type === "required" && (
-          <p>Nazwa lokalu jest wymagana</p>
-        )}
-        {errors.object_name?.type === "maxLength" && (
-          <p>Nazwa lokalu może mieć max 50 znaków</p>
-        )}
-        <input
-          name="object_city"
-          placeholder="Miasto..."
-          ref={register({ required: true, minLength: 3, maxLength: 25 })}
-        />
+        <Row wrap style={{width: '100%'}}>
+          <Col md={12}>
+            <label>Nazwa miejsca</label>
+            <input
+              name="object_name"
+              ref={register({ required: true, maxLength: 50 })}
+            />
+            {errors.object_name?.type === "required" && (
+              <p>Nazwa lokalu jest wymagana</p>
+            )}
+            {errors.object_name?.type === "maxLength" && (
+              <p>Nazwa lokalu może mieć max 50 znaków</p>
+            )}
+          </Col>
+          <Col md={12}>
+            <label>Miasto</label>
+            <input
+              name="object_city"
+              ref={register({ required: true, minLength: 3, maxLength: 25 })}
+            />
+            {errors.object_city?.type === "required" && <p>Miasto jest wymagane</p>}
+            {errors.object_city?.type === "minLength" && (
+              <p>Miasto musi mieć min 3 znaki</p>
+            )}
+            {errors.object_city?.type === "maxLength" && (
+              <p> Adres może mieć max 25 znaków</p>
+            )}
+          </Col>
+          <Col md={12}>
+            <label>Potwierdź adres</label>
+            <input
+                name="object_address"
+                ref={register({ required: true, minLength: 8, maxLength: 100 })}
+            />
+            {errors.object_address?.type === "required" && (
+                <p>Adres jest wymagany</p>
+            )}
+            {errors.object_address?.type === "minLength" && (
+                <p>Adres musi mieć min 8 znaków</p>
+            )}
+            {errors.object_address?.type === "maxLength" && (
+                <p> Adres może mieć max 100 znaków</p>
+            )}
+
+          </Col>
+          <Col md={12}>
+            <label>Kategoria</label>
+            <select name="object_type" placeholder="Kategoria..." ref={register}>
+              {renderOptionsCategoryOptions()}
+            </select>
+            {errors.object_type?.type === "required" && (
+                <p>Kategoria jest wymagany</p>
+            )}
+
+          </Col>
+          <input type="submit" />
+        </Row>
         <input
           name="object_lat"
           className="coordinates-input"
@@ -98,13 +140,7 @@ const PostObjectForm = (): JSX.Element => {
           value={addressCoordinates.latLng.lng}
           ref={register}
         />
-        {errors.object_city?.type === "required" && <p>Miasto jest wymagane</p>}
-        {errors.object_city?.type === "minLength" && (
-          <p>Miasto musi mieć min 3 znaki</p>
-        )}
-        {errors.object_city?.type === "maxLength" && (
-          <p> Adres może mieć max 25 znaków</p>
-        )}
+        <label>Znajdź się na mapie (ulica, numer, miasto)</label>
         <Map
           center={[52.20386307153011, 19.137394372476308]}
           zoom={7}
@@ -137,27 +173,6 @@ const PostObjectForm = (): JSX.Element => {
             )}
           </Search>
         </Map>
-        <input
-          name="object_address"
-          placeholder="Powtórz adres..."
-          ref={register({ required: true, minLength: 8, maxLength: 100 })}
-        />
-        {errors.object_address?.type === "required" && (
-          <p>Adres jest wymagany</p>
-        )}
-        {errors.object_address?.type === "minLength" && (
-          <p>Adres musi mieć min 8 znaków</p>
-        )}
-        {errors.object_address?.type === "maxLength" && (
-          <p> Adres może mieć max 100 znaków</p>
-        )}
-        <select name="object_type" placeholder="Kategoria..." ref={register}>
-          {renderOptionsCategoryOptions()}
-        </select>
-        {errors.object_type?.type === "required" && (
-          <p>Kategoria jest wymagany</p>
-        )}
-        <input type="submit" />
       </form>
       <div className="error-wrapper">{status}</div>
     </>

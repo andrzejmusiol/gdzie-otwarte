@@ -33,6 +33,7 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
     <GlobalContext.Provider
       value={{
         mapObjects,
+        setMapObjects,
         categories,
         setCategories,
       }}

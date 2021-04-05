@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { FormValues } from "../../types/types"
 import axios from "axios"
-import { GlobalContext } from "../../store"
 import Cookie from "js-cookie"
 import { useHistory } from "react-router-dom"
 

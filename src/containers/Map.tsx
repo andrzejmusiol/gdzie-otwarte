@@ -6,10 +6,11 @@ import { Map, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
 import pinBar from "../assets/icons/pin-bar.svg"
-import pinRestaurant from "../assets/icons/pin-other.svg"
-import pinFitness from "../assets/icons/pin-other.svg"
+import pinRestaurant from "../assets/icons/pin-restaurant.svg"
+import pinFitness from "../assets/icons/pin-fit.svg"
 import pinBeauty from "../assets/icons/pin-beauty.svg"
-import pinOther from "../assets/icons/pin-restaurant.svg"
+import pinHotel from "../assets/icons/pin-hotel.svg"
+import pinOther from "../assets/icons/pin-other.svg"
 import Header from "../components/header/Header"
 
 const MapUI = (): JSX.Element => {
@@ -23,6 +24,7 @@ const MapUI = (): JSX.Element => {
   const type_2 = process.env.REACT_APP_TYPE_2
   const type_3 = process.env.REACT_APP_TYPE_3
   const type_4 = process.env.REACT_APP_TYPE_4
+  const type_5 = process.env.REACT_APP_TYPE_5
 
   const setIcon = (iconDir: string) => {
     return new L.Icon({
@@ -61,6 +63,8 @@ const MapUI = (): JSX.Element => {
                 ? setIcon(pinFitness)
                 : object.category === type_4
                 ? setIcon(pinBeauty)
+                : object.category === type_5
+                ? setIcon(pinHotel)
                 : setIcon(pinOther)
 
             return (

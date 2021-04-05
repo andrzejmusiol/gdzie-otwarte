@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
+@import '~antd/dist/antd.css';
+
 
 body {
   margin: 0;
@@ -23,6 +25,26 @@ code {
 
 .coordinates-input {
   display: none;
+}
+
+.ant-btn-primary {
+  background: #0001fc;
+  border: none;
+}
+
+.ant-btn-primary:hover {
+  background: #3d4dff;
+  border: none;
+}
+
+.ant-btn-link {
+  color: #0001fc;
+  border: none;
+}
+
+.ant-btn-link:hover {
+  color: #3d4dff;
+  border: none;
 }
 
 .leaflet-container .leaflet-control-search {

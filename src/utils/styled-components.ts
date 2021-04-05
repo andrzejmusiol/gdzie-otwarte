@@ -1,13 +1,6 @@
 import styled from "styled-components"
 import { colors } from "./colors"
 
-export const WelcomePageWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 export const LeftSide = styled.div`
   width: 50%;
   display: flex;
@@ -15,28 +8,48 @@ export const LeftSide = styled.div`
   align-items: center;
 `
 
-export const RightSide = styled.div`
-  width: 50%;
+export const WelcomeWrapper = styled.div`
+  text-align: center;
+  .main-wrapper {
+    height: 100vh;
+    padding: 50px 20px;
+    @media (max-width: 600px) {
+      padding: 100px 20px;
+    }
+  }
+  .info-wrapper {
+    max-width: 30rem;
+  }
+  h1 {
+    font-size: 3vw;
+    @media (max-width: 600px) {
+      font-size: 36px;
+    }
+  }
+  h2 {
+    font-size: 1.5rem;
+    @media (max-width: 600px) {
+      font-size: 18px;
+    }
+    color: ${colors.black};
+  }
+  p {
+    font-size: 1.2rem;
+    @media (max-width: 600px) {
+      font-size: 16px;
+    }
+    color: ${colors.black};
+  }
   img {
-    width: 28vw;
+    width: 20px;
+    height: auto;
+    display: inline-block;
+    margin-top: 30px;
+  }
+  .welcome-image {
+    width: 50%;
     height: auto;
   }
-`
-
-export const TextContainer = styled.div`
-    max-width: 450px;
-    text-align: center;
-    h1 {
-        font-size: 3vw
-    }
-    h2 {
-        font-size: 24px;
-        color: ${colors.black}
-    }
-    p {
-        font-size: 18px
-        color: ${colors.black}
-    }
 `
 
 export const HeaderContainer = styled.div`
@@ -54,9 +67,10 @@ export const HeaderContainer = styled.div`
 
 export const LogoWrapper = styled.div`
   img {
-    width: 20px;
+    width: 150px;
     height: auto;
     display: inline-block;
+    margin-top: 5px;
   }
 `
 
@@ -197,42 +211,34 @@ export const LogoutButton = styled.div`
 `
 
 export const PostForm = styled.div`
-  padding-top: 50px;
   width: 100%;
   display: flex;
-  h1,
+  h1 {
+      font-size: 24px;
+        font-weight: 700;
+  }
   p {
     width: 100%;
-  }
-  .post-left-side,
-  .post-right-side {
-    padding: 50px;
-    @media (max-width: 600px) {
-      width: 100%;
-    }
-  }
-  .post-left-side {
-    width: 30%;
-  }
-  .post-right-side {
-    width: 70%;
+  font-size: 18px;
   }
   form {
-    max-width: 300px;
-    text-align: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+  }
+  label {
+  width: 100%;
+    font-size: 14px;
+    color: ${colors.grey};
+    font-weight: 600;
   }
   input,
   select,
   option {
     padding: 10px;
-    max-width: 300px;
     border: 1px solid ${colors.grey};
-    margin: 10px;
+    margin: 10px 0;
     border-radius: 3px;
-    width: 100%;
+    width: 95%;
   }
   input[type="submit"] {
     padding: 15px 20px;
@@ -257,5 +263,20 @@ export const PostForm = styled.div`
     color: ${colors.blue};
     font-weight: 700;
     text-align: center;
+  }
+  .search-control-icon-button,
+  .leaflet-top.leaflet-left {
+    display: none;
+  }
+  .search-control-input {
+    margin: 10px;
+  }
+  .leaflet-search-wrap.leaflet-control {
+    width: 300px;
+    margin: 0;
+  }
+  .search-control-wrap {
+    box-shadow: none;
+    width: 100%;
   }
 `

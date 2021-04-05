@@ -23,7 +23,7 @@ const App = (): JSX.Element => {
               <Route path="/rejestracja">
                 <SignUp />
               </Route>
-              <Route path="/dodaj-punkt">
+              <Route path="/panel-klienta">
                 <Dashboard />
               </Route>
               <Route path="/">

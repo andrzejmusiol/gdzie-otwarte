@@ -11,13 +11,17 @@ import {
 } from "../../utils/styled-components"
 import Filter from "../map/Filter"
 import { GlobalContext } from "../../store"
-import voivodeships from "../../utils/voivodeships.json"
 import Cookie from "js-cookie"
+
+import { Button } from "antd"
+import { PlusOutlined } from "@ant-design/icons"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
   const { categories } = useContext(GlobalContext)
-  const categoriesArray: { value: never; label: never }[] = []
+  const categoriesArray: { value: string; label: string }[] = [
+    { value: "", label: "Wszystkie" },
+  ]
 
   categories.map((category: { [x: string]: never }) => {
     const structure = { value: category[`${cat}`], label: category[`${cat}`] }
@@ -51,10 +55,6 @@ const Header = (): JSX.Element => {
       {location.pathname === "/map" ? (
         <FilterWrapper>
           <Filter
-            options={voivodeships}
-            placeholder={process.env.REACT_APP_PLACEHOLDER_1}
-          />
-          <Filter
             options={renderFiltersCategoryOptions()}
             placeholder={process.env.REACT_APP_PLACEHOLDER_2}
           />
@@ -66,11 +66,21 @@ const Header = (): JSX.Element => {
           {!auth && !loginStorage ? (
             <>
               <Link to="/logowanie">Logowanie</Link>
-              <Link to="/rejestracja">Dodaj punkt</Link>
+              <Button
+                style={{ marginLeft: "10px" }}
+                type="primary"
+                icon={<PlusOutlined />}
+              >
+                Dodaj punkt
+              </Button>
             </>
           ) : (
             <>
-              <Link to="/dodaj-punkt">Dodaj punkt</Link>
+              <Link to="/panel-klienta">
+                <Button type="primary" icon={<PlusOutlined />}>
+                  Dodaj punkt
+                </Button>
+              </Link>
               <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
             </>
           )}

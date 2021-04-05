@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Select, { components } from "react-select"
 import { FilterWrapper, Circle } from "../../utils/styled-components"
 import { colors } from "../../utils/colors"
+import axios from "axios"
+import { GlobalContext } from "../../store"
 
 interface FilterType {
   options: { value: string; label: string }[]
@@ -15,8 +17,23 @@ const Filter: React.VFC<FilterType> = ({
   placeholder,
 }): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState()
+  const { setMapObjects } = useContext(GlobalContext)
+  const objectsUrl: string | any = process.env.REACT_APP_OBJECTS_API_ENDPOINT
+
+  const setObjectsFilter = (url: string) => {
+    axios.get(url).then((response) => {
+      setMapObjects(response.data)
+    })
+  }
+
   const handleChange = (e: { value: React.SetStateAction<undefined> }) => {
     setSelectedValue(e.value)
+
+    if (selectedValue !== "") {
+      setObjectsFilter(`${objectsUrl}?category=${e.value}`)
+    } else {
+      window.location.reload()
+    }
   }
 
   const style = {
