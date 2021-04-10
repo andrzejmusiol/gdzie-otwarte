@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { GlobalContext } from "../store"
 import { ObjectsType } from "../types/types"
 import { LoaderContainer } from "../utils/styled-components"
-import Loader from '../components/map/Loader'
+import Loader from "../components/map/Loader"
 import "leaflet/dist/leaflet.css"
 import { Map, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
@@ -41,7 +41,11 @@ const MapUI = (): JSX.Element => {
   return (
     <>
       <Header />
-      {mapObjects ? null : <LoaderContainer><Loader /></LoaderContainer>}
+      {mapObjects ? null : (
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+      )}
       <Map
         center={[52.20386307153011, 19.137394372476308]}
         zoom={7}

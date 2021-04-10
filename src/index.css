@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
 @import '~antd/dist/antd.css';
 
+
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -18,12 +19,15 @@ code {
 .leaflet-container {  width: 100vw;  height: 100vh; }
 
 .form-map {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 400px;
 }
 
-.coordinates-input {
-  display: none;
+@media (max-width: 992px) {
+  .form-map {
+    width: 30rem;
+    height: 400px;
+  }
 }
 
 .ant-btn-primary {
@@ -44,4 +48,12 @@ code {
 .ant-btn-link:hover {
   color: #3d4dff;
   border: none;
+}
+
+.leaflet-search-wrap.leaflet-control, .leaflet-top.leaflet-left {
+  width: 100% !important;
+}
+
+.ant-form-item-label {
+  white-space: normal;
 }

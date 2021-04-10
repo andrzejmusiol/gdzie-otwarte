@@ -194,6 +194,7 @@ export const SignInUpForm = styled.div`
     width: 100%;
     color: ${colors.blue};
     font-weight: 700;
+    text-align: left
   }
 `
 export const LogoutButton = styled.div`
@@ -211,8 +212,6 @@ export const LogoutButton = styled.div`
 `
 
 export const PostForm = styled.div`
-  width: 100%;
-  display: flex;
   h1 {
     font-size: 24px;
     font-weight: 700;
@@ -221,51 +220,40 @@ export const PostForm = styled.div`
     width: 100%;
     font-size: 18px;
   }
-  form {
-    display: flex;
-    flex-wrap: wrap;
-  }
   label {
-    width: 100%;
     font-size: 14px;
     color: ${colors.grey};
     font-weight: 600;
   }
-  input,
-  select,
-  option {
+.hidden-input {
+  visibility: hidden;
+  height: 0;
+    width: 0;
+    position: absolute;
+    left: -1000px;
+}
+  .error-wrapper {
+    width: 100%;
+    color: ${colors.red};
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 20px
+  }
+  .search-control-wrap input,
+  .search-control-wrap select,
+  .search-control-wrap option {
     padding: 10px;
     border: 1px solid ${colors.grey};
     margin: 10px 0;
     border-radius: 3px;
-    width: 95%;
-  }
-  input[type="submit"] {
-    padding: 15px 20px;
-    width: fit-content;
-    text-transform: uppercase;
-    color: ${colors.white};
-    background: ${colors.blue};
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    margin: 20px 0;
-    cursor: pointer;
-    &: hover {
-      box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
-      transition: 0.3s ease;
-    }
-  }
-  .error-wrapper {
     width: 100%;
-    color: ${colors.blue};
-    font-weight: 700;
-    text-align: center;
+  }
+  .search-control {
+    width: 100%;
   }
   .search-control-icon-button,
-  .leaflet-top.leaflet-left {
+  .leaflet-control-zoom {
     display: none;
   }
   .search-control-input {

@@ -10,4 +10,5 @@ export const colors = {
   fit: "#009FFF",
   beauty: "#FF72FF",
   other: "#66CDAA",
+  red: '#FF3371'
 }

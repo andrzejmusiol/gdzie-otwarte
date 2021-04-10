@@ -1,16 +1,18 @@
 import React, { ReactNode, useContext, useState } from "react"
-import { useForm } from "react-hook-form"
-import { PostFormValues } from "../../types/types"
 import axios from "axios"
 import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
-import { Col, Row } from "antd"
+import {Form, Input, Button, Select} from "antd"
+import {PlusOutlined} from "@ant-design/icons"
+import { FormInstance } from 'antd/lib/form'
 
 const PostObjectForm = (): JSX.Element => {
-  const { register, errors, handleSubmit } = useForm<PostFormValues>()
-  const [status, setStatus] = useState("")
+  const layout = {
+    labelCol: { xs: { span: 24 }, sm: { span: 24 }, md: { span: 24 }, lg: { span: 3 } },
+    wrapperCol: { xs: { span: 24 }, sm: { span: 24 }, md: { span: 24 }, lg: { span: 12 } }
+  }
   const addressCoordinatesInitialState: {
     latLng: { lat: number; lng: number }
   } = {
@@ -19,13 +21,20 @@ const PostObjectForm = (): JSX.Element => {
       lng: 0,
     },
   }
+  const [status, setStatus] = useState("")
   const [addressCoordinates, setAddressCoordinates] = useState(
     addressCoordinatesInitialState
   )
+
   const REGISTER_ENDPOINT = process.env.REACT_APP_POST_ENDPOINT
   const token = sessionStorage.getItem("token")
+  const formRef = React.createRef<FormInstance>()
 
-  const onSubmit = handleSubmit((data) => {
+  const setHiddenFieldValue = () => {
+    if(formRef.current && addressCoordinates) formRef.current.setFieldsValue({hidden_input: 'hidden_input'})
+  }
+
+  const onFinish = (data: any) => {
     if (REGISTER_ENDPOINT)
       axios
         .post(
@@ -35,9 +44,10 @@ const PostObjectForm = (): JSX.Element => {
             city: data.object_city,
             address: data.object_address,
             category: data.object_type,
-            lat: data.object_lat,
-            lng: data.object_lng,
+            lat: addressCoordinates.latLng.lat,
+            lng: addressCoordinates.latLng.lng,
             published_at: null,
+            hidden_input: data.hidden_input
           },
           {
             headers: {
@@ -52,133 +62,124 @@ const PostObjectForm = (): JSX.Element => {
         .catch(() => {
           setStatus("Błąd, sprawdź poprawność danych")
         })
-  })
+  }
+
+  const onFinishFailed = () => {
+    setStatus('Coś poszło nie tak, spróbuj ponownie')
+  }
 
   const renderOptionsCategoryOptions = (): ReactNode => {
     const name = process.env.REACT_APP_NAME
     const cat = process.env.REACT_APP_CAT
     const { categories } = useContext(GlobalContext)
+    const { Option } = Select
 
     return categories.map((category: { [x: string]: never }) => {
       return (
-        <option key={category[`${name}`]} value={category[`${cat}`]}>
+        <Option key={category[`${name}`]} value={category[`${cat}`]}>
           {category[`${cat}`]}
-        </option>
+        </Option>
       )
     })
   }
 
+  const mapInputLabel = 'Znajdź się na mapie\n(ulica, numer, miasto)'
+
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <Row wrap style={{ width: "100%" }}>
-          <Col md={12}>
-            <label>Nazwa miejsca</label>
-            <input
-              name="object_name"
-              ref={register({ required: true, maxLength: 50 })}
-            />
-            {errors.object_name?.type === "required" && (
-              <p>Nazwa lokalu jest wymagana</p>
-            )}
-            {errors.object_name?.type === "maxLength" && (
-              <p>Nazwa lokalu może mieć max 50 znaków</p>
-            )}
-          </Col>
-          <Col md={12}>
-            <label>Miasto</label>
-            <input
-              name="object_city"
-              ref={register({ required: true, minLength: 3, maxLength: 25 })}
-            />
-            {errors.object_city?.type === "required" && (
-              <p>Miasto jest wymagane</p>
-            )}
-            {errors.object_city?.type === "minLength" && (
-              <p>Miasto musi mieć min 3 znaki</p>
-            )}
-            {errors.object_city?.type === "maxLength" && (
-              <p> Adres może mieć max 25 znaków</p>
-            )}
-          </Col>
-          <Col md={12}>
-            <label>Potwierdź adres</label>
-            <input
-              name="object_address"
-              ref={register({ required: true, minLength: 8, maxLength: 100 })}
-            />
-            {errors.object_address?.type === "required" && (
-              <p>Adres jest wymagany</p>
-            )}
-            {errors.object_address?.type === "minLength" && (
-              <p>Adres musi mieć min 8 znaków</p>
-            )}
-            {errors.object_address?.type === "maxLength" && (
-              <p> Adres może mieć max 100 znaków</p>
-            )}
-          </Col>
-          <Col md={12}>
-            <label>Kategoria</label>
-            <select
-              name="object_type"
-              placeholder="Kategoria..."
-              ref={register}
-            >
-              {renderOptionsCategoryOptions()}
-            </select>
-            {errors.object_type?.type === "required" && (
-              <p>Kategoria jest wymagany</p>
-            )}
-          </Col>
-          <input type="submit" />
-        </Row>
-        <input
-          name="object_lat"
-          className="coordinates-input"
-          value={addressCoordinates.latLng.lat}
-          ref={register}
-        />
-        <input
-          name="object_lng"
-          className="coordinates-input"
-          value={addressCoordinates.latLng.lng}
-          ref={register}
-        />
-        <label>Znajdź się na mapie (ulica, numer, miasto)</label>
-        <Map
-          center={[52.20386307153011, 19.137394372476308]}
-          zoom={7}
-          className="form-map"
+      <Form
+        {...layout}
+        ref={formRef}
+        name="post_object_form"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Nazwa lokalu"
+          labelAlign="left"
+          name="object_name"
+
+          rules={[{ required: true, message: "Podaj nazwę lokalu!" }]}
         >
-          <TileLayer
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          />
-          <Search
-            onChange={(addressData) => {
-              setAddressCoordinates(addressData)
-            }}
-            position="topright"
-            inputPlaceholder="Wpisz adres..."
-            showMarker={false}
-            zoom={16}
-            closeResultsOnClick={true}
-            openSearchOnLoad={false}
-            providerOptions={{
-              region: "pl",
-            }}
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Miasto"
+          labelAlign="left"
+          name="object_city"
+          rules={[{ required: true, message: "Podaj miasto" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Potwierdź adres"
+          labelAlign="left"
+          name="object_address"
+          rules={[{ required: true, message: "Podaj adres" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Kategoria"
+          labelAlign="left"
+          name="object_type"
+          rules={[{ required: true, message: "Wybierz kategorię" }]}
+        >
+          <Select
+            placeholder="Wybierz kategorię"
+            allowClear
           >
-            {(info) => (
-              <Circle
-                center={info?.latLng}
-                pathOptions={{ fillColor: "blue" }}
-                radius={50}
-              />
-            )}
-          </Search>
-        </Map>
-      </form>
-      <div className="error-wrapper">{status}</div>
+            {renderOptionsCategoryOptions()}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          label={mapInputLabel}
+          labelAlign="left"
+          name="hidden_input"
+          rules={[{ required: true, message: "Wskaż swój punkt na mapie" }]}
+        >
+          <Input />
+          <Map
+            center={[52.20386307153011, 19.137394372476308]}
+            zoom={7}
+            className="form-map"
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
+              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+            />
+            <Search
+              onChange={(addressData) => {
+                setAddressCoordinates(addressData)
+                setHiddenFieldValue()
+              }}
+              position="topleft"
+              inputPlaceholder="Wpisz adres..."
+              showMarker={false}
+              zoom={16}
+              closeResultsOnClick={true}
+              openSearchOnLoad={false}
+              providerOptions={{
+                region: "pl",
+              }}
+            >
+              {(info) => (
+                <Circle
+                  center={info?.latLng}
+                  pathOptions={{ fillColor: "blue" }}
+                  radius={50}
+                />
+              )}
+            </Search>
+          </Map>
+        </Form.Item>
+        <Form.Item>
+          <div className="error-wrapper">{status}</div>
+          <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+            Dodaj
+          </Button>
+        </Form.Item>
+      </Form>
     </>
   )
 }
