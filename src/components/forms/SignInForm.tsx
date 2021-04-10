@@ -2,12 +2,22 @@ import React, { useState } from "react"
 import axios from "axios"
 import Cookie from "js-cookie"
 import { useHistory } from "react-router-dom"
-import {Button, Form, Input} from "antd"
+import { Button, Form, Input } from "antd"
 
 const SignInForm = (): JSX.Element => {
   const layout = {
-    labelCol: { xs: { span: 24 }, sm: { span: 6 }, md: { span: 6 }, lg: { span: 6 } },
-    wrapperCol: { xs: { span: 24 }, sm: { span: 16 }, md: { span: 16 }, lg: { span: 16 } }
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 6 },
+      md: { span: 6 },
+      lg: { span: 6 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 16 },
+      md: { span: 16 },
+      lg: { span: 16 },
+    },
   }
 
   const [status, setStatus] = useState("")
@@ -35,39 +45,39 @@ const SignInForm = (): JSX.Element => {
   }
 
   const onFinishFailed = () => {
-    setStatus('Coś poszło nie tak, spróbuj ponownie')
+    setStatus("Coś poszło nie tak, spróbuj ponownie")
   }
-
 
   return (
     <>
       <Form
-          {...layout}
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
+        {...layout}
+        name="basic"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
         <Form.Item
-            label="E-mail"
-            labelAlign="left"
-            name="email"
-            rules={[{ required: true, message: 'Wpisz swójj e-mail' },
-              {
-                type: 'email',
-                message: 'Podaj prawidłowy e-mail',
-              },
-            ]}
+          label="E-mail"
+          labelAlign="left"
+          name="email"
+          rules={[
+            { required: true, message: "Wpisz swójj e-mail" },
+            { max: 50, message: "E-mail jest zbyt długi" },
+            { min: 4, message: "E-mail jest zbyt krótki" },
+            { type: "email", message: "Podaj prawidłowy e-mail" },
+          ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-            label="Hasło"
-            name="password"
-            labelAlign="left"
-            rules={[
-              { required: true, message: 'Podaj prawidłowe hasło' },
-            ]}
+          label="Hasło"
+          name="password"
+          labelAlign="left"
+          rules={[
+            { required: true, message: "Podaj prawidłowe hasło" },
+            { min: 6, message: "Twoje hasło ma min 6 znaków" },
+          ]}
         >
           <Input.Password />
         </Form.Item>

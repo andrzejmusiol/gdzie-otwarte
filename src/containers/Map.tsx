@@ -41,7 +41,7 @@ const MapUI = (): JSX.Element => {
   return (
     <>
       <Header />
-      {mapObjects ? null : (
+      {mapObjects.length > 0 ? null : (
         <LoaderContainer>
           <Loader />
         </LoaderContainer>

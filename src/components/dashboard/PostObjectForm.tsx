@@ -4,14 +4,24 @@ import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
-import {Form, Input, Button, Select} from "antd"
-import {PlusOutlined} from "@ant-design/icons"
-import { FormInstance } from 'antd/lib/form'
+import { Form, Input, Button, Select } from "antd"
+import { PlusOutlined } from "@ant-design/icons"
+import { FormInstance } from "antd/lib/form"
 
 const PostObjectForm = (): JSX.Element => {
   const layout = {
-    labelCol: { xs: { span: 24 }, sm: { span: 24 }, md: { span: 24 }, lg: { span: 3 } },
-    wrapperCol: { xs: { span: 24 }, sm: { span: 24 }, md: { span: 24 }, lg: { span: 12 } }
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 3 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 12 },
+    },
   }
   const addressCoordinatesInitialState: {
     latLng: { lat: number; lng: number }
@@ -31,7 +41,8 @@ const PostObjectForm = (): JSX.Element => {
   const formRef = React.createRef<FormInstance>()
 
   const setHiddenFieldValue = () => {
-    if(formRef.current && addressCoordinates) formRef.current.setFieldsValue({hidden_input: 'hidden_input'})
+    if (formRef.current && addressCoordinates)
+      formRef.current.setFieldsValue({ hidden_input: "hidden_input" })
   }
 
   const onFinish = (data: any) => {
@@ -47,7 +58,7 @@ const PostObjectForm = (): JSX.Element => {
             lat: addressCoordinates.latLng.lat,
             lng: addressCoordinates.latLng.lng,
             published_at: null,
-            hidden_input: data.hidden_input
+            hidden_input: data.hidden_input,
           },
           {
             headers: {
@@ -65,7 +76,7 @@ const PostObjectForm = (): JSX.Element => {
   }
 
   const onFinishFailed = () => {
-    setStatus('Coś poszło nie tak, spróbuj ponownie')
+    setStatus("Coś poszło nie tak, spróbuj ponownie")
   }
 
   const renderOptionsCategoryOptions = (): ReactNode => {
@@ -83,7 +94,7 @@ const PostObjectForm = (): JSX.Element => {
     })
   }
 
-  const mapInputLabel = 'Znajdź się na mapie\n(ulica, numer, miasto)'
+  const mapInputLabel = "Znajdź się na mapie\n(ulica, numer, miasto)"
 
   return (
     <>
@@ -98,8 +109,11 @@ const PostObjectForm = (): JSX.Element => {
           label="Nazwa lokalu"
           labelAlign="left"
           name="object_name"
-
-          rules={[{ required: true, message: "Podaj nazwę lokalu!" }]}
+          rules={[
+            { required: true, message: "Podaj nazwę lokalu!" },
+            { max: 75, message: "Nazwa lokalu jest zbyt długa" },
+            { min: 4, message: "Nazwa lokalu jest zbyt krótka" },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -107,7 +121,10 @@ const PostObjectForm = (): JSX.Element => {
           label="Miasto"
           labelAlign="left"
           name="object_city"
-          rules={[{ required: true, message: "Podaj miasto" }]}
+          rules={[
+            { required: true, message: "Podaj miasto" },
+            { max: 50, message: "Nazwa miasta jest zbyt długa" },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -115,7 +132,11 @@ const PostObjectForm = (): JSX.Element => {
           label="Potwierdź adres"
           labelAlign="left"
           name="object_address"
-          rules={[{ required: true, message: "Podaj adres" }]}
+          rules={[
+            { required: true, message: "Podaj adres" },
+            { max: 100, message: "Adres jest zbyt długi" },
+            { min: 6, message: "Adres jest zbyt krótki" },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -125,10 +146,7 @@ const PostObjectForm = (): JSX.Element => {
           name="object_type"
           rules={[{ required: true, message: "Wybierz kategorię" }]}
         >
-          <Select
-            placeholder="Wybierz kategorię"
-            allowClear
-          >
+          <Select placeholder="Wybierz kategorię" allowClear>
             {renderOptionsCategoryOptions()}
           </Select>
         </Form.Item>

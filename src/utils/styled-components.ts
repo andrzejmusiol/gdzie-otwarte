@@ -162,14 +162,14 @@ export const SignInUpForm = styled.div`
     margin-top: 20px;
     max-width: 500px;
   }
-  
+
   .error-wrapper {
     width: 100%;
     color: ${colors.red};
     font-size: 18px;
     font-weight: 700;
     text-align: left;
-    margin-bottom: 20px
+    margin-bottom: 20px;
   }
 `
 export const LogoutButton = styled.div`
@@ -200,20 +200,20 @@ export const PostForm = styled.div`
     color: ${colors.grey};
     font-weight: 600;
   }
-.hidden-input {
-  visibility: hidden;
-  height: 0;
+  .hidden-input {
+    visibility: hidden;
+    height: 0;
     width: 0;
     position: absolute;
     left: -1000px;
-}
+  }
   .error-wrapper {
     width: 100%;
     color: ${colors.red};
     font-size: 18px;
     font-weight: 700;
     text-align: left;
-    margin-bottom: 20px
+    margin-bottom: 20px;
   }
   .search-control-wrap input,
   .search-control-wrap select,
