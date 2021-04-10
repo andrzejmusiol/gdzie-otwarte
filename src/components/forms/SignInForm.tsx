@@ -1,17 +1,20 @@
-import React, { useContext, useState } from "react"
-import { useForm } from "react-hook-form"
-import { FormValues } from "../../types/types"
+import React, { useState } from "react"
 import axios from "axios"
 import Cookie from "js-cookie"
 import { useHistory } from "react-router-dom"
+import {Button, Form, Input} from "antd"
 
 const SignInForm = (): JSX.Element => {
-  const { register, errors, handleSubmit } = useForm<FormValues>()
+  const layout = {
+    labelCol: { xs: { span: 24 }, sm: { span: 6 }, md: { span: 6 }, lg: { span: 6 } },
+    wrapperCol: { xs: { span: 24 }, sm: { span: 16 }, md: { span: 16 }, lg: { span: 16 } }
+  }
+
   const [status, setStatus] = useState("")
   const REGISTER_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
   const history = useHistory()
 
-  const onSubmit = handleSubmit((data) => {
+  const onFinish = (data: any) => {
     if (REGISTER_ENDPOINT)
       axios
         .post(REGISTER_ENDPOINT, {
@@ -29,33 +32,52 @@ const SignInForm = (): JSX.Element => {
         .catch(() => {
           setStatus("Błąd, sprawdź poprawność danych")
         })
-  })
+  }
+
+  const onFinishFailed = () => {
+    setStatus('Coś poszło nie tak, spróbuj ponownie')
+  }
+
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          name="email"
-          placeholder="E-mail"
-          ref={register({ required: true, maxLength: 50 })}
-        />
-        {errors.email?.type === "required" && <p>E-mail jest wymagany</p>}
-        {errors.email?.type === "maxLength" && <p>E-mail może mieć max 25</p>}
-        <input
-          name="password"
-          placeholder="Hasło..."
-          ref={register({ required: true, minLength: 8, maxLength: 50 })}
-        />
-        {errors.password?.type === "required" && <p>Hasło jest wymagane</p>}
-        {errors.password?.type === "minLength" && (
-          <p> Hasło musi mieć min 8 znaków</p>
-        )}
-        {errors.password?.type === "maxLength" && (
-          <p> Hasło może mieć max 50 znaków</p>
-        )}
-        <input type="submit" />
-      </form>
-      <div className="error-wrapper">{status}</div>
+      <Form
+          {...layout}
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+            label="E-mail"
+            labelAlign="left"
+            name="email"
+            rules={[{ required: true, message: 'Wpisz swójj e-mail' },
+              {
+                type: 'email',
+                message: 'Podaj prawidłowy e-mail',
+              },
+            ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+            label="Hasło"
+            name="password"
+            labelAlign="left"
+            rules={[
+              { required: true, message: 'Podaj prawidłowe hasło' },
+            ]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <div className="error-wrapper">{status}</div>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Wyślij
+          </Button>
+        </Form.Item>
+      </Form>
     </>
   )
 }

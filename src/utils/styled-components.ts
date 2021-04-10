@@ -107,14 +107,6 @@ export const LinksWrapper = styled.div`
   }
   a:nth-child(2) {
     color: ${colors.white};
-    background: ${colors.blue};
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: 700;
-    &: hover {
-      box-shadow: 0 0 20px rgba(0, 69, 218, 0.5);
-      transition: 0.3s ease;
-    }
   }
 `
 
@@ -161,40 +153,23 @@ export const SignInUpForm = styled.div`
   h1,
   p {
     width: 100%;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 2rem;
   }
   form {
-    width: 300px;
-    text-align: center;
+    margin-top: 20px;
+    max-width: 500px;
   }
-  input {
-    max-width: 300px;
-    padding: 10px;
-    border: 1px solid ${colors.grey};
-    margin: 10px;
-    border-radius: 3px;
-  }
-  input[type="submit"] {
-    padding: 15px 20px;
-    text-transform: uppercase;
-    color: ${colors.white};
-    background: ${colors.blue};
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    margin: 20px 0;
-    cursor: pointer;
-    &: hover {
-      box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
-      transition: 0.3s ease;
-    }
-  }
+  
   .error-wrapper {
     width: 100%;
-    color: ${colors.blue};
+    color: ${colors.red};
+    font-size: 18px;
     font-weight: 700;
-    text-align: left
+    text-align: left;
+    margin-bottom: 20px
   }
 `
 export const LogoutButton = styled.div`

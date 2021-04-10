@@ -71,7 +71,7 @@ const Header = (): JSX.Element => {
                 type="primary"
                 icon={<PlusOutlined />}
               >
-                Dodaj punkt
+                <Link to="/rejestracja">Dodaj punkt </Link>
               </Button>
             </>
           ) : (
