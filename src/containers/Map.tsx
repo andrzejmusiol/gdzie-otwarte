@@ -14,6 +14,7 @@ import pinBeauty from "../assets/icons/pin-beauty.svg"
 import pinHotel from "../assets/icons/pin-hotel.svg"
 import pinOther from "../assets/icons/pin-other.svg"
 import Header from "../components/header/Header"
+import Cookies from "js-cookie"
 
 const MapUI = (): JSX.Element => {
   const { mapObjects } = useContext(GlobalContext)
@@ -37,6 +38,8 @@ const MapUI = (): JSX.Element => {
       className: "leaflet-pin-icon",
     })
   }
+
+  console.warn(Cookies.get("cookiesConfirmation"))
 
   return (
     <>

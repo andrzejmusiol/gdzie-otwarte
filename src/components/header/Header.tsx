@@ -11,7 +11,6 @@ import {
 } from "../../utils/styled-components"
 import Filter from "../map/Filter"
 import { GlobalContext } from "../../store"
-import Cookie from "js-cookie"
 
 import { Button } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
@@ -38,7 +37,6 @@ const Header = (): JSX.Element => {
   const history = useHistory()
 
   const handleLogout = () => {
-    Cookie.remove("token")
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("auth")
     sessionStorage.removeItem("user")

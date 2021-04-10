@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import axios from "axios"
-import Cookie from "js-cookie"
 import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
 
@@ -33,7 +32,6 @@ const SignInForm = (): JSX.Element => {
         })
         .then((response) => {
           setStatus("Zalogowano!")
-          Cookie.set("token", response.data.jwt)
           sessionStorage.setItem("token", response.data.jwt)
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
           sessionStorage.setItem("auth", String(true))

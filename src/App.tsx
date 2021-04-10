@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import WelcomePage from "./containers/WelcomePage"
 import Map from "./containers/Map"
@@ -6,8 +6,14 @@ import { ContextProvider } from "./store"
 import SignIn from "./containers/SignIn"
 import SignUp from "./containers/SignUp"
 import Dashboard from "./containers/Dashboard"
+import { cookiesSettings } from "./utils/globalSettings"
+
 
 const App = (): JSX.Element => {
+  useEffect(() => {
+    cookiesSettings()
+  }, [])
+
   return (
     <ContextProvider>
       <div className="App">

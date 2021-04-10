@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import axios from "axios"
-import Cookie from "js-cookie"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button } from "antd"
 
@@ -34,7 +33,6 @@ const SignUpForm = (): JSX.Element => {
         })
         .then((response) => {
           setStatus("Rejestracja przebiegła pomyślnie!")
-          Cookie.set("token", response.data.jwt)
           sessionStorage.setItem("token", response.data.jwt)
           history.push("/map")
         })
