@@ -53,17 +53,16 @@ const Dashboard = (): JSX.Element => {
               }}
             >
               <Route path="/panel-klienta/dodaj-punkt">
-                  <h1>Dodaj punkt na mapie</h1>
-                  <p>i pozwól klientom Cię zauważyć!</p>
-                  <PostObjectForm />
+                <h1>Dodaj punkt na mapie</h1>
+                <p>i pozwól klientom Cię zauważyć!</p>
+                <PostObjectForm />
               </Route>
               <Route path="/panel-klienta/twoje-konto">
-                  {typeof userOFSession === "string" && auth ? (
-                    <h2>Witaj! {user.username}</h2>
-                  ) : (
-                    ""
-                  )}
-
+                {typeof userOFSession === "string" && auth ? (
+                  <h2>Witaj! {user.username}</h2>
+                ) : (
+                  ""
+                )}
               </Route>
             </Content>
           </PostForm>

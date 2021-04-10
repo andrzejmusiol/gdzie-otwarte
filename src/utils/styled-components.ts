@@ -214,19 +214,19 @@ export const PostForm = styled.div`
   width: 100%;
   display: flex;
   h1 {
-      font-size: 24px;
-        font-weight: 700;
+    font-size: 24px;
+    font-weight: 700;
   }
   p {
     width: 100%;
-  font-size: 18px;
+    font-size: 18px;
   }
   form {
     display: flex;
     flex-wrap: wrap;
   }
   label {
-  width: 100%;
+    width: 100%;
     font-size: 14px;
     color: ${colors.grey};
     font-weight: 600;
@@ -278,5 +278,33 @@ export const PostForm = styled.div`
   .search-control-wrap {
     box-shadow: none;
     width: 100%;
+  }
+`
+
+export const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Spinner = styled.div`
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+  svg path,
+  svg rect {
+    fill: ${colors.blue};
   }
 `

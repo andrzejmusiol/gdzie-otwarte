@@ -6,7 +6,7 @@ import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
-import {Col, Row} from "antd"
+import { Col, Row } from "antd"
 
 const PostObjectForm = (): JSX.Element => {
   const { register, errors, handleSubmit } = useForm<PostFormValues>()
@@ -71,7 +71,7 @@ const PostObjectForm = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <Row wrap style={{width: '100%'}}>
+        <Row wrap style={{ width: "100%" }}>
           <Col md={12}>
             <label>Nazwa miejsca</label>
             <input
@@ -91,7 +91,9 @@ const PostObjectForm = (): JSX.Element => {
               name="object_city"
               ref={register({ required: true, minLength: 3, maxLength: 25 })}
             />
-            {errors.object_city?.type === "required" && <p>Miasto jest wymagane</p>}
+            {errors.object_city?.type === "required" && (
+              <p>Miasto jest wymagane</p>
+            )}
             {errors.object_city?.type === "minLength" && (
               <p>Miasto musi mieć min 3 znaki</p>
             )}
@@ -102,29 +104,31 @@ const PostObjectForm = (): JSX.Element => {
           <Col md={12}>
             <label>Potwierdź adres</label>
             <input
-                name="object_address"
-                ref={register({ required: true, minLength: 8, maxLength: 100 })}
+              name="object_address"
+              ref={register({ required: true, minLength: 8, maxLength: 100 })}
             />
             {errors.object_address?.type === "required" && (
-                <p>Adres jest wymagany</p>
+              <p>Adres jest wymagany</p>
             )}
             {errors.object_address?.type === "minLength" && (
-                <p>Adres musi mieć min 8 znaków</p>
+              <p>Adres musi mieć min 8 znaków</p>
             )}
             {errors.object_address?.type === "maxLength" && (
-                <p> Adres może mieć max 100 znaków</p>
+              <p> Adres może mieć max 100 znaków</p>
             )}
-
           </Col>
           <Col md={12}>
             <label>Kategoria</label>
-            <select name="object_type" placeholder="Kategoria..." ref={register}>
+            <select
+              name="object_type"
+              placeholder="Kategoria..."
+              ref={register}
+            >
               {renderOptionsCategoryOptions()}
             </select>
             {errors.object_type?.type === "required" && (
-                <p>Kategoria jest wymagany</p>
+              <p>Kategoria jest wymagany</p>
             )}
-
           </Col>
           <input type="submit" />
         </Row>
