@@ -1,6 +1,6 @@
-# [gdzie-otwarte.pl](https://gdzie-otwarte.pl). is a project against irresponsibility of Polish Government
+# [Gdzie-otwarte.pl](https://gdzie-otwarte.pl). is a project against irresponsibility of Polish Government
 
-## Why?
+## Background
 
 Polish government trying to destroy our economy since last year, unlawfully closing hundreds of small companies, 
 takes peoples jobs, and provide extremely bad solutions during SARS-Covid-19 pandemic.
@@ -13,8 +13,8 @@ and keep the right to work guaranteed by the constitution.
 
 ## How you can use this app
 
-If you're determinated just jump on [Otwarci.pl](https://otwarci.pl) and add your `bar`, `restaurant`, `fitness club` or
-`beauty salon` on the map, and say to your customers that you're open, you comply with the sanitary requirements 
+If you're determinated just jump on [Gdzie-otwarte.pl](https://gdzie-otwarte.pl) and add your `bar`, `restaurant`, `fitness club`, 
+`beauty salon`, `hotel` or other object on the map, and say to your customers that you're open, you comply with the sanitary requirements 
 related to SARS-Covid-19.
 
 ## Let us not be intimidated!
