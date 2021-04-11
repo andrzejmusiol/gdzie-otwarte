@@ -170,7 +170,7 @@ const PostObjectForm = (): JSX.Element => {
           name="hidden_input"
           rules={[{ required: true, message: basicMapMarkerMessage }]}
         >
-          <Input />
+          <Input className="hidden-input"/>
           <Map
             center={[52.20386307153011, 19.137394372476308]}
             zoom={7}
@@ -199,7 +199,7 @@ const PostObjectForm = (): JSX.Element => {
                 <Circle
                   center={info?.latLng}
                   pathOptions={{ fillColor: "blue" }}
-                  radius={50}
+                  radius={10}
                 />
               )}
             </Search>

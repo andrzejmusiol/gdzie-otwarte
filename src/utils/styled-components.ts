@@ -150,23 +150,6 @@ export const MobileLinksWrapper = styled.div`
   }
 `
 
-export const Button = styled.button`
-  padding: 10px 20px;
-  text-transform: uppercase;
-  color: ${colors.white};
-  background: ${colors.blue};
-  border: none;
-  border-radius: 5px;
-  padding: 24px 80px;
-  font-size: 24px;
-  margin: 20px 0;
-  cursor: pointer;
-  &: hover {
-    box-shadow: 0 10px 30px rgba(0, 69, 218, 0.4);
-    transition: 0.3s ease;
-  }
-`
-
 export const SignInUpForm = styled.div`
   height: 100vh;
   width: 100%;

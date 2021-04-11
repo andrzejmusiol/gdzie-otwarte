@@ -24,7 +24,7 @@ const Filter: React.VFC<FilterType> = ({
 
   const setObjectsFilter = (url: string) => {
     axios.get(url).then((response) => {
-      setMapObjects(response.data)
+      response.data.length > 0 ? setMapObjects(response.data) : []
     })
   }
 

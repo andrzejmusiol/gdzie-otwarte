@@ -1,14 +1,11 @@
 import React from "react"
 import { Layout, Row, Col, Typography, Divider, Button } from "antd"
 import { GithubOutlined } from "@ant-design/icons"
-import { useWindowDimensions } from "../hooks/hooks"
 
 const { Content, Footer } = Layout
 const { Title, Paragraph, Link, Text } = Typography
 
 const About = (): JSX.Element => {
-  const { width } = useWindowDimensions()
-  const widthRule = width < 960 ? "100%" : 960
 
   return (
     <Layout className="layout">
@@ -22,34 +19,8 @@ const About = (): JSX.Element => {
               <Title>Cel projektu</Title>
               <Paragraph>
                 Gdzie-otwarte.pl to projekt mający na celu wspomóc
-                przedsiębiorców w dobie pandemii SARS Covid-19, którzy w wyniku
-                nieodpowiedzialnej i bezprawnej polityki polskiego rządu
+                przedsiębiorców w dobie pandemii SARS Covid-19, którzy w wyniku nielegalnych obostrzeń
                 stracili możliwość wykonywania pracy, tym samym źródła dochodu.
-              </Paragraph>
-              <Divider />
-              <Title>Tło</Title>
-              <Paragraph>
-                Od początku wybuchu pandemii w marcu 2020 roku, poprzez
-                nakładnie absurdalnych i bezprawnych obostrzeń, polski rząd
-                znacząco ograniczył możliwości zarobkowe polaków skupiając się
-                na niewłaściwych obszarach pomocy.
-              </Paragraph>
-              <Paragraph>
-                Skutkiem tych działań jest dramatycznie rosnące bezprobocie,
-                największa inflacja w UE oraz zwiększające się ubóstwo. W tym
-                samym czasie rząd sprzeniewierza ogromne sumy publicznych
-                środków na cele związane z członkami i przyjaciółmi partii,
-                m.in.:
-              </Paragraph>
-              <Paragraph>
-                <ol>
-                  <li>Afera wyborcza Jacka Sasina - 68 mln PLN (~ €15 mln)</li>
-                  <li>
-                    Afera ministra zdrowia Łukasza Szumowskiego - 100 mln PLN (~
-                    €22 mln)
-                  </li>
-                  <li>Afera TVP - 1 mld PLN (~ €220 mln)</li>
-                </ol>
               </Paragraph>
               <Divider />
               <Title>Co możesz zrobić?</Title>
