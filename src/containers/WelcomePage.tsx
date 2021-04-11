@@ -5,6 +5,13 @@ import { WelcomeWrapper } from "../utils/styled-components"
 import { Button, Row, Col, Typography } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
 import fb from "../assets/icons/fb.svg"
+import {
+  about,
+  mapButton,
+  siteName,
+  welcomePageHeaderText,
+  welcomePageSubHeaderText,
+} from "../utils/messages"
 
 const { Title } = Typography
 
@@ -13,24 +20,18 @@ const WelcomePage = (): JSX.Element => {
     <WelcomeWrapper>
       <Row className="main-wrapper" justify="center" align="middle" wrap>
         <Col className="info-wrapper" md={12} sm={24}>
-          <Title>Otwieramy.pl</Title>
-          <h2>
-            To inicjatywa mająca na celu wspomaganie przedsiębiorców, których
-            lokale zostały bezprawnie zamknięte
-          </h2>
-          <p>
-            Przejdź do mapy, wybierz kategorię lub przeszukaj wszystkie otwarte
-            lokale w Twojej okolicy i baw się dobrze!
-          </p>
+          <Title>{siteName}</Title>
+          <h2>{welcomePageHeaderText}</h2>
+          <p>{welcomePageSubHeaderText}</p>
           <Link to="/map">
             {" "}
             <Button type="primary" icon={<SearchOutlined />} size="large">
-              Mapa
+              {mapButton}
             </Button>
           </Link>
           <Link to="/o-projekcie">
             <Button type="link" size="large">
-              O projekcie
+              {about}
             </Button>
           </Link>
           <Col>

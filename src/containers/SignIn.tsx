@@ -2,6 +2,7 @@ import React from "react"
 import { SignInUpForm } from "../utils/styled-components"
 import loginImage from "../assets/icons/login.svg"
 import SignInForm from "../components/forms/SignInForm"
+import { signInMessage } from "../utils/messages"
 
 const SignIn = (): JSX.Element => {
   return (
@@ -11,7 +12,7 @@ const SignIn = (): JSX.Element => {
           <img src={loginImage} />
         </div>
         <div className="sign-in-up-left-side">
-          <h1>Zaloguj się, aby dodać się na mapę!</h1>
+          <h1>{signInMessage}</h1>
           <SignInForm />
         </div>
       </SignInUpForm>

@@ -14,6 +14,7 @@ import { GlobalContext } from "../../store"
 
 import { Button, Col, Row, Tooltip } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
+import { addObject, signIn } from "../../utils/messages"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
@@ -76,20 +77,20 @@ const Header = (): JSX.Element => {
             <LinksWrapper>
               {!auth && !loginStorage ? (
                 <>
-                  <Link to="/logowanie">Logowanie</Link>
+                  <Link to="/logowanie">{signIn}</Link>
                   <Button
                     style={{ marginLeft: "10px" }}
                     type="primary"
                     icon={<PlusOutlined />}
                   >
-                    <Link to="/rejestracja">Dodaj punkt </Link>
+                    <Link to="/rejestracja">{addObject}</Link>
                   </Button>
                 </>
               ) : (
                 <>
                   <Link to="/panel-klienta">
                     <Button type="primary" icon={<PlusOutlined />}>
-                      Dodaj punkt
+                      {addObject}
                     </Button>
                   </Link>
                   <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>

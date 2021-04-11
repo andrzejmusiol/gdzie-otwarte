@@ -14,7 +14,7 @@ import { GlobalContext } from "../../store"
 
 import { Button, Drawer, Tooltip } from "antd"
 import { PlusOutlined, MenuOutlined } from "@ant-design/icons"
-
+import { addObject, logOut } from "../../utils/messages"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
@@ -61,7 +61,10 @@ const MobileHeader = (): JSX.Element => {
           <img src={logo} alt="Logo" />
         </Link>
       </LogoWrapper>
-      {location.pathname === "/rejestracja" || location.pathname === "/logowanie" ? null : <Button type="link" onClick={showDrawer} icon={<MenuOutlined />} />}
+      {location.pathname === "/rejestracja" ||
+      location.pathname === "/logowanie" ? null : (
+        <Button type="link" onClick={showDrawer} icon={<MenuOutlined />} />
+      )}
       <Drawer
         placement="right"
         closable={false}
@@ -95,17 +98,17 @@ const MobileHeader = (): JSX.Element => {
               <>
                 <Link to="/logowanie">Logowanie</Link>
                 <Button type="primary" icon={<PlusOutlined />}>
-                  <Link to="/rejestracja">Dodaj punkt </Link>
+                  <Link to="/rejestracja">{addObject}</Link>
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/panel-klienta">
                   <Button type="primary" icon={<PlusOutlined />}>
-                    Dodaj punkt
+                    {addObject}
                   </Button>
                 </Link>
-                <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
+                <LogoutButton onClick={handleLogout}>{logOut}</LogoutButton>
               </>
             )}
           </MobileLinksWrapper>

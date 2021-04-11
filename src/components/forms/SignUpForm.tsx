@@ -2,6 +2,21 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button } from "antd"
+import {
+  axiosFailure,
+  basicEmailMessage,
+  basicNameMessage,
+  basicPasswordMessage,
+  formFailure,
+  maxEmailMessage,
+  maxNameMessage,
+  maxPasswordMessage,
+  minEmailMessage,
+  minNameMessage,
+  minPasswordMessage,
+  signUpSuccess,
+  typeEmailMessage,
+} from "../../utils/messages"
 
 const SignUpForm = (): JSX.Element => {
   const layout = {
@@ -32,17 +47,17 @@ const SignUpForm = (): JSX.Element => {
           password: data.password,
         })
         .then((response) => {
-          setStatus("Rejestracja przebiegła pomyślnie!")
+          setStatus(signUpSuccess)
           sessionStorage.setItem("token", response.data.jwt)
           history.push("/map")
         })
         .catch(() => {
-          setStatus("Coś poszło nie tak, spróbuj ponownie")
+          setStatus(axiosFailure)
         })
   }
 
   const onFinishFailed = () => {
-    setStatus("Coś poszło nie tak, spróbuj ponownie")
+    setStatus(formFailure)
   }
 
   return (
@@ -59,9 +74,9 @@ const SignUpForm = (): JSX.Element => {
           labelAlign="left"
           name="username"
           rules={[
-            { required: true, message: "Wpisz swoje imię i nazwisko!" },
-            { max: 50, message: "Imię i nazwisko mogą mieć max 50 znaków" },
-            { min: 4, message: "Imię i nazwisko mogą mieć min 4 znaków." },
+            { required: true, message: basicNameMessage },
+            { max: 50, message: maxNameMessage },
+            { min: 4, message: minNameMessage },
           ]}
         >
           <Input />
@@ -71,10 +86,10 @@ const SignUpForm = (): JSX.Element => {
           labelAlign="left"
           name="email"
           rules={[
-            { required: true, message: "Wpisz swójj e-mail!" },
-            { type: "email", message: "Podaj prawidłowy e-mail" },
-            { max: 50, message: "E-mail jest zbyt długi" },
-            { min: 4, message: "E-mail jest zbyt krótki" },
+            { required: true, message: basicEmailMessage },
+            { max: 50, message: maxEmailMessage },
+            { min: 4, message: minEmailMessage },
+            { type: "email", message: typeEmailMessage },
           ]}
         >
           <Input />
@@ -84,9 +99,9 @@ const SignUpForm = (): JSX.Element => {
           name="password"
           labelAlign="left"
           rules={[
-            { required: true, message: "Podaj prawidłowe hasło" },
-            { max: 50, message: "Hasło może mieć max 50 znaków" },
-            { min: 6, message: "Hasło musi mieć min 6 znaków." },
+            { required: true, message: basicPasswordMessage },
+            { max: 50, message: maxPasswordMessage },
+            { min: 6, message: minPasswordMessage },
           ]}
         >
           <Input.Password />

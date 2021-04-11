@@ -2,6 +2,17 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
+import {
+  axiosFailure,
+  basicEmailMessage,
+  basicPasswordMessage,
+  formFailure,
+  signInSuccess,
+  maxEmailMessage,
+  minEmailMessage,
+  minPasswordMessage,
+  typeEmailMessage,
+} from "../../utils/messages"
 
 const SignInForm = (): JSX.Element => {
   const layout = {
@@ -31,19 +42,19 @@ const SignInForm = (): JSX.Element => {
           password: data.password,
         })
         .then((response) => {
-          setStatus("Zalogowano!")
+          setStatus(signInSuccess)
           sessionStorage.setItem("token", response.data.jwt)
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
           sessionStorage.setItem("auth", String(true))
           history.push("/map")
         })
         .catch(() => {
-          setStatus("Błąd, sprawdź poprawność danych")
+          setStatus(axiosFailure)
         })
   }
 
   const onFinishFailed = () => {
-    setStatus("Coś poszło nie tak, spróbuj ponownie")
+    setStatus(formFailure)
   }
 
   return (
@@ -60,10 +71,10 @@ const SignInForm = (): JSX.Element => {
           labelAlign="left"
           name="email"
           rules={[
-            { required: true, message: "Wpisz swójj e-mail" },
-            { max: 50, message: "E-mail jest zbyt długi" },
-            { min: 4, message: "E-mail jest zbyt krótki" },
-            { type: "email", message: "Podaj prawidłowy e-mail" },
+            { required: true, message: basicEmailMessage },
+            { max: 50, message: maxEmailMessage },
+            { min: 4, message: minEmailMessage },
+            { type: "email", message: typeEmailMessage },
           ]}
         >
           <Input />
@@ -73,8 +84,8 @@ const SignInForm = (): JSX.Element => {
           name="password"
           labelAlign="left"
           rules={[
-            { required: true, message: "Podaj prawidłowe hasło" },
-            { min: 6, message: "Twoje hasło ma min 6 znaków" },
+            { required: true, message: basicPasswordMessage },
+            { min: 6, message: minPasswordMessage },
           ]}
         >
           <Input.Password />

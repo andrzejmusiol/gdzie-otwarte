@@ -4,6 +4,13 @@ import PostObjectForm from "../components/dashboard/PostObjectForm"
 import { Link, Route } from "react-router-dom"
 
 import { Layout, Menu } from "antd"
+import {
+  addObject,
+  addPointHeaderText,
+  addPointSubHeaderText,
+  hello,
+  yourAccount,
+} from "../utils/messages"
 
 const { Content, Sider } = Layout
 
@@ -27,10 +34,10 @@ const Dashboard = (): JSX.Element => {
             style={{ height: "100%", borderRight: 0 }}
           >
             <Menu.Item key="1">
-              <Link to="/panel-klienta/dodaj-punkt">Dodaj punkt</Link>
+              <Link to="/panel-klienta/dodaj-punkt">{addObject}</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/panel-klienta/twoje-konto">Twoje konto</Link>
+              <Link to="/panel-klienta/twoje-konto">{yourAccount}</Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -45,13 +52,16 @@ const Dashboard = (): JSX.Element => {
               }}
             >
               <Route path="/panel-klienta/dodaj-punkt">
-                <h1>Dodaj punkt na mapie</h1>
-                <p>i pozwól klientom Cię zauważyć!</p>
+                <h1>{addPointHeaderText}</h1>
+                <p>{addPointSubHeaderText}</p>
                 <PostObjectForm />
               </Route>
               <Route path="/panel-klienta/twoje-konto">
                 {typeof userOFSession === "string" && auth ? (
-                  <h2>Witaj! {user.username}</h2>
+                  <h2>
+                    {hello}
+                    {user.username}
+                  </h2>
                 ) : (
                   ""
                 )}

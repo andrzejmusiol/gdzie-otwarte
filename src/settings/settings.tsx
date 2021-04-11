@@ -1,7 +1,7 @@
 import React from "react"
 import Cookies from "js-cookie"
 import { Button, notification } from "antd"
-import { cookiesHeader, cookiesMessage } from "./messages"
+import { cookiesHeader, cookiesMessage } from "../utils/messages"
 
 export const cookiesSettings = (): void => {
   const cookieStatus = Cookies.get("cookiesConfirmation")

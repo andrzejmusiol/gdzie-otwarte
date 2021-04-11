@@ -7,6 +7,22 @@ import Search from "react-leaflet-search"
 import { Form, Input, Button, Select } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
+import {
+  axiosFailure,
+  addObjectSuccess,
+  basicAddressMessage,
+  basicCategoryMessage,
+  basicCityMessage,
+  basicMapMarkerMessage,
+  basicObjectMessage,
+  formFailure,
+  mapInputLabel,
+  maxAddressMessage,
+  maxCityMessage,
+  maxObjectMessage,
+  minAddressMessage,
+  minObjectMessage,
+} from "../../utils/messages"
 
 const PostObjectForm = (): JSX.Element => {
   const layout = {
@@ -68,15 +84,15 @@ const PostObjectForm = (): JSX.Element => {
           }
         )
         .then((response) => {
-          setStatus("Twój punkt został dodany i oczekuje na moderację")
+          setStatus(addObjectSuccess)
         })
         .catch(() => {
-          setStatus("Błąd, sprawdź poprawność danych")
+          setStatus(axiosFailure)
         })
   }
 
   const onFinishFailed = () => {
-    setStatus("Coś poszło nie tak, spróbuj ponownie")
+    setStatus(formFailure)
   }
 
   const renderOptionsCategoryOptions = (): ReactNode => {
@@ -94,8 +110,6 @@ const PostObjectForm = (): JSX.Element => {
     })
   }
 
-  const mapInputLabel = "Znajdź się na mapie\n(ulica, numer, miasto)"
-
   return (
     <>
       <Form
@@ -110,9 +124,9 @@ const PostObjectForm = (): JSX.Element => {
           labelAlign="left"
           name="object_name"
           rules={[
-            { required: true, message: "Podaj nazwę lokalu!" },
-            { max: 75, message: "Nazwa lokalu jest zbyt długa" },
-            { min: 4, message: "Nazwa lokalu jest zbyt krótka" },
+            { required: true, message: basicObjectMessage },
+            { max: 75, message: maxObjectMessage },
+            { min: 4, message: minObjectMessage },
           ]}
         >
           <Input />
@@ -122,8 +136,8 @@ const PostObjectForm = (): JSX.Element => {
           labelAlign="left"
           name="object_city"
           rules={[
-            { required: true, message: "Podaj miasto" },
-            { max: 50, message: "Nazwa miasta jest zbyt długa" },
+            { required: true, message: basicCityMessage },
+            { max: 50, message: maxCityMessage },
           ]}
         >
           <Input />
@@ -133,9 +147,9 @@ const PostObjectForm = (): JSX.Element => {
           labelAlign="left"
           name="object_address"
           rules={[
-            { required: true, message: "Podaj adres" },
-            { max: 100, message: "Adres jest zbyt długi" },
-            { min: 6, message: "Adres jest zbyt krótki" },
+            { required: true, message: basicAddressMessage },
+            { max: 100, message: maxAddressMessage },
+            { min: 6, message: minAddressMessage },
           ]}
         >
           <Input />
@@ -144,7 +158,7 @@ const PostObjectForm = (): JSX.Element => {
           label="Kategoria"
           labelAlign="left"
           name="object_type"
-          rules={[{ required: true, message: "Wybierz kategorię" }]}
+          rules={[{ required: true, message: basicCategoryMessage }]}
         >
           <Select placeholder="Wybierz kategorię" allowClear>
             {renderOptionsCategoryOptions()}
@@ -154,7 +168,7 @@ const PostObjectForm = (): JSX.Element => {
           label={mapInputLabel}
           labelAlign="left"
           name="hidden_input"
-          rules={[{ required: true, message: "Wskaż swój punkt na mapie" }]}
+          rules={[{ required: true, message: basicMapMarkerMessage }]}
         >
           <Input />
           <Map
