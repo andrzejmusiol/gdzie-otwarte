@@ -10,6 +10,7 @@ import { cookiesSettings } from "./settings/settings"
 import MobileHeader from "./components/header/MobileHeader"
 import { useWindowDimensions } from "./hooks/hooks"
 import Header from "./components/header/Header"
+import About from "./containers/About"
 
 const App = (): JSX.Element => {
   const { width } = useWindowDimensions()
@@ -26,6 +27,9 @@ const App = (): JSX.Element => {
             <Switch>
               <Route path="/map">
                 <Map />
+              </Route>
+              <Route path="/o-projekcie">
+                <About />
               </Route>
               <Route path="/logowanie">
                 <SignIn />

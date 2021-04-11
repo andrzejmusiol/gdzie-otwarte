@@ -57,3 +57,7 @@ code {
 .ant-form-item-label {
   white-space: normal;
 }
+
+.site-layout-content {
+  padding: 50px
+}
