@@ -7,9 +7,12 @@ import SignIn from "./containers/SignIn"
 import SignUp from "./containers/SignUp"
 import Dashboard from "./containers/Dashboard"
 import { cookiesSettings } from "./utils/globalSettings"
-
+import MobileHeader from "./components/header/MobileHeader"
+import { useWindowDimensions } from "./hooks/hooks"
+import Header from "./components/header/Header"
 
 const App = (): JSX.Element => {
+  const { width } = useWindowDimensions()
   useEffect(() => {
     cookiesSettings()
   }, [])
@@ -18,6 +21,7 @@ const App = (): JSX.Element => {
     <ContextProvider>
       <div className="App">
         <Router>
+          {width > 768 ? <Header /> : <MobileHeader />}
           <div>
             <Switch>
               <Route path="/map">

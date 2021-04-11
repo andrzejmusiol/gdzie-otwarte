@@ -1,17 +1,10 @@
 import React from "react"
-import Header from "../components/header/Header"
 import { PostForm } from "../utils/styled-components"
 import PostObjectForm from "../components/dashboard/PostObjectForm"
-import { Link, Route, Switch } from "react-router-dom"
+import { Link, Route } from "react-router-dom"
 
-import { Layout, Menu, Breadcrumb } from "antd"
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from "@ant-design/icons"
+import { Layout, Menu } from "antd"
 
-const { SubMenu } = Menu
 const { Content, Sider } = Layout
 
 const Dashboard = (): JSX.Element => {
@@ -25,7 +18,6 @@ const Dashboard = (): JSX.Element => {
 
   return (
     <Layout style={{ margin: "50px 20px" }}>
-      <Header />
       <Layout>
         <Sider width={200} className="site-layout-background">
           <Menu

@@ -29,11 +29,7 @@ export interface FormValues {
   email: string
   password: string
 }
-export interface PostFormValues {
-  object_name: string
-  object_address: string
-  object_city: string
-  object_type: string
-  object_lat: number
-  object_lng: number
+
+export interface windowDimensions {
+  width: number
 }

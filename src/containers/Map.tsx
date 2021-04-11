@@ -13,8 +13,6 @@ import pinFitness from "../assets/icons/pin-fit.svg"
 import pinBeauty from "../assets/icons/pin-beauty.svg"
 import pinHotel from "../assets/icons/pin-hotel.svg"
 import pinOther from "../assets/icons/pin-other.svg"
-import Header from "../components/header/Header"
-import Cookies from "js-cookie"
 
 const MapUI = (): JSX.Element => {
   const { mapObjects } = useContext(GlobalContext)
@@ -39,11 +37,8 @@ const MapUI = (): JSX.Element => {
     })
   }
 
-  console.warn(Cookies.get("cookiesConfirmation"))
-
   return (
     <>
-      <Header />
       {mapObjects.length > 0 ? null : (
         <LoaderContainer>
           <Loader />

@@ -3,7 +3,7 @@ import Cookies from "js-cookie"
 import { Button, notification } from "antd"
 import { cookiesHeader, cookiesMessage } from "./messages"
 
-export const cookiesSettings = () => {
+export const cookiesSettings = (): void => {
   const cookieStatus = Cookies.get("cookiesConfirmation")
   const setCookies = () =>
     Cookies.set("cookiesConfirmation", "confirmed", { expires: 90 })

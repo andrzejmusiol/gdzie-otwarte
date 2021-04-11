@@ -82,6 +82,12 @@ export const Circle = styled.div`
   margin-right: 10px;
 `
 
+export const MobileHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+`
+
 export const FilterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -90,16 +96,50 @@ export const FilterWrapper = styled.div`
   cursor: pointer;
 `
 
+export const MobileFilterWrapper = styled.div`
+  margin: 20px 0;
+  cursor: pointer;
+  .filter-select {
+    margin: 0 0 20px 0;
+    border: 1px solid ${colors.grey};
+  }
+`
+
 export const LinksWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   a {
     color: ${colors.grey};
     text-decoration: none;
     display: inline-block;
     margin-left: 20px;
     font-size: 14px;
+    &: hover {
+      color: ${colors.blue};
+      transition: 0.3s ease;
+    }
+  }
+  a:nth-child(2) {
+    color: ${colors.white};
+  }
+`
+
+export const MobileLinksWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding: 20px 0;
+  button {
+    margin-top: 20px;
+  }
+  a {
+    color: ${colors.grey};
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width: 100%;
     &: hover {
       color: ${colors.blue};
       transition: 0.3s ease;

@@ -12,15 +12,13 @@ import {
 import Filter from "../map/Filter"
 import { GlobalContext } from "../../store"
 
-import { Button } from "antd"
+import { Button, Col, Row, Tooltip } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
   const { categories } = useContext(GlobalContext)
-  const categoriesArray: { value: string; label: string }[] = [
-    { value: "", label: "Wszystkie" },
-  ]
+  const categoriesArray: { value: string; label: string }[] = []
 
   categories.map((category: { [x: string]: never }) => {
     const structure = { value: category[`${cat}`], label: category[`${cat}`] }
@@ -43,48 +41,65 @@ const Header = (): JSX.Element => {
     history.push("/map")
   }
 
+  const onReset = () => {
+    window.location.reload()
+  }
+
   return (
-    <HeaderContainer>
-      <LogoWrapper>
-        <Link to="/">
-          <img src={logo} alt="Logo" />
-        </Link>
-      </LogoWrapper>
-      {location.pathname === "/map" ? (
-        <FilterWrapper>
-          <Filter
-            options={renderFiltersCategoryOptions()}
-            placeholder={process.env.REACT_APP_PLACEHOLDER_2}
-          />
-        </FilterWrapper>
-      ) : null}
-      {location.pathname === "/rejestracja" ||
-      location.pathname === "/logowanie" ? null : (
-        <LinksWrapper>
-          {!auth && !loginStorage ? (
-            <>
-              <Link to="/logowanie">Logowanie</Link>
-              <Button
-                style={{ marginLeft: "10px" }}
-                type="primary"
-                icon={<PlusOutlined />}
-              >
-                <Link to="/rejestracja">Dodaj punkt </Link>
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link to="/panel-klienta">
-                <Button type="primary" icon={<PlusOutlined />}>
-                  Dodaj punkt
+    <Row>
+      <HeaderContainer>
+        <Col xl={8} md={5}>
+          <LogoWrapper>
+            <Link to="/">
+              <img src={logo} alt="Logo" />
+            </Link>
+          </LogoWrapper>
+        </Col>
+        <Col xl={8} md={10}>
+          {location.pathname === "/map" ? (
+            <FilterWrapper>
+              <Filter
+                options={renderFiltersCategoryOptions()}
+                placeholder={process.env.REACT_APP_PLACEHOLDER_2}
+              />
+              <Tooltip title="Resetuj filtry">
+                <Button onClick={onReset} type="primary" shape="circle">
+                  X
                 </Button>
-              </Link>
-              <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
-            </>
+              </Tooltip>
+            </FilterWrapper>
+          ) : null}
+        </Col>
+        <Col xl={8} md={9}>
+          {location.pathname === "/rejestracja" ||
+          location.pathname === "/logowanie" ? null : (
+            <LinksWrapper>
+              {!auth && !loginStorage ? (
+                <>
+                  <Link to="/logowanie">Logowanie</Link>
+                  <Button
+                    style={{ marginLeft: "10px" }}
+                    type="primary"
+                    icon={<PlusOutlined />}
+                  >
+                    <Link to="/rejestracja">Dodaj punkt </Link>
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to="/panel-klienta">
+                    <Button type="primary" icon={<PlusOutlined />}>
+                      Dodaj punkt
+                    </Button>
+                  </Link>
+                  <LogoutButton onClick={handleLogout}>Wyloguj</LogoutButton>
+                </>
+              )}
+            </LinksWrapper>
           )}
-        </LinksWrapper>
-      )}
-    </HeaderContainer>
+        </Col>
+      </HeaderContainer>
+    </Row>
   )
 }
 

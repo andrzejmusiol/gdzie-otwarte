@@ -1,5 +1,4 @@
 import React from "react"
-import Header from "../components/header/Header"
 import startImage from "../assets/icons/meditation.svg"
 import { Link } from "react-router-dom"
 import { WelcomeWrapper } from "../utils/styled-components"
@@ -12,7 +11,6 @@ const { Title } = Typography
 const WelcomePage = (): JSX.Element => {
   return (
     <WelcomeWrapper>
-      <Header />
       <Row className="main-wrapper" justify="center" align="middle" wrap>
         <Col className="info-wrapper" md={12} sm={24}>
           <Title>Otwieramy.pl</Title>
