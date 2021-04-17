@@ -7,22 +7,7 @@ import Search from "react-leaflet-search"
 import { Form, Input, Button, Select } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
-import {
-  axiosFailure,
-  addObjectSuccess,
-  basicAddressMessage,
-  basicCategoryMessage,
-  basicCityMessage,
-  basicMapMarkerMessage,
-  basicObjectMessage,
-  formFailure,
-  mapInputLabel,
-  maxAddressMessage,
-  maxCityMessage,
-  maxObjectMessage,
-  minAddressMessage,
-  minObjectMessage,
-} from "../../utils/messages"
+import { messages } from "../../utils/messages"
 
 const PostObjectForm = (): JSX.Element => {
   const layout = {
@@ -84,15 +69,15 @@ const PostObjectForm = (): JSX.Element => {
           }
         )
         .then((response) => {
-          setStatus(addObjectSuccess)
+          setStatus(messages.forms.addObjectSuccess)
         })
         .catch(() => {
-          setStatus(axiosFailure)
+          setStatus(messages.axios.axiosFailure)
         })
   }
 
   const onFinishFailed = () => {
-    setStatus(formFailure)
+    setStatus(messages.axios.formFailure)
   }
 
   const renderOptionsCategoryOptions = (): ReactNode => {
@@ -124,9 +109,9 @@ const PostObjectForm = (): JSX.Element => {
           labelAlign="left"
           name="object_name"
           rules={[
-            { required: true, message: basicObjectMessage },
-            { max: 75, message: maxObjectMessage },
-            { min: 4, message: minObjectMessage },
+            { required: true, message: messages.forms.basicObjectMessage },
+            { max: 75, message: messages.forms.maxObjectMessage },
+            { min: 4, message: messages.forms.minObjectMessage },
           ]}
         >
           <Input />
@@ -136,20 +121,20 @@ const PostObjectForm = (): JSX.Element => {
           labelAlign="left"
           name="object_city"
           rules={[
-            { required: true, message: basicCityMessage },
-            { max: 50, message: maxCityMessage },
+            { required: true, message: messages.forms.basicCityMessage },
+            { max: 50, message: messages.forms.maxCityMessage },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Potwierdź adres"
+          label="Podaj dokładny adres"
           labelAlign="left"
           name="object_address"
           rules={[
-            { required: true, message: basicAddressMessage },
-            { max: 100, message: maxAddressMessage },
-            { min: 6, message: minAddressMessage },
+            { required: true, message: messages.forms.basicAddressMessage },
+            { max: 100, message: messages.forms.maxAddressMessage },
+            { min: 6, message: messages.forms.minAddressMessage },
           ]}
         >
           <Input />
@@ -158,19 +143,23 @@ const PostObjectForm = (): JSX.Element => {
           label="Kategoria"
           labelAlign="left"
           name="object_type"
-          rules={[{ required: true, message: basicCategoryMessage }]}
+          rules={[
+            { required: true, message: messages.forms.basicCategoryMessage },
+          ]}
         >
           <Select placeholder="Wybierz kategorię" allowClear>
             {renderOptionsCategoryOptions()}
           </Select>
         </Form.Item>
         <Form.Item
-          label={mapInputLabel}
+          label={messages.forms.mapInputLabel}
           labelAlign="left"
           name="hidden_input"
-          rules={[{ required: true, message: basicMapMarkerMessage }]}
+          rules={[
+            { required: true, message: messages.forms.basicMapMarkerMessage },
+          ]}
         >
-          <Input className="hidden-input"/>
+          <Input className="hidden-input" />
           <Map
             center={[52.20386307153011, 19.137394372476308]}
             zoom={7}

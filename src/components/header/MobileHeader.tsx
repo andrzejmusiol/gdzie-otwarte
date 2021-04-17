@@ -14,7 +14,7 @@ import { GlobalContext } from "../../store"
 
 import { Button, Drawer, Tooltip } from "antd"
 import { PlusOutlined, MenuOutlined } from "@ant-design/icons"
-import { addObject, logOut } from "../../utils/messages"
+import { messages } from "../../utils/messages"
 
 const renderFiltersCategoryOptions = () => {
   const cat = process.env.REACT_APP_CAT
@@ -98,17 +98,19 @@ const MobileHeader = (): JSX.Element => {
               <>
                 <Link to="/logowanie">Logowanie</Link>
                 <Button type="primary" icon={<PlusOutlined />}>
-                  <Link to="/rejestracja">{addObject}</Link>
+                  <Link to="/rejestracja">{messages.account.addObject}</Link>
                 </Button>
               </>
             ) : (
               <>
-                <Link to="/panel-klienta">
+                <Link to="/panel-klienta/dodaj-punkt">
                   <Button type="primary" icon={<PlusOutlined />}>
-                    {addObject}
+                    {messages.account.addObject}
                   </Button>
                 </Link>
-                <LogoutButton onClick={handleLogout}>{logOut}</LogoutButton>
+                <LogoutButton onClick={handleLogout}>
+                  {messages.account.logOut}
+                </LogoutButton>
               </>
             )}
           </MobileLinksWrapper>

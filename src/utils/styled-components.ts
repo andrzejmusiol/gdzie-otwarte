@@ -26,20 +26,6 @@ export const WelcomeWrapper = styled.div`
       font-size: 36px;
     }
   }
-  h2 {
-    font-size: 1.5rem;
-    @media (max-width: 600px) {
-      font-size: 18px;
-    }
-    color: ${colors.black};
-  }
-  p {
-    font-size: 1.2rem;
-    @media (max-width: 600px) {
-      font-size: 16px;
-    }
-    color: ${colors.black};
-  }
   img {
     width: 20px;
     height: auto;

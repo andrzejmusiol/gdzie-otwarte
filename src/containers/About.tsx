@@ -6,7 +6,6 @@ const { Content, Footer } = Layout
 const { Title, Paragraph, Link, Text } = Typography
 
 const About = (): JSX.Element => {
-
   return (
     <Layout className="layout">
       <Row justify="center">
@@ -19,8 +18,9 @@ const About = (): JSX.Element => {
               <Title>Cel projektu</Title>
               <Paragraph>
                 Gdzie-otwarte.pl to projekt mający na celu wspomóc
-                przedsiębiorców w dobie pandemii SARS Covid-19, którzy w wyniku nielegalnych obostrzeń
-                stracili możliwość wykonywania pracy, tym samym źródła dochodu.
+                przedsiębiorców w dobie pandemii SARS Covid-19, którzy w wyniku
+                nielegalnych obostrzeń stracili możliwość wykonywania pracy, tym
+                samym źródła dochodu.
               </Paragraph>
               <Divider />
               <Title>Co możesz zrobić?</Title>

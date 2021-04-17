@@ -2,17 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
-import {
-  axiosFailure,
-  basicEmailMessage,
-  basicPasswordMessage,
-  formFailure,
-  signInSuccess,
-  maxEmailMessage,
-  minEmailMessage,
-  minPasswordMessage,
-  typeEmailMessage,
-} from "../../utils/messages"
+import { messages } from "../../utils/messages"
 
 const SignInForm = (): JSX.Element => {
   const layout = {
@@ -42,19 +32,19 @@ const SignInForm = (): JSX.Element => {
           password: data.password,
         })
         .then((response) => {
-          setStatus(signInSuccess)
+          setStatus(messages.forms.signInSuccess)
           sessionStorage.setItem("token", response.data.jwt)
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
           sessionStorage.setItem("auth", String(true))
           history.push("/map")
         })
         .catch(() => {
-          setStatus(axiosFailure)
+          setStatus(messages.axios.axiosFailure)
         })
   }
 
   const onFinishFailed = () => {
-    setStatus(formFailure)
+    setStatus(messages.axios.formFailure)
   }
 
   return (
@@ -71,10 +61,10 @@ const SignInForm = (): JSX.Element => {
           labelAlign="left"
           name="email"
           rules={[
-            { required: true, message: basicEmailMessage },
-            { max: 50, message: maxEmailMessage },
-            { min: 4, message: minEmailMessage },
-            { type: "email", message: typeEmailMessage },
+            { required: true, message: messages.forms.basicEmailMessage },
+            { max: 50, message: messages.forms.maxEmailMessage },
+            { min: 4, message: messages.forms.minEmailMessage },
+            { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
           <Input />
@@ -84,8 +74,8 @@ const SignInForm = (): JSX.Element => {
           name="password"
           labelAlign="left"
           rules={[
-            { required: true, message: basicPasswordMessage },
-            { min: 6, message: minPasswordMessage },
+            { required: true, message: messages.forms.basicPasswordMessage },
+            { min: 6, message: messages.forms.minPasswordMessage },
           ]}
         >
           <Input.Password />

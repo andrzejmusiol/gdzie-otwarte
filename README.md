@@ -2,14 +2,13 @@
 
 ## Background
 
-Polish government trying to destroy our economy since last year, unlawfully closing hundreds of small companies, 
-takes peoples jobs, and provide extremely bad solutions during SARS-Covid-19 pandemic.
-Final effects of those actions is the highest inflation in EU, growing poverty and unemployment.
+During SARS-Covid-19 pandemic, hundreds of small and micro companies was forced to close up
+by unlawfully government actions.
 
 ## Purpose of the project
 
-Main goal of this app is to develop tool for small/micro companies and entrepreneurs, which want to normally work, 
-and keep the right to work guaranteed by the constitution.
+Main goal of this app is to develop tool for small/micro companies and entrepreneurs, 
+which want to normally work, and keep the right to work guaranteed by the constitution.
 
 ## How you can use this app
 
