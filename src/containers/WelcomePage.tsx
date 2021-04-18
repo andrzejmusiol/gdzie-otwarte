@@ -12,12 +12,19 @@ const { Title, Paragraph } = Typography
 const WelcomePage = (): JSX.Element => {
   return (
     <WelcomeWrapper>
-      <Row className="main-wrapper" justify="center" align="middle" wrap>
+      <Row
+        className="main-wrapper"
+        justify="center"
+        align="middle"
+        wrap
+        data-testid="welcome-row-test-id"
+      >
         <Col className="info-wrapper" md={12} sm={24}>
           <Title>{messages.site.siteName}</Title>
           <Title level={2}>{messages.site.welcomePageHeaderText}</Title>
           <Divider />
           <Paragraph>{messages.site.welcomePageSubHeaderText}</Paragraph>
+
           <Link to="/map">
             {" "}
             <Button type="primary" icon={<SearchOutlined />} size="large">
@@ -25,12 +32,16 @@ const WelcomePage = (): JSX.Element => {
             </Button>
           </Link>
           <Link to="/o-projekcie">
-            <Button type="link" size="large">
+            <Button
+              type="link"
+              size="large"
+              data-testid="welcome-btn-map-test-id"
+            >
               {messages.site.about}
             </Button>
           </Link>
           <Col>
-            <Link to="/o-projekcie">
+            <Link to="/o-projekcie" data-testid="welcome-btn-about-id-test-id">
               <img src={fb} />
             </Link>
           </Col>

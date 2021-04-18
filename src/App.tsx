@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import WelcomePage from "./containers/WelcomePage"
-import Map from "./containers/Map"
+import MapUI from "./containers/Map"
 import { ContextProvider } from "./store"
 import SignIn from "./containers/SignIn"
 import SignUp from "./containers/SignUp"
@@ -27,7 +27,7 @@ const App = (): JSX.Element => {
           <div>
             <Switch>
               <Route path="/map">
-                <Map />
+                <MapUI />
               </Route>
               <Route path="/o-projekcie">
                 <About />

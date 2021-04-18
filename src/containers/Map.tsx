@@ -4,7 +4,7 @@ import { ObjectsType } from "../types/types"
 import { LoaderContainer } from "../utils/styled-components"
 import Loader from "../components/map/Loader"
 import "leaflet/dist/leaflet.css"
-import { Map, TileLayer } from "react-leaflet"
+import { Map, Marker, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
 import pinBar from "../assets/icons/pin-bar.svg"
@@ -40,7 +40,7 @@ const MapUI = (): JSX.Element => {
   return (
     <>
       {mapObjects.length > 0 || mapObjects === [] ? null : (
-        <LoaderContainer>
+        <LoaderContainer data-testid="loader-test-id">
           <Loader />
         </LoaderContainer>
       )}

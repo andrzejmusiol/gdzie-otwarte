@@ -25,12 +25,10 @@ const Header = (): JSX.Element => {
   const cat = process.env.REACT_APP_CAT
   const categoriesArray: { value: string; label: string }[] = []
 
-  useEffect(() => {
-    categories.map((category: { [x: string]: never }) => {
-      const structure = { value: category[`${cat}`], label: category[`${cat}`] }
-      categoriesArray.push(structure)
-    })
-  }, [])
+  categories.map((category: { [x: string]: never }) => {
+    const structure = { value: category[`${cat}`], label: category[`${cat}`] }
+    categoriesArray.push(structure)
+  })
 
   const handleLogout = () => {
     sessionStorage.removeItem("token")

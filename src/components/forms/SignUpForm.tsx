@@ -61,8 +61,8 @@ const SignUpForm = (): JSX.Element => {
         name="basic"
         initialValues={{ remember: true }}
         onFinish={(data): any => {
-            onFinish(data);
-            (recaptchaRef as any).current.execute()
+          onFinish(data)
+          ;(recaptchaRef as any).current.execute()
         }}
         onFinishFailed={onFinishFailed}
       >
