@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { LegacyRef, useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button } from "antd"
 import { messages } from "../../utils/messages"
+import ReCAPTCHA from "react-google-recaptcha"
 
 const SignUpForm = (): JSX.Element => {
   const layout = {
@@ -22,7 +23,10 @@ const SignUpForm = (): JSX.Element => {
 
   const [status, setStatus] = useState("")
   const history = useHistory()
+
+  const recaptchaRef: LegacyRef<ReCAPTCHA> | undefined = React.createRef()
   const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
+  const GRCAPTCHA_KEY = process.env.REACT_APP_GRCAPTCHA_KEY
 
   const onFinish = (data: any) => {
     if (REGISTER_ENDPOINT)
@@ -46,15 +50,28 @@ const SignUpForm = (): JSX.Element => {
     setStatus(messages.axios.formFailure)
   }
 
+  const onChange = (value: any) => {
+    console.warn("Google reCaptcha: ", value)
+  }
+
   return (
     <>
       <Form
         {...layout}
         name="basic"
         initialValues={{ remember: true }}
-        onFinish={onFinish}
+        onFinish={(data): any => {
+            onFinish(data);
+            (recaptchaRef as any).current.execute()
+        }}
         onFinishFailed={onFinishFailed}
       >
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey={GRCAPTCHA_KEY ? GRCAPTCHA_KEY : ""}
+          onChange={onChange}
+        />
         <Form.Item
           label="Imię i nazwisko"
           labelAlign="left"

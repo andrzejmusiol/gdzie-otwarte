@@ -1,6 +1,7 @@
 import React from "react"
-import { Layout, Row, Col, Typography, Divider, Button } from "antd"
+import { Layout, Row, Col, Typography, Divider, Button, List } from "antd"
 import { GithubOutlined } from "@ant-design/icons"
+import { messages } from "../utils/messages"
 
 const { Content, Footer } = Layout
 const { Title, Paragraph, Link, Text } = Typography
@@ -37,6 +38,15 @@ const About = (): JSX.Element => {
                 <Text strong>nie dajmy się zamknąć!</Text>
               </Paragraph>
             </div>
+            <div className="site-layout-background" style={{ padding: 24 }}>
+              <Title level={3}>Masz pytania?</Title>
+              <Paragraph>
+                <a href="mailto: kontakt@gdzie-otwarte.pl">
+                  kontakt@gdzie-otwarte.pl
+                </a>
+              </Paragraph>
+              <Divider />
+            </div>
           </Content>
         </Col>
       </Row>
@@ -44,7 +54,7 @@ const About = (): JSX.Element => {
         <Col xl={10} md={20} xs={24}>
           <Content
             className="site-layout"
-            style={{ padding: "0 50px", marginTop: 64 }}
+            style={{ padding: "0 50px", marginTop: 10 }}
           >
             <div className="site-layout-background" style={{ padding: 24 }}>
               <Title level={3}>O aplikacji</Title>
@@ -61,6 +71,24 @@ const About = (): JSX.Element => {
                   />
                 </Link>
               </Paragraph>
+            </div>
+          </Content>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col xl={10} md={20} xs={24}>
+          <Content
+            className="site-layout"
+            style={{ padding: "0 50px", marginTop: 10 }}
+          >
+            <div className="site-layout-background" style={{ padding: 24 }}>
+              <Title level={3}>W nadchodzącym update:</Title>
+              <List
+                size="small"
+                bordered
+                dataSource={messages.update}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
             </div>
           </Content>
         </Col>

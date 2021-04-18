@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import logo from "../../assets/icons/logo.svg"
 import { Link, useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
@@ -16,24 +16,21 @@ import { Button, Col, Row, Tooltip } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import { messages } from "../../utils/messages"
 
-const renderFiltersCategoryOptions = () => {
-  const cat = process.env.REACT_APP_CAT
-  const { categories } = useContext(GlobalContext)
-  const categoriesArray: { value: string; label: string }[] = []
-
-  categories.map((category: { [x: string]: never }) => {
-    const structure = { value: category[`${cat}`], label: category[`${cat}`] }
-    categoriesArray.push(structure)
-  })
-
-  return categoriesArray
-}
-
 const Header = (): JSX.Element => {
   const location = useLocation()
+  const history = useHistory()
   const auth = Boolean(sessionStorage.getItem("auth"))
   const loginStorage = sessionStorage.getItem("token")
-  const history = useHistory()
+  const { categories } = useContext(GlobalContext)
+  const cat = process.env.REACT_APP_CAT
+  const categoriesArray: { value: string; label: string }[] = []
+
+  useEffect(() => {
+    categories.map((category: { [x: string]: never }) => {
+      const structure = { value: category[`${cat}`], label: category[`${cat}`] }
+      categoriesArray.push(structure)
+    })
+  }, [])
 
   const handleLogout = () => {
     sessionStorage.removeItem("token")
@@ -60,7 +57,7 @@ const Header = (): JSX.Element => {
           {location.pathname === "/map" ? (
             <FilterWrapper>
               <Filter
-                options={renderFiltersCategoryOptions()}
+                options={categoriesArray}
                 placeholder={process.env.REACT_APP_PLACEHOLDER_2}
               />
               <Tooltip title="Resetuj filtry">

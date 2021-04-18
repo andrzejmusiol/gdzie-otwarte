@@ -55,4 +55,9 @@ export const messages = {
     mapButton: "Mapa",
     about: "O projekcie",
   },
+  update: [
+    "Klastrowanie wielu punktów na mapie",
+    "Wyszukiwanie po mieście",
+    "Aplikacja mobilna",
+  ],
 }
