@@ -1,4 +1,4 @@
-# [Gdzie-otwarte.pl](https://gdzie-otwarte.pl). is a project against irresponsibility of Polish Government
+# [Gdzie-otwarte.pl](https://gdzie-otwarte.pl). is a project against side economic effects of SARS-Covid-19
 
 ## Background
 

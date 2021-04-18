@@ -2,8 +2,9 @@ import React from "react"
 import { Layout, Row, Col, Typography, Divider, Button, List } from "antd"
 import { GithubOutlined } from "@ant-design/icons"
 import { messages } from "../utils/messages"
+import FooterContainer from "../components/Footer"
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 const { Title, Paragraph, Link, Text } = Typography
 
 const About = (): JSX.Element => {
@@ -93,9 +94,7 @@ const About = (): JSX.Element => {
           </Content>
         </Col>
       </Row>
-      <Footer style={{ textAlign: "center" }}>
-        Created by Andrzej Musioł | {new Date().getFullYear()}
-      </Footer>
+     <FooterContainer />
     </Layout>
   )
 }

@@ -11,7 +11,6 @@ export const LeftSide = styled.div`
 export const WelcomeWrapper = styled.div`
   text-align: center;
   .main-wrapper {
-    height: 100vh;
     padding: 50px 20px;
     @media (max-width: 600px) {
       padding: 100px 20px;
@@ -35,6 +34,19 @@ export const WelcomeWrapper = styled.div`
   .welcome-image {
     width: 50%;
     height: auto;
+  }
+`
+
+export const HowItWorksWrapper = styled.div`
+  text-align: center;
+  .how-it-works-wrapper {
+    padding: 30px 20px;
+    @media (max-width: 600px) {
+      padding: 30px 20px;
+    }
+  }
+  .ant-steps {
+    padding: 30px 0;
   }
 `
 
