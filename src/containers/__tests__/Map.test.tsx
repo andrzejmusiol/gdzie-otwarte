@@ -6,7 +6,7 @@ import {
   waitFor,
 } from "@testing-library/react"
 import Map from "../Map"
-import matchMedia from "./matchMedia"
+import matchMedia from "../../utils/matchMedia"
 import { GlobalContext } from "../../store"
 import { mapObjects } from "../__mocks__/mock-data"
 

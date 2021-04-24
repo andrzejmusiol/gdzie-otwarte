@@ -1,5 +1,5 @@
 import React from "react"
-import matchMedia from "./matchMedia"
+import matchMedia from "../../utils/matchMedia"
 import { render, RenderResult, waitFor } from "@testing-library/react"
 import WelcomePage from "../WelcomePage"
 import { BrowserRouter as Router } from "react-router-dom"

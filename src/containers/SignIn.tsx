@@ -7,7 +7,7 @@ import { messages } from "../utils/messages"
 const SignIn = (): JSX.Element => {
   return (
     <>
-      <SignInUpForm>
+      <SignInUpForm data-test-id="sign-in-container-test-id">
         <div className="sign-in-up-right-side">
           <img src={loginImage} />
         </div>

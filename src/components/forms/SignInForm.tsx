@@ -1,4 +1,4 @@
-import React, { LegacyRef, MutableRefObject, useState } from "react"
+import React, { LegacyRef, useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
@@ -25,13 +25,13 @@ const SignInForm = (): JSX.Element => {
   const history = useHistory()
 
   const recaptchaRef: LegacyRef<ReCAPTCHA> | undefined = React.createRef()
-  const REGISTER_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
+  const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
   const GRCAPTCHA_KEY = process.env.REACT_APP_GRCAPTCHA_KEY
 
   const onFinish = (data: any) => {
-    if (REGISTER_ENDPOINT)
+    if (LOGIN_ENDPOINT)
       axios
-        .post(REGISTER_ENDPOINT, {
+        .post(LOGIN_ENDPOINT, {
           identifier: data.email,
           password: data.password,
         })
@@ -66,6 +66,7 @@ const SignInForm = (): JSX.Element => {
           ;(recaptchaRef as any).current.execute()
         }}
         onFinishFailed={onFinishFailed}
+        data-testid="sign-in-form-test-id"
       >
         <ReCAPTCHA
           ref={recaptchaRef}
@@ -84,7 +85,7 @@ const SignInForm = (): JSX.Element => {
             { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
-          <Input />
+          <Input  data-testid="email-input-test-id"/>
         </Form.Item>
         <Form.Item
           label="Hasło"
@@ -95,11 +96,11 @@ const SignInForm = (): JSX.Element => {
             { min: 6, message: messages.forms.minPasswordMessage },
           ]}
         >
-          <Input.Password />
+          <Input.Password data-testid="password-input-test-id" />
         </Form.Item>
-        <div className="error-wrapper">{status}</div>
+        <div className="error-wrapper" data-testid="sign-in-error-test-id">{status}</div>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" data-testid="sign-in-button-test-id">
             Wyślij
           </Button>
         </Form.Item>
