@@ -85,7 +85,7 @@ const SignInForm = (): JSX.Element => {
             { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
-          <Input  data-testid="email-input-test-id"/>
+          <Input data-testid="email-input-test-id"/>
         </Form.Item>
         <Form.Item
           label="Hasło"
