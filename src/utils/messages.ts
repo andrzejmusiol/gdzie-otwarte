@@ -48,8 +48,10 @@ export const messages = {
     signUpMessageHeaderText: "Zarejestruj się i dodaj swój lokal!",
     signUpMessageSubHeaderText: "Nie zgadzaj się na bezprawne obostrzenia",
     siteName: "Gdzie-otwarte.pl",
-    welcomePageHeaderText:
-      "To inicjatywa mająca na celu wspomaganie przedsiębiorców, których lokale zostały bezprawnie zamknięte",
+    welcomePageHeaderTextP1:
+      "Ma na celu zaktualizowanie bazy punktów usługowych, które utrzymały się na rynku i stworzenie miejsca, w którym użytkownicy mogą sprawdzić otwarte lokale w swojej okolicy.",
+    welcomePageHeaderTextP2:
+        "Wiele z obecnych punktów na mapach ma nieaktualne dane, lub niestety już nie istnieje. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
     welcomePageSubHeaderText:
       "Przejdź do mapy, wybierz kategorię lub przeszukaj wszystkie otwarte lokale w Twojej okolicy i baw się dobrze!",
     mapButton: "Mapa",

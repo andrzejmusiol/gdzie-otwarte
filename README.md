@@ -2,19 +2,24 @@
 
 ## Background
 
-During SARS-Covid-19 pandemic, hundreds of small and micro companies was forced to close up
-by unlawfully government actions.
+During SARS-Covid-19 pandemic, hundreds of small and micro companies in Poland was forced to close up. 
+In this case, lots of databases with local companies are out of date, or nobody knows that some locals are open.
+It's time to check markets and places again, and help them to show up they're open!
 
 ## Purpose of the project
 
-Main goal of this app is to develop tool for small/micro companies and entrepreneurs, 
-which want to normally work, and keep the right to work guaranteed by the constitution.
+Main goal of this app is to develop tool for small/micro companies and entrepreneurs, which want to normally work, 
+to show their clients they are open, and encourage them to visit.
 
 ## How you can use this app
 
-If you're determinated just jump on [Gdzie-otwarte.pl](https://gdzie-otwarte.pl) and add your `bar`, `restaurant`, `fitness club`, 
-`beauty salon`, `hotel` or other object on the map, and say to your customers that you're open, you comply with the sanitary requirements 
-related to SARS-Covid-19.
+### If you are entrepreneur:
+Just jump on [Gdzie-otwarte.pl](https://gdzie-otwarte.pl) and add your `bar`, `restaurant`, `fitness club`,`beauty salon`, `hotel` 
+or other object on the map, and say to your customers that you're open, you comply with the sanitary requirements related 
+to SARS-Covid-19.
+
+### If you want to visit place:
+Jump on [Gdzie-otwarte.pl](https://gdzie-otwarte.pl) and search for places in your neighborhood.
 
 ## Let us not be intimidated!
 

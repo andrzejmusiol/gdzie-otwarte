@@ -33,7 +33,8 @@ const WelcomePage = (): JSX.Element => {
         >
           <Col className="info-wrapper" md={12} sm={24}>
             <Title>{messages.site.siteName}</Title>
-            <Title level={2}>{messages.site.welcomePageHeaderText}</Title>
+            <Title level={4}>{messages.site.welcomePageHeaderTextP1}</Title>
+            <Paragraph>{messages.site.welcomePageHeaderTextP2}</Paragraph>
             <Divider />
             <Paragraph>{messages.site.welcomePageSubHeaderText}</Paragraph>
 
