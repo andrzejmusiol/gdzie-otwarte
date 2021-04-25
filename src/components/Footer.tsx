@@ -9,7 +9,11 @@ const FooterContainer = (): JSX.Element => {
   return (
     <Footer style={{ textAlign: "center" }}>
       Created by Andrzej Musioł | {new Date().getFullYear()}
-      <Link href="https://github.com/bigeyedes/gdzie-otwarte" target="_blank" style={{marginLeft: 20}}>
+      <Link
+        href="https://github.com/bigeyedes/gdzie-otwarte"
+        target="_blank"
+        style={{ marginLeft: 20 }}
+      >
         <Button type="primary" shape="circle" icon={<GithubOutlined />} />
       </Link>
     </Footer>

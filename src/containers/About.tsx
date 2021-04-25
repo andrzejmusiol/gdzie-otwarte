@@ -94,7 +94,7 @@ const About = (): JSX.Element => {
           </Content>
         </Col>
       </Row>
-     <FooterContainer />
+      <FooterContainer />
     </Layout>
   )
 }

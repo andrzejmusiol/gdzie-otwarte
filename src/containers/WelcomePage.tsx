@@ -57,12 +57,16 @@ const WelcomePage = (): JSX.Element => {
                 to="/o-projekcie"
                 data-testid="welcome-btn-about-id-test-id"
               >
-                <img src={fb} alt="gdzie-otwarte-facebook"/>
+                <img src={fb} alt="gdzie-otwarte-facebook" />
               </Link>
             </Col>
           </Col>
           <Col span={12}>
-            <img className="welcome-image" src={startImage} alt="gdzie-twarte-strona-glowna"/>
+            <img
+              className="welcome-image"
+              src={startImage}
+              alt="gdzie-twarte-strona-glowna"
+            />
           </Col>
         </Row>
       </WelcomeWrapper>
@@ -76,9 +80,7 @@ const WelcomePage = (): JSX.Element => {
           <Col className="info-wrapper" xxl={6} xl={8} md={10} sm={24}>
             <Title level={2}>{messages.site.howItWorks}</Title>
             <Divider />
-            <Title level={3}>
-              {messages.site.searchForObjects}
-            </Title>
+            <Title level={3}>{messages.site.searchForObjects}</Title>
             <Steps direction="vertical">
               <Step
                 title="Mapa"

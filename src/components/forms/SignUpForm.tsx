@@ -82,7 +82,7 @@ const SignUpForm = (): JSX.Element => {
             { min: 4, message: messages.forms.minNameMessage },
           ]}
         >
-          <Input data-testid="name-input-test-id"/>
+          <Input data-testid="name-input-test-id" />
         </Form.Item>
         <Form.Item
           label="E-mail"
@@ -95,7 +95,7 @@ const SignUpForm = (): JSX.Element => {
             { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
-          <Input data-testid="email-input-test-id"/>
+          <Input data-testid="email-input-test-id" />
         </Form.Item>
         <Form.Item
           label="Hasło"
@@ -107,11 +107,17 @@ const SignUpForm = (): JSX.Element => {
             { min: 6, message: messages.forms.minPasswordMessage },
           ]}
         >
-          <Input.Password data-testid="password-input-test-id"/>
+          <Input.Password data-testid="password-input-test-id" />
         </Form.Item>
-        <div className="error-wrapper" data-testid="sign-up-error-test-id">{status}</div>
+        <div className="error-wrapper" data-testid="sign-up-error-test-id">
+          {status}
+        </div>
         <Form.Item>
-          <Button type="primary" htmlType="submit" data-testid="sign-up-button-test-id">
+          <Button
+            type="primary"
+            htmlType="submit"
+            data-testid="sign-up-button-test-id"
+          >
             Wyślij
           </Button>
         </Form.Item>

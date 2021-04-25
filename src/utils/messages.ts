@@ -61,9 +61,12 @@ export const messages = {
     visitObject: "Odwiedz lokal i ciesz się wizytą!",
     addObjectTitle: "Jeśli chcesz dodać swój punkt na mapie:",
     signInUp: "Zaloguj się lub zarejestruj",
-    addObject: "Dodaj swój punkt na mapie, wpełniając formularz dostępny po zalogowaniu",
-    moderateObject: "Poczekaj na moderację punktu, musimy upewnić się, że na pewno istnieje",
-    publishObject: "Twój punkt stanie się widoczny dla wszystkich odwiedzających",
+    addObject:
+      "Dodaj swój punkt na mapie, wpełniając formularz dostępny po zalogowaniu",
+    moderateObject:
+      "Poczekaj na moderację punktu, musimy upewnić się, że na pewno istnieje",
+    publishObject:
+      "Twój punkt stanie się widoczny dla wszystkich odwiedzających",
   },
   update: [
     "Klastrowanie wielu punktów na mapie",
