@@ -64,11 +64,19 @@ export const HeaderContainer = styled.div`
 `
 
 export const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
   img {
     width: 150px;
     height: auto;
     display: inline-block;
     margin-top: 5px;
+  }
+  div {
+    display: inline-block;
+    color: ${colors.grey};
+    font-size: 12px;
+    margin: 8px 5px 5px 10px;
   }
 `
 

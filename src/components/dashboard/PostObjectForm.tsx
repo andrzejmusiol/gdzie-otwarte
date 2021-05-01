@@ -154,26 +154,26 @@ const PostObjectForm = (): JSX.Element => {
           </Select>
         </Form.Item>
         <Form.Item
-            label="Strona www (z https://)"
-            labelAlign="left"
-            name="object_website"
-            rules={[
-              { message: messages.forms.basicAddressMessage },
-              { max: 50, message: messages.forms.maxAddressMessage },
-              { min: 5, message: messages.forms.minAddressMessage },
-            ]}
+          label="Strona www (z https://)"
+          labelAlign="left"
+          name="object_website"
+          rules={[
+            { message: messages.forms.basicAddressMessage },
+            { max: 50, message: messages.forms.maxAddressMessage },
+            { min: 5, message: messages.forms.minAddressMessage },
+          ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-            label="Telefon (+48 123 456 789)"
-            labelAlign="left"
-            name="object_phone"
-            rules={[
-              { message: messages.forms.basicAddressMessage },
-              { max: 15, message: messages.forms.maxAddressMessage },
-              { min: 9, message: messages.forms.minAddressMessage },
-            ]}
+          label="Telefon (+48 123 456 789)"
+          labelAlign="left"
+          name="object_phone"
+          rules={[
+            { message: messages.forms.basicAddressMessage },
+            { max: 15, message: messages.forms.maxAddressMessage },
+            { min: 9, message: messages.forms.minAddressMessage },
+          ]}
         >
           <Input />
         </Form.Item>

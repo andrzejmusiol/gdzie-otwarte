@@ -60,6 +60,7 @@ const MobileHeader = (): JSX.Element => {
         <Link to="/">
           <img src={logo} alt="Logo" />
         </Link>
+        <div>Beta</div>
       </LogoWrapper>
       {location.pathname === "/rejestracja" ||
       location.pathname === "/logowanie" ? null : (

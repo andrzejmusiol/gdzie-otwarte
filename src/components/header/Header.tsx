@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import logo from "../../assets/icons/logo.svg"
 import { Link, useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
@@ -49,6 +49,7 @@ const Header = (): JSX.Element => {
             <Link to="/">
               <img src={logo} alt="Logo" />
             </Link>
+            <div>Beta</div>
           </LogoWrapper>
         </Col>
         <Col xl={8} md={10}>

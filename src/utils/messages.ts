@@ -2,15 +2,15 @@ export const messages = {
   cookies: {
     cookiesHeader: "Cookies",
     cookiesMessage:
-      "Ta strona jest wolna od śledzenia. Nie zbieramy informacji i nie analizujemy Twojego ruchu. Jedyne informacje jakie podajesz, są podane dobrowolnie (zakładanie konta, lokalizacja lokalu) i nie zostaną w żaden sposób rozpowszechnione, ani użyte poza aplikacją. Żeby dowiedzieć się więcej przejdź do: ",
+      "Ta strona jest wolna od śledzenia, nie analizujemy Twojego ruchu. Jedyne informacje jakie podajesz, są podane dobrowolnie (zakładanie konta, lokalizacja lokalu) i nie zostaną w żaden sposób rozpowszechnione, ani użyte poza aplikacją. Żeby dowiedzieć się więcej przejdź do: ",
   },
   axios: {
-    axiosFailure: "Błąd, sprawdź poprawność danych",
+    axiosFailure: "Błąd, sprawdź poprawność danych lub spróbuj ponownie",
     formFailure: "Coś poszło nie tak, spróbuj ponownie",
   },
   forms: {
     addObjectSuccess: "Twój punkt został dodany i oczekuje na moderację",
-    mapInputLabel: "Znajdź się na mapie\n(ulica, numer, miasto)",
+    mapInputLabel: "Znajdź się na mapie\n(ulica, numer i miasto)",
     basicObjectMessage: "Podaj nazwę lokalu!",
     maxObjectMessage: "Nazwa lokalu jest zbyt długa",
     minObjectMessage: "Nazwa lokalu jest zbyt krótka",
@@ -53,11 +53,11 @@ export const messages = {
     signUpMessageSubHeaderText: "Nie zgadzaj się na bezprawne obostrzenia",
     siteName: "Gdzie-otwarte.pl",
     welcomePageHeaderTextP1:
-      "Ma na celu zaktualizowanie bazy punktów usługowych, które utrzymały się na rynku i stworzenie miejsca, w którym użytkownicy mogą sprawdzić otwarte lokale w swojej okolicy.",
+      "Ma na celu zaktualizowanie bazy punktów usługowych i stworzenie miejsca, w którym użytkownicy mogą sprawdzić aktualnie otwarte lokale w swojej okolicy.",
     welcomePageHeaderTextP2:
-        "Wiele z obecnych punktów na mapach ma nieaktualne dane, lub niestety już nie istnieje. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
+      "Wiele z obecnych punktów na mapach niestety już nie istnieje lub zmieniło miejsce działalności. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
     welcomePageSubHeaderText:
-      "Przejdź do mapy, wybierz kategorię lub przeszukaj wszystkie otwarte lokale w Twojej okolicy i baw się dobrze!",
+      "Przejdź do mapy, wybierz kategorię, sprawdź wszystkie otwarte lokale w Twojej okolicy i baw się dobrze!",
     mapButton: "Mapa",
     about: "O projekcie",
     howItWorks: "Jak to działa?",

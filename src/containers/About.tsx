@@ -19,11 +19,14 @@ const About = (): JSX.Element => {
             <div className="site-layout-background" style={{ padding: 24 }}>
               <Title>Cel projektu</Title>
               <Paragraph>
-                Gdzie-otwarte.pl to miejsce, gdzie lokale usługowe mogą pokazać swoim użytkownikom, że są otwarte.
-                Nadszedł czas, w którym pojawiła się potrzeba na nowo określenia rynków lokalnych usług, które przeszły
-                wiele zmian w 2020 roku. Część z lokali przestała istnieć, przez co spora ilość danych
-                w sieci stała się nieaktualna. Powoduje to sytuację, w której użytkownicy nie mogą być pewni, że lokale
-                w ich mieście dalej istnieją, lub nie wiedzą, że zmieniły miejsce funkcjonowania.
+                Gdzie-otwarte.pl to miejsce, gdzie lokale usługowe mogą pokazać
+                swoim użytkownikom, że są otwarte. Nadszedł czas, w którym
+                pojawiła się potrzeba na nowo określenia rynków lokalnych usług,
+                które przeszły wiele zmian w 2020 roku. Część z lokali przestała
+                istnieć, przez co spora ilość danych w sieci stała się
+                nieaktualna. Powoduje to sytuację, w której użytkownicy nie mogą
+                być pewni, że lokale w ich mieście dalej istnieją, lub nie
+                wiedzą, że zmieniły miejsce funkcjonowania.
               </Paragraph>
               <Divider />
               <Title>Co możesz zrobić?</Title>
