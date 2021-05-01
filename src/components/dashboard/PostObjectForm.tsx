@@ -56,6 +56,8 @@ const PostObjectForm = (): JSX.Element => {
             city: data.object_city,
             address: data.object_address,
             category: data.object_type,
+            website: data.object_website,
+            phone: data.object_phone,
             lat: addressCoordinates.latLng.lat,
             lng: addressCoordinates.latLng.lng,
             published_at: null,
@@ -68,7 +70,7 @@ const PostObjectForm = (): JSX.Element => {
             },
           }
         )
-        .then((response) => {
+        .then(() => {
           setStatus(messages.forms.addObjectSuccess)
         })
         .catch(() => {
@@ -150,6 +152,30 @@ const PostObjectForm = (): JSX.Element => {
           <Select placeholder="Wybierz kategorię" allowClear>
             {renderOptionsCategoryOptions()}
           </Select>
+        </Form.Item>
+        <Form.Item
+            label="Strona www (z https://)"
+            labelAlign="left"
+            name="object_website"
+            rules={[
+              { message: messages.forms.basicAddressMessage },
+              { max: 50, message: messages.forms.maxAddressMessage },
+              { min: 5, message: messages.forms.minAddressMessage },
+            ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+            label="Telefon (+48 123 456 789)"
+            labelAlign="left"
+            name="object_phone"
+            rules={[
+              { message: messages.forms.basicAddressMessage },
+              { max: 15, message: messages.forms.maxAddressMessage },
+              { min: 9, message: messages.forms.minAddressMessage },
+            ]}
+        >
+          <Input />
         </Form.Item>
         <Form.Item
           label={messages.forms.mapInputLabel}

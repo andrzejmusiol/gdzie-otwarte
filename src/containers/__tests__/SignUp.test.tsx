@@ -22,12 +22,12 @@ describe("<SignUp />", () => {
   })
 
   it("should render sign in button and send empty data request", async () => {
-    const signInButton = await waitFor(() =>
+    const signUpButton = await waitFor(() =>
       element.getByTestId("sign-up-button-test-id")
     )
 
-    expect(signInButton).toBeInTheDocument()
-    await fireEvent.click(signInButton)
+    expect(signUpButton).toBeInTheDocument()
+    await fireEvent.click(signUpButton)
 
     const errorMessage = await waitFor(() =>
       element.getByTestId("sign-up-error-test-id")
@@ -50,7 +50,7 @@ describe("<SignUp />", () => {
     const passwordInput = await waitFor(() =>
       element.getByTestId("password-input-test-id")
     )
-    const signInButton = await waitFor(() =>
+    const signUpButton = await waitFor(() =>
       element.getByTestId("sign-up-button-test-id")
     )
 
@@ -64,7 +64,7 @@ describe("<SignUp />", () => {
     expect(emailInput).toHaveValue(testUserEmail)
     expect(passwordInput).toHaveValue(testUserPassword)
 
-    await fireEvent.click(signInButton)
+    await fireEvent.click(signUpButton)
 
     const errorMessage = await waitFor(() =>
       element.getByTestId("sign-up-error-test-id")

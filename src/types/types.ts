@@ -16,7 +16,10 @@ export interface MarkerType {
   icon: Icon<IconOptions> | DivIcon | undefined
   name: string
   cat: string
+  website: string
+  phone: number
   address: string
+  city: string
 }
 
 export interface LegendCircleType {

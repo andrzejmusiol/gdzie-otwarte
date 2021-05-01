@@ -4,7 +4,7 @@ import { ObjectsType } from "../types/types"
 import { LoaderContainer } from "../utils/styled-components"
 import Loader from "../components/map/Loader"
 import "leaflet/dist/leaflet.css"
-import { Map, Marker, TileLayer } from "react-leaflet"
+import { Map, TileLayer } from "react-leaflet"
 import MapMarker from "../components/map/MapMarker"
 import L from "leaflet"
 import pinBar from "../assets/icons/pin-bar.svg"
@@ -21,6 +21,9 @@ const MapUI = (): JSX.Element => {
   const name = process.env.REACT_APP_NAME
   const cat = process.env.REACT_APP_CAT
   const address = process.env.REACT_APP_ADDRESS
+  const city = process.env.REACT_APP_CITY
+  const website = process.env.REACT_APP_WEBSITE
+  const phone = process.env.REACT_APP_PHONE
   const type_1 = process.env.REACT_APP_TYPE_1
   const type_2 = process.env.REACT_APP_TYPE_2
   const type_3 = process.env.REACT_APP_TYPE_3
@@ -81,7 +84,10 @@ const MapUI = (): JSX.Element => {
                 icon={iconType}
                 name={object[`${name}`]}
                 cat={object[`${cat}`]}
+                website={object[`${website}`]}
+                phone={object[`${phone}`]}
                 address={object[`${address}`]}
+                city={object[`${city}`]}
               />
             )
           })}

@@ -12,7 +12,7 @@ const DashboardNav = (): JSX.Element => {
   const { width } = useWindowDimensions()
 
   return (
-    <>
+    <div data-testid="dashboard-nav-test-id">
       {width < 768 ? (
         <Header style={{ background: colors.white }}>
           <Menu
@@ -53,7 +53,7 @@ const DashboardNav = (): JSX.Element => {
           </Menu>
         </Sider>
       )}
-    </>
+    </div>
   )
 }
 
