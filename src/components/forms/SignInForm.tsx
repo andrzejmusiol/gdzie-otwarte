@@ -27,7 +27,6 @@ const SignInForm = (): JSX.Element => {
 
   const recaptchaRef: LegacyRef<ReCAPTCHA> | undefined = React.createRef()
   const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
-  const GRCAPTCHA_KEY = process.env.REACT_APP_GRCAPTCHA_KEY
 
   const onFinish = (data: any) => {
     if (LOGIN_ENDPOINT)
@@ -52,10 +51,6 @@ const SignInForm = (): JSX.Element => {
     setStatus(messages.axios.formFailure)
   }
 
-  const onChange = (value: any) => {
-    console.warn("Google reCaptcha: ", value)
-  }
-
   return (
     <>
       <Form
@@ -69,12 +64,6 @@ const SignInForm = (): JSX.Element => {
         onFinishFailed={onFinishFailed}
         data-testid="sign-in-form-test-id"
       >
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          size="invisible"
-          sitekey={GRCAPTCHA_KEY ? GRCAPTCHA_KEY : ""}
-          onChange={onChange}
-        />
         <Form.Item
           label="E-mail"
           labelAlign="left"

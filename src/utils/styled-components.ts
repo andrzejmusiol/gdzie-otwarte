@@ -286,21 +286,6 @@ export const LoaderContainer = styled.div`
   align-items: center;
 `
 
-export const Spinner = styled.div`
-  margin: 0 0 2em;
-  height: 100px;
-  width: 20%;
-  text-align: center;
-  padding: 1em;
-  margin: 0 auto 1em;
-  display: inline-block;
-  vertical-align: top;
-  svg path,
-  svg rect {
-    fill: ${colors.blue};
-  }
-`
-
 export const UserInfoSection = styled.div`
   margin-bottom: 30px;
   a {
