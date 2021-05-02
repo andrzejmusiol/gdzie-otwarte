@@ -1,4 +1,4 @@
-import React, { LegacyRef, useRef, useState } from "react"
+import React, { useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button, Card } from "antd"
@@ -40,6 +40,8 @@ const SignUpForm = (): JSX.Element => {
         .then((response) => {
           setStatus(messages.forms.signUpSuccess)
           sessionStorage.setItem("token", response.data.jwt)
+            sessionStorage.setItem("user", JSON.stringify(response.data.user))
+            sessionStorage.setItem("auth", String(true))
           history.push("/map")
         })
         .catch(() => {
