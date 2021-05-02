@@ -52,7 +52,8 @@ export const messages = {
     userAccountHeaderText: "Witaj!",
     userAccountSubHeaderText: "Poniżej znajdziesz swoje dane: ",
     usersObjectsHeaderText: "Twoje punkty na mapie",
-    usersObjectsSubHeaderText: "Ta funkcja jeszcze nie dostępna, aby usnąć lub zmodyfikować punkt, skontaktuj się: ",
+    usersObjectsSubHeaderText:
+      "Ta funkcja jeszcze nie dostępna, aby usnąć lub zmodyfikować punkt, skontaktuj się: ",
     signUpMessageHeaderText: "Zarejestruj się i dodaj swój lokal!",
     signUpMessageSubHeaderText: "Pozwól klientom Cię znaleźć",
     siteName: "Gdzie-otwarte.pl",

@@ -302,8 +302,8 @@ export const Spinner = styled.div`
 `
 
 export const UserInfoSection = styled.div`
-        margin-bottom: 30px;
-        a {
-            color:  ${colors.blue};
-        }
-    `
+  margin-bottom: 30px;
+  a {
+    color: ${colors.blue};
+  }
+`

@@ -42,7 +42,7 @@ const Dashboard = (): JSX.Element => {
               </Route>
               <Route path="/panel-klienta/twoje-konto">
                 {typeof userOfSession === "string" && auth ? (
-                    <UserAccount user={user}/>
+                  <UserAccount user={user} />
                 ) : (
                   ""
                 )}
