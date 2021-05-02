@@ -3,7 +3,6 @@ import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button, Card } from "antd"
 import { messages } from "../../utils/messages"
-import ReCAPTCHA from "react-google-recaptcha"
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons"
 
 const SignUpForm = (): JSX.Element => {
@@ -31,7 +30,6 @@ const SignUpForm = (): JSX.Element => {
 
     const history = useHistory()
 
-  const recaptchaRef: LegacyRef<ReCAPTCHA> | undefined = React.createRef()
   const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
 
   const onFinish = (data: any) => {
@@ -72,7 +70,6 @@ const SignUpForm = (): JSX.Element => {
         initialValues={{ remember: true }}
         onFinish={(data): any => {
           onFinish(data)
-          ;(recaptchaRef as any).current.execute()
         }}
         onFinishFailed={onFinishFailed}
       >
