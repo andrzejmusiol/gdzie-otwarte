@@ -7,17 +7,18 @@ import { Layout } from "antd"
 import { messages } from "../utils/messages"
 
 import DashboardNav from "../components/dashboard/DashboardNav"
+import UserAccount from "../components/dashboard/UserAccount"
 
 const { Content } = Layout
 
 const Dashboard = (): JSX.Element => {
   const auth = Boolean(sessionStorage.getItem("auth"))
-  const userOFSession = sessionStorage.getItem("user")
+  const userOfSession = sessionStorage.getItem("user")
 
   let user
 
-  if (typeof userOFSession === "string") {
-    user = JSON.parse(userOFSession)
+  if (typeof userOfSession === "string") {
+    user = JSON.parse(userOfSession)
   }
 
   return (
@@ -40,11 +41,8 @@ const Dashboard = (): JSX.Element => {
                 <PostObjectForm />
               </Route>
               <Route path="/panel-klienta/twoje-konto">
-                {typeof userOFSession === "string" && auth ? (
-                  <h2>
-                    {messages.account.hello}
-                    {user.username}
-                  </h2>
+                {typeof userOfSession === "string" && auth ? (
+                    <UserAccount user={user}/>
                 ) : (
                   ""
                 )}

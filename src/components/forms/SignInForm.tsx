@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
 import { messages } from "../../utils/messages"
 import ReCAPTCHA from "react-google-recaptcha"
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 const SignInForm = (): JSX.Element => {
   const layout = {
@@ -85,7 +86,7 @@ const SignInForm = (): JSX.Element => {
             { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
-          <Input data-testid="email-input-test-id" />
+          <Input data-testid="email-input-test-id" prefix={<UserOutlined className="site-form-item-icon" />}/>
         </Form.Item>
         <Form.Item
           label="Hasło"
@@ -96,7 +97,7 @@ const SignInForm = (): JSX.Element => {
             { min: 6, message: messages.forms.minPasswordMessage },
           ]}
         >
-          <Input.Password data-testid="password-input-test-id" />
+          <Input.Password data-testid="password-input-test-id" prefix={<LockOutlined className="site-form-item-icon" />}/>
         </Form.Item>
         <div className="error-wrapper" data-testid="sign-in-error-test-id">
           {status}

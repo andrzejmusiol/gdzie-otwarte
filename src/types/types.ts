@@ -36,3 +36,26 @@ export interface FormValues {
 export interface windowDimensions {
   width: number
 }
+
+interface UserRole {
+  description: string
+  id: number
+  name: string
+  type: string
+}
+
+interface UserType {
+  blocked: boolean
+  confirmed: boolean
+  created_at: string
+  email: string
+  id: number
+  provider: string
+  role: UserRole
+  updated_at: string
+  username: string
+}
+
+export interface User {
+  user: UserType
+}

@@ -49,8 +49,12 @@ export const messages = {
   site: {
     addPointHeaderText: "Dodaj punkt na mapie",
     addPointSubHeaderText: "i pozwól innym Cię zauważyć!",
+    userAccountHeaderText: "Witaj!",
+    userAccountSubHeaderText: "Poniżej znajdziesz swoje dane: ",
+    usersObjectsHeaderText: "Twoje punkty na mapie",
+    usersObjectsSubHeaderText: "Ta funkcja jeszcze nie dostępna, aby usnąć lub zmodyfikować punkt, skontaktuj się: ",
     signUpMessageHeaderText: "Zarejestruj się i dodaj swój lokal!",
-    signUpMessageSubHeaderText: "Nie zgadzaj się na bezprawne obostrzenia",
+    signUpMessageSubHeaderText: "Pozwól klientom Cię znaleźć",
     siteName: "Gdzie-otwarte.pl",
     welcomePageHeaderTextP1:
       "Ma na celu zaktualizowanie bazy punktów usługowych i stworzenie miejsca, w którym użytkownicy mogą sprawdzić aktualnie otwarte lokale w swojej okolicy.",
