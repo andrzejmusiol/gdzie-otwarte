@@ -5,24 +5,23 @@ import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
 import { Form, Input, Button, Select } from "antd"
-import { PlusOutlined } from "@ant-design/icons"
+import { SaveOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
 import { messages } from "../../utils/messages"
-import { User } from "../../types/types"
 
-const PostObjectForm = ({ user }: User): JSX.Element => {
+const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }: any): JSX.Element => {
   const layout = {
     labelCol: {
       xs: { span: 24 },
       sm: { span: 24 },
       md: { span: 24 },
-      lg: { span: 3 },
+      lg: { span: 4 },
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 24 },
       md: { span: 24 },
-      lg: { span: 12 },
+      lg: { span: 24 },
     },
   }
   const addressCoordinatesInitialState: {
@@ -38,7 +37,7 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
     addressCoordinatesInitialState
   )
 
-  const POST_ENDPOINT = process.env.REACT_APP_POST_ENDPOINT
+  const OBJECT_PUT_ENDPOINT = process.env.REACT_APP_PUT_ENDPOINT
   const token = sessionStorage.getItem("token")
   const formRef = React.createRef<FormInstance>()
 
@@ -48,10 +47,10 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
   }
 
   const onFinish = (data: any) => {
-    if (POST_ENDPOINT)
+    if (OBJECT_PUT_ENDPOINT)
       axios
-        .post(
-          POST_ENDPOINT,
+        .put(
+          `${OBJECT_PUT_ENDPOINT}/${editingObjectId}`,
           {
             name: data.object_name,
             city: data.object_city,
@@ -61,9 +60,6 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
             phone: data.object_phone,
             lat: addressCoordinates.latLng.lat,
             lng: addressCoordinates.latLng.lng,
-            published_at: null,
-            hidden_input: data.hidden_input,
-            user_id: user.id,
           },
           {
             headers: {
@@ -73,7 +69,7 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
           }
         )
         .then(() => {
-          setStatus(messages.forms.addObjectSuccess)
+            window.location.reload()
         })
         .catch(() => {
           setStatus(messages.axios.axiosFailure)
@@ -113,7 +109,6 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
           labelAlign="left"
           name="object_name"
           rules={[
-            { required: true, message: messages.forms.basicObjectMessage },
             { max: 75, message: messages.forms.maxObjectMessage },
             { min: 4, message: messages.forms.minObjectMessage },
           ]}
@@ -124,10 +119,7 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
           label="Miasto"
           labelAlign="left"
           name="object_city"
-          rules={[
-            { required: true, message: messages.forms.basicCityMessage },
-            { max: 50, message: messages.forms.maxCityMessage },
-          ]}
+          rules={[{ max: 50, message: messages.forms.maxCityMessage }]}
         >
           <Input />
         </Form.Item>
@@ -136,21 +128,13 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
           labelAlign="left"
           name="object_address"
           rules={[
-            { required: true, message: messages.forms.basicAddressMessage },
             { max: 100, message: messages.forms.maxAddressMessage },
             { min: 6, message: messages.forms.minAddressMessage },
           ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          label="Kategoria"
-          labelAlign="left"
-          name="object_type"
-          rules={[
-            { required: true, message: messages.forms.basicCategoryMessage },
-          ]}
-        >
+        <Form.Item label="Kategoria" labelAlign="left" name="object_type">
           <Select placeholder="Wybierz kategorię" allowClear>
             {renderOptionsCategoryOptions()}
           </Select>
@@ -183,9 +167,6 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
           label={messages.forms.mapInputLabel}
           labelAlign="left"
           name="hidden_input"
-          rules={[
-            { required: true, message: messages.forms.basicMapMarkerMessage },
-          ]}
         >
           <Input className="hidden-input" />
           <Map
@@ -224,8 +205,11 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
         </Form.Item>
         <Form.Item>
           <div className="error-wrapper">{status}</div>
-          <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
-            Dodaj
+          <Button type="primary" htmlType="submit" icon={<SaveOutlined />} style={{margin: 10}}>
+            Zapisz
+          </Button>
+          <Button type="primary"  onClick={() => setIsEditingModalVisible(false)} danger style={{margin: 10}}>
+            Anuluj
           </Button>
         </Form.Item>
       </Form>
@@ -233,4 +217,4 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
   )
 }
 
-export default PostObjectForm
+export default UpdateObjectForm

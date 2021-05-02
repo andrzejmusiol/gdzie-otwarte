@@ -10,7 +10,7 @@ export const messages = {
   },
   forms: {
     addObjectSuccess: "Twój punkt został dodany i oczekuje na moderację",
-    mapInputLabel: "Znajdź się na mapie\n(ulica, numer i miasto)",
+    mapInputLabel: "Znajdź się na mapie\n(ulica, numer budynku (bez numeru lokalu) i miasto)",
     basicObjectMessage: "Podaj nazwę lokalu!",
     maxObjectMessage: "Nazwa lokalu jest zbyt długa",
     minObjectMessage: "Nazwa lokalu jest zbyt krótka",
@@ -52,8 +52,6 @@ export const messages = {
     userAccountHeaderText: "Witaj!",
     userAccountSubHeaderText: "Poniżej znajdziesz swoje dane: ",
     usersObjectsHeaderText: "Twoje punkty na mapie",
-    usersObjectsSubHeaderText:
-      "Ta funkcja jeszcze nie dostępna, aby usnąć lub zmodyfikować punkt, skontaktuj się: ",
     signUpMessageHeaderText: "Zarejestruj się i dodaj swój lokal!",
     signUpMessageSubHeaderText: "Pozwól klientom Cię znaleźć",
     siteName: "Gdzie-otwarte.pl",

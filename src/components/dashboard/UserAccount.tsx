@@ -1,14 +1,24 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { User } from "../../types/types"
-import { UserInfoSection } from "../../utils/styled-components"
-import { Modal, Button, List } from "antd"
+import {PostForm, UserInfoSection} from "../../utils/styled-components"
+import { Modal, Button, List, Row, Card } from "antd"
+import { EditOutlined } from "@ant-design/icons"
 import { messages } from "../../utils/messages"
 import axios from "axios"
-import { useHistory } from "react-router-dom"
+import {useHistory} from "react-router-dom"
+import { GlobalContext } from "../../store"
+import UpdateObjectForm from "./UpdateObjectForm"
+
+const { Meta } = Card
 
 const UserAccount = ({ user }: User): JSX.Element => {
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isDeletingModalVisible, setIsDeletingModalVisible] = useState(false)
+  const [isEditingModalVisible, setIsEditingModalVisible] = useState(false)
+  const [editingObjectId, setEditingObjectId] = useState()
   const [status, setStatus] = useState("")
+
+  const USER_DESTROY_ENDPOINT = process.env.REACT_APP_USER_DESTROY
+
   const history = useHistory()
   const token = sessionStorage.getItem("token")
   const date = new Date(user.created_at)
@@ -17,10 +27,22 @@ const UserAccount = ({ user }: User): JSX.Element => {
     `Twoja nazwa:  ${user.username}`,
     `Konto utworzone:  ${date.toLocaleDateString("pl-PL")}`,
   ]
-  const USER_DESTROY_ENDPOINT = process.env.REACT_APP_USER_DESTROY
 
-  const showModal = () => {
-    setIsModalVisible(true)
+  const { mapObjects } = useContext(GlobalContext)
+
+  const userObjects = mapObjects.filter(
+    (object: any) => object.user_id === user.id
+  )
+
+  const showModal = (
+    modalMethod: (value: ((prevState: boolean) => boolean) | boolean) => void
+  ) => {
+    modalMethod(true)
+  }
+  const hideModal = (
+    modalMethod: (value: ((prevState: boolean) => boolean) | boolean) => void
+  ) => {
+    modalMethod(false)
   }
 
   const handleUserDelete = () => {
@@ -40,11 +62,7 @@ const UserAccount = ({ user }: User): JSX.Element => {
       .catch(() => {
         setStatus(messages.axios.axiosFailure)
       })
-    setIsModalVisible(false)
-  }
-
-  const handleCancel = () => {
-    setIsModalVisible(false)
+    setIsDeletingModalVisible(false)
   }
 
   return (
@@ -61,21 +79,59 @@ const UserAccount = ({ user }: User): JSX.Element => {
       </UserInfoSection>
       <UserInfoSection>
         <h1>{messages.site.usersObjectsHeaderText}</h1>
-        <p>{messages.site.usersObjectsSubHeaderText}</p>
-        <a href="mailto: kontakt@gdzie-otwarte.pl">kontakt@gdzie-otwarte.pl</a>
+        <Row gutter={16}>
+          {userObjects.map((obj: any) => (
+            <Card
+              key={obj.id}
+              style={{ width: 300 }}
+              actions={[
+                <EditOutlined
+                  key="edit"
+                  onClick={() => {
+                    showModal(setIsEditingModalVisible)
+                    setEditingObjectId(obj.id)
+                  }}
+                />,
+              ]}
+            >
+              <Meta title={obj.name} description={obj.address} />
+              {status}
+            </Card>
+          ))}
+        </Row>
+        <Modal
+          title="Edytuj ten punkt"
+          visible={isEditingModalVisible}
+          width={1000}
+          onCancel={() => hideModal(setIsEditingModalVisible)}
+          footer={[]}
+        >
+          <PostForm>
+            <UpdateObjectForm editingObjectId={editingObjectId} setIsEditingModalVisible={setIsEditingModalVisible}/>
+          </PostForm>
+
+        </Modal>
       </UserInfoSection>
       <UserInfoSection>
-        <Button onClick={showModal} type="primary" danger>
+        <Button
+          onClick={() => showModal(setIsDeletingModalVisible)}
+          type="primary"
+          danger
+        >
           Usuń konto
         </Button>
         <Modal
           title="Czy na pewno chcesz usunąć konto?"
-          visible={isModalVisible}
+          visible={isDeletingModalVisible}
+          onCancel={() => hideModal(setIsEditingModalVisible)}
           footer={[
-            <Button key="back" onClick={handleCancel}>
+            <Button
+              key="back"
+              onClick={() => hideModal(setIsDeletingModalVisible)}
+            >
               Nie
             </Button>,
-            <Button key="submit" type="primary" onClick={handleUserDelete}>
+            <Button danger key="submit" type="primary" onClick={handleUserDelete}>
               Tak, usuwam
             </Button>,
           ]}

@@ -40,8 +40,8 @@ const SignUpForm = (): JSX.Element => {
         .then((response) => {
           setStatus(messages.forms.signUpSuccess)
           sessionStorage.setItem("token", response.data.jwt)
-            sessionStorage.setItem("user", JSON.stringify(response.data.user))
-            sessionStorage.setItem("auth", String(true))
+          sessionStorage.setItem("user", JSON.stringify(response.data.user))
+          sessionStorage.setItem("auth", String(true))
           history.push("/map")
         })
         .catch(() => {
