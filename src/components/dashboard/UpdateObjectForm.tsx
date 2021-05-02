@@ -9,7 +9,12 @@ import { SaveOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
 import { messages } from "../../utils/messages"
 
-const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }: any): JSX.Element => {
+interface UpdateObjectType {
+  editingObjectId: number | undefined
+  setIsEditingModalVisible: (value: ((prevState: boolean) => boolean) | boolean) => void
+}
+
+const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateObjectType): JSX.Element => {
   const layout = {
     labelCol: {
       xs: { span: 24 },
