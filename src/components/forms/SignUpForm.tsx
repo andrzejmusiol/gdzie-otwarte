@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import { Form, Input, Button } from "antd"
 import { messages } from "../../utils/messages"
 import ReCAPTCHA from "react-google-recaptcha"
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons"
 
 const SignUpForm = (): JSX.Element => {
   const layout = {
@@ -83,7 +83,10 @@ const SignUpForm = (): JSX.Element => {
             { min: 4, message: messages.forms.minNameMessage },
           ]}
         >
-          <Input data-testid="name-input-test-id"  prefix={<UserOutlined className="site-form-item-icon" />}/>
+          <Input
+            data-testid="name-input-test-id"
+            prefix={<UserOutlined className="site-form-item-icon" />}
+          />
         </Form.Item>
         <Form.Item
           label="E-mail"
@@ -96,7 +99,10 @@ const SignUpForm = (): JSX.Element => {
             { type: "email", message: messages.forms.typeEmailMessage },
           ]}
         >
-          <Input data-testid="email-input-test-id" prefix={<MailOutlined  className="site-form-item-icon"/>}/>
+          <Input
+            data-testid="email-input-test-id"
+            prefix={<MailOutlined className="site-form-item-icon" />}
+          />
         </Form.Item>
         <Form.Item
           label="Hasło"
@@ -108,28 +114,34 @@ const SignUpForm = (): JSX.Element => {
             { min: 6, message: messages.forms.minPasswordMessage },
           ]}
         >
-          <Input.Password data-testid="password-input-test-id" prefix={<LockOutlined className="site-form-item-icon" />}/>
+          <Input.Password
+            data-testid="password-input-test-id"
+            prefix={<LockOutlined className="site-form-item-icon" />}
+          />
         </Form.Item>
-          <Form.Item
-              label="Powrtórz hasło"
-              name="confirm"
-              labelAlign="left"
-              rules={[
-                  { required: true, message: messages.forms.basicPasswordMessage },
-                  { max: 50, message: messages.forms.maxPasswordMessage },
-                  { min: 6, message: messages.forms.minPasswordMessage },
-                  ({ getFieldValue }) => ({
-                      validator(_, value) {
-                          if (!value || getFieldValue('password') === value) {
-                              return Promise.resolve()
-                          }
-                          return Promise.reject(new Error('Hasła nie są identyczne!'))
-                      },
-                  }),
-              ]}
-          >
-              <Input.Password data-testid="password-input-test-id" prefix={<LockOutlined className="site-form-item-icon" />}/>
-          </Form.Item>
+        <Form.Item
+          label="Powrtórz hasło"
+          name="confirm"
+          labelAlign="left"
+          rules={[
+            { required: true, message: messages.forms.basicPasswordMessage },
+            { max: 50, message: messages.forms.maxPasswordMessage },
+            { min: 6, message: messages.forms.minPasswordMessage },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve()
+                }
+                return Promise.reject(new Error("Hasła nie są identyczne!"))
+              },
+            }),
+          ]}
+        >
+          <Input.Password
+            data-testid="password-input-test-id"
+            prefix={<LockOutlined className="site-form-item-icon" />}
+          />
+        </Form.Item>
         <div className="error-wrapper" data-testid="sign-up-error-test-id">
           {status}
         </div>
