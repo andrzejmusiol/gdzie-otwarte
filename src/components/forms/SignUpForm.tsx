@@ -1,9 +1,8 @@
-import React, { LegacyRef, useState } from "react"
+import React, { LegacyRef, useRef, useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
-import { Form, Input, Button } from "antd"
+import { Form, Input, Button, Card } from "antd"
 import { messages } from "../../utils/messages"
-import ReCAPTCHA from "react-google-recaptcha"
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons"
 
 const SignUpForm = (): JSX.Element => {
@@ -23,11 +22,12 @@ const SignUpForm = (): JSX.Element => {
   }
 
   const [status, setStatus] = useState("")
+  const [disabled, setDisabled] = useState(true)
+  const firstNumber = Math.floor(Math.random() * 20) + 1
+  const secondNumber = Math.floor(Math.random() * 20) + 1
+  const answerNumber = firstNumber + secondNumber
   const history = useHistory()
-
-  const recaptchaRef: LegacyRef<ReCAPTCHA> | undefined = React.createRef()
   const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
-  const GRCAPTCHA_KEY = process.env.REACT_APP_GRCAPTCHA_KEY
 
   const onFinish = (data: any) => {
     if (REGISTER_ENDPOINT)
@@ -51,8 +51,11 @@ const SignUpForm = (): JSX.Element => {
     setStatus(messages.axios.formFailure)
   }
 
-  const onChange = (value: any) => {
-    console.warn("Google reCaptcha: ", value)
+  const setNumberAnswer = (e: any) => {
+    const inputNumber = parseInt(e.target.value)
+    if (inputNumber === answerNumber) {
+      setDisabled(false)
+    }
   }
 
   return (
@@ -63,16 +66,9 @@ const SignUpForm = (): JSX.Element => {
         initialValues={{ remember: true }}
         onFinish={(data): any => {
           onFinish(data)
-          ;(recaptchaRef as any).current.execute()
         }}
         onFinishFailed={onFinishFailed}
       >
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          size="invisible"
-          sitekey={GRCAPTCHA_KEY ? GRCAPTCHA_KEY : ""}
-          onChange={onChange}
-        />
         <Form.Item
           label="Imię i nazwisko"
           labelAlign="left"
@@ -142,11 +138,16 @@ const SignUpForm = (): JSX.Element => {
             prefix={<LockOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
+        <Card title="Podaj prawidłowy wynik">
+          {disabled ? `${firstNumber} + ${secondNumber}` : null}
+          <Input onChange={setNumberAnswer} />
+        </Card>
         <div className="error-wrapper" data-testid="sign-up-error-test-id">
           {status}
         </div>
         <Form.Item>
           <Button
+            disabled={disabled}
             type="primary"
             htmlType="submit"
             data-testid="sign-up-button-test-id"
