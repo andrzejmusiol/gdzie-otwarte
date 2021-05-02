@@ -1,4 +1,4 @@
-import React, {LegacyRef, useRef, useState} from "react"
+import React, { LegacyRef, useRef, useState } from "react"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { Form, Input, Button, Card } from "antd"
@@ -23,13 +23,10 @@ const SignUpForm = (): JSX.Element => {
 
   const [status, setStatus] = useState("")
   const [disabled, setDisabled] = useState(true)
-
-    const firstNumber = Math.floor(Math.random() * 20) + 1
-    const secondNumber = Math.floor(Math.random() * 20) + 1
-    const answerNumber = firstNumber + secondNumber
-
-    const history = useHistory()
-
+  const firstNumber = Math.floor(Math.random() * 20) + 1
+  const secondNumber = Math.floor(Math.random() * 20) + 1
+  const answerNumber = firstNumber + secondNumber
+  const history = useHistory()
   const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
 
   const onFinish = (data: any) => {
@@ -55,11 +52,10 @@ const SignUpForm = (): JSX.Element => {
   }
 
   const setNumberAnswer = (e: any) => {
-      const inputNumber = parseInt(e.target.value)
-      if(inputNumber === answerNumber){
-          setDisabled(false)
-      }
-
+    const inputNumber = parseInt(e.target.value)
+    if (inputNumber === answerNumber) {
+      setDisabled(false)
+    }
   }
 
   return (
@@ -141,18 +137,17 @@ const SignUpForm = (): JSX.Element => {
             data-testid="password-input-test-id"
             prefix={<LockOutlined className="site-form-item-icon" />}
           />
-
         </Form.Item>
-          <Card title="Podaj prawidłowy wynik">
-              {disabled ? `${firstNumber} + ${secondNumber}` : null}
-              <Input onChange={setNumberAnswer}/>
-      </Card>
+        <Card title="Podaj prawidłowy wynik">
+          {disabled ? `${firstNumber} + ${secondNumber}` : null}
+          <Input onChange={setNumberAnswer} />
+        </Card>
         <div className="error-wrapper" data-testid="sign-up-error-test-id">
           {status}
         </div>
         <Form.Item>
           <Button
-              disabled={disabled}
+            disabled={disabled}
             type="primary"
             htmlType="submit"
             data-testid="sign-up-button-test-id"
