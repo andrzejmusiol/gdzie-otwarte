@@ -1,6 +1,5 @@
-import React, { ReactNode, useContext, useState } from "react"
+import React, { useState } from "react"
 import axios from "axios"
-import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
@@ -9,6 +8,8 @@ import { PlusOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
 import { messages } from "../../utils/messages"
 import { User } from "../../types/types"
+import {renderOptionsCategoryOptions} from "../../utils/utils"
+import {POST_ENDPOINT} from "../../utils/constans"
 
 const PostObjectForm = ({ user }: User): JSX.Element => {
   const layout = {
@@ -38,7 +39,6 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
     addressCoordinatesInitialState
   )
 
-  const POST_ENDPOINT = process.env.REACT_APP_POST_ENDPOINT
   const token = sessionStorage.getItem("token")
   const formRef = React.createRef<FormInstance>()
 
@@ -82,21 +82,6 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
 
   const onFinishFailed = () => {
     setStatus(messages.axios.formFailure)
-  }
-
-  const renderOptionsCategoryOptions = (): ReactNode => {
-    const name = process.env.REACT_APP_NAME
-    const cat = process.env.REACT_APP_CAT
-    const { categories } = useContext(GlobalContext)
-    const { Option } = Select
-
-    return categories.map((category: { [x: string]: never }) => {
-      return (
-        <Option key={category[`${name}`]} value={category[`${cat}`]}>
-          {category[`${cat}`]}
-        </Option>
-      )
-    })
   }
 
   return (
@@ -194,8 +179,8 @@ const PostObjectForm = ({ user }: User): JSX.Element => {
             className="form-map"
           >
             <TileLayer
-              attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Search
               onChange={(addressData) => {

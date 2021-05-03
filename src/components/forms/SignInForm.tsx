@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
 import { messages } from "../../utils/messages"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
+import {LOGIN_ENDPOINT} from "../../utils/constans"
 
 const SignInForm = (): JSX.Element => {
   const layout = {
@@ -24,7 +25,6 @@ const SignInForm = (): JSX.Element => {
   const [status, setStatus] = useState("")
   const history = useHistory()
 
-  const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT
 
   const onFinish = (data: any) => {
     if (LOGIN_ENDPOINT)

@@ -1,6 +1,5 @@
-import React, { ReactNode, useContext, useState } from "react"
+import React, { useState } from "react"
 import axios from "axios"
-import { GlobalContext } from "../../store"
 import { Map, TileLayer, Circle } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import Search from "react-leaflet-search"
@@ -8,13 +7,20 @@ import { Form, Input, Button, Select } from "antd"
 import { SaveOutlined } from "@ant-design/icons"
 import { FormInstance } from "antd/lib/form"
 import { messages } from "../../utils/messages"
+import {renderOptionsCategoryOptions} from "../../utils/utils"
+import {OBJECT_PUT_ENDPOINT} from "../../utils/constans"
 
 interface UpdateObjectType {
   editingObjectId: number | undefined
-  setIsEditingModalVisible: (value: ((prevState: boolean) => boolean) | boolean) => void
+  setIsEditingModalVisible: (
+    value: ((prevState: boolean) => boolean) | boolean
+  ) => void
 }
 
-const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateObjectType): JSX.Element => {
+const UpdateObjectForm = ({
+  editingObjectId,
+  setIsEditingModalVisible,
+}: UpdateObjectType): JSX.Element => {
   const layout = {
     labelCol: {
       xs: { span: 24 },
@@ -42,7 +48,7 @@ const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateOb
     addressCoordinatesInitialState
   )
 
-  const OBJECT_PUT_ENDPOINT = process.env.REACT_APP_PUT_ENDPOINT
+
   const token = sessionStorage.getItem("token")
   const formRef = React.createRef<FormInstance>()
 
@@ -74,7 +80,7 @@ const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateOb
           }
         )
         .then(() => {
-            window.location.reload()
+          window.location.reload()
         })
         .catch(() => {
           setStatus(messages.axios.axiosFailure)
@@ -83,21 +89,6 @@ const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateOb
 
   const onFinishFailed = () => {
     setStatus(messages.axios.formFailure)
-  }
-
-  const renderOptionsCategoryOptions = (): ReactNode => {
-    const name = process.env.REACT_APP_NAME
-    const cat = process.env.REACT_APP_CAT
-    const { categories } = useContext(GlobalContext)
-    const { Option } = Select
-
-    return categories.map((category: { [x: string]: never }) => {
-      return (
-        <Option key={category[`${name}`]} value={category[`${cat}`]}>
-          {category[`${cat}`]}
-        </Option>
-      )
-    })
   }
 
   return (
@@ -180,8 +171,8 @@ const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateOb
             className="form-map"
           >
             <TileLayer
-              attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Search
               onChange={(addressData) => {
@@ -210,10 +201,20 @@ const UpdateObjectForm = ({ editingObjectId, setIsEditingModalVisible }:UpdateOb
         </Form.Item>
         <Form.Item>
           <div className="error-wrapper">{status}</div>
-          <Button type="primary" htmlType="submit" icon={<SaveOutlined />} style={{margin: 10}}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            icon={<SaveOutlined />}
+            style={{ margin: 10 }}
+          >
             Zapisz
           </Button>
-          <Button type="primary"  onClick={() => setIsEditingModalVisible(false)} danger style={{margin: 10}}>
+          <Button
+            type="primary"
+            onClick={() => setIsEditingModalVisible(false)}
+            danger
+            style={{ margin: 10 }}
+          >
             Anuluj
           </Button>
         </Form.Item>

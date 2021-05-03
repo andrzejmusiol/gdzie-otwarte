@@ -8,6 +8,7 @@ import {
 
 import matchMedia from "../../utils/matchMedia"
 import SignUp from "../SignUp"
+import {testUserEmail, testUserName, testUserPassword} from "../../utils/constans"
 
 const setUpWrapper = (): RenderResult => {
   return render(<SignUp />)
@@ -38,9 +39,6 @@ describe("<SignUp />", () => {
   })
 
   it("should fill up sign up form and send request", async () => {
-    const testUserName = process.env.REACT_APP_TEST_USER_NAME
-    const testUserEmail = process.env.REACT_APP_TEST_USER_EMAIL
-    const testUserPassword = process.env.REACT_APP_TEST_USER_PASSWORD
     const nameInput = await waitFor(() =>
       element.getByTestId("name-input-test-id")
     )

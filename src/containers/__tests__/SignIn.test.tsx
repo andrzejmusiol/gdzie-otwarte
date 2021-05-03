@@ -9,6 +9,7 @@ import {
 import matchMedia from "../../utils/matchMedia"
 import SignIn from "../SignIn"
 import { MemoryRouter } from "react-router-dom"
+import {testUserEmail, testUserPassword} from "../../utils/constans"
 
 const setUpWrapper = (): RenderResult => {
   return render(
@@ -43,8 +44,6 @@ describe("<SignIn />", () => {
   })
 
   it("should fill up sign in form and send request", async () => {
-    const testUserEmail = process.env.REACT_APP_TEST_USER_EMAIL
-    const testUserPassword = process.env.REACT_APP_TEST_USER_PASSWORD
     const emailInput = await waitFor(() =>
       element.getByTestId("email-input-test-id")
     )

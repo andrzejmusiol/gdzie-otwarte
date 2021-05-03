@@ -15,9 +15,9 @@ import { GlobalContext } from "../../store"
 import { Button, Drawer, Tooltip } from "antd"
 import { PlusOutlined, MenuOutlined } from "@ant-design/icons"
 import { messages } from "../../utils/messages"
+import {cat} from "../../utils/constans"
 
 const renderFiltersCategoryOptions = () => {
-  const cat = process.env.REACT_APP_CAT
   const { categories } = useContext(GlobalContext)
   const categoriesArray: { value: string; label: string }[] = []
 

@@ -7,6 +7,7 @@ import { colors } from "../../utils/colors"
 import axios from "axios"
 import { GlobalContext } from "../../store"
 import { useWindowDimensions } from "../../hooks/hooks"
+import {objectsUrl} from "../../utils/constans"
 
 interface FilterType {
   options: { value: string; label: string }[]
@@ -20,7 +21,6 @@ const Filter: React.VFC<FilterType> = ({
   const [selectedValue, setSelectedValue] = useState()
   const { setMapObjects } = useContext(GlobalContext)
   const { width } = useWindowDimensions()
-  const objectsUrl: string | any = process.env.REACT_APP_OBJECTS_API_ENDPOINT
 
   const setObjectsFilter = (url: string) => {
     axios.get(url).then((response) => {

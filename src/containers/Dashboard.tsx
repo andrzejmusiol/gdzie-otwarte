@@ -26,33 +26,31 @@ const Dashboard = (): JSX.Element => {
       <Layout>
         <DashboardNav />
         <Layout style={{ padding: "0 24px 24px" }}>
-
-            <Content
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
-            >
-              <Route path="/panel-klienta/dodaj-punkt">
-                <PostForm>
+          <Content
+            className="site-layout-background"
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+            }}
+          >
+            <Route path="/panel-klienta/dodaj-punkt">
+              <PostForm>
                 <h1>{messages.site.addPointHeaderText}</h1>
                 <p>{messages.site.addPointSubHeaderText}</p>
                 <PostObjectForm user={user} />
-                </PostForm>
-              </Route>
-              <Route path="/panel-klienta/twoje-konto">
-                <PostForm>
+              </PostForm>
+            </Route>
+            <Route path="/panel-klienta/twoje-konto">
+              <PostForm>
                 {typeof userOfSession === "string" && auth ? (
                   <UserAccount user={user} />
                 ) : (
                   ""
                 )}
-                </PostForm>
-              </Route>
-            </Content>
-
+              </PostForm>
+            </Route>
+          </Content>
         </Layout>
       </Layout>
     </Layout>

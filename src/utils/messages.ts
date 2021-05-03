@@ -10,7 +10,8 @@ export const messages = {
   },
   forms: {
     addObjectSuccess: "Twój punkt został dodany i oczekuje na moderację",
-    mapInputLabel: "Znajdź się na mapie\n(ulica, numer budynku (bez numeru lokalu) i miasto)",
+    mapInputLabel:
+      "Znajdź się na mapie\n(ulica, numer budynku (bez numeru lokalu) i miasto)",
     basicObjectMessage: "Podaj nazwę lokalu!",
     maxObjectMessage: "Nazwa lokalu jest zbyt długa",
     minObjectMessage: "Nazwa lokalu jest zbyt krótka",
@@ -76,6 +77,14 @@ export const messages = {
       "Poczekaj na moderację punktu, musimy upewnić się, że na pewno istnieje",
     publishObject:
       "Twój punkt stanie się widoczny dla wszystkich odwiedzających",
+    aboutContent:
+      "Gdzie-otwarte.pl to miejsce, gdzie lokale usługowe mogą pokazać swoim użytkownikom, że są otwarte. Nadszedł czas, w który mpojawiła się potrzeba na nowo określenia rynków lokalnych usług, które przeszły wiele zmian w 2020 roku. Część z lokali przestała istnieć, przez co spora ilość danych w sieci stała się nieaktualna. Powoduje to sytuację, w której użytkownicy nie mogą być pewni, że lokale w ich mieście dalej istnieją, lub nie wiedzą, że zmieniły miejsce funkcjonowania.",
+    whatToDoTitle: "Co możesz zrobić?",
+    mapLink: 'Przejdź do' +  '<Link href="/map">' + 'mapy</Link> zobacz którzy przedsiębiorcy prowadzą swoje lokale i po prostu ich odwiedź.',
+    whatToDoContent:
+      "Idź na obiad, drinka, skorzystaj z fryzjera, idź na siłownię, albo wyjedź na weekend korzystając z hotelu.",
+    questions: "Masz pytania?",
+    email: "kontakt@gdzie-otwarte.pl",
   },
   update: [
     "Klastrowanie wielu punktów na mapie",

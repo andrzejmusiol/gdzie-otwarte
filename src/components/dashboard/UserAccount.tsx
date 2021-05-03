@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react"
 import { User } from "../../types/types"
-import {PostForm, UserInfoSection} from "../../utils/styled-components"
+import { PostForm, UserInfoSection } from "../../utils/styled-components"
 import { Modal, Button, List, Row, Card } from "antd"
 import { EditOutlined } from "@ant-design/icons"
 import { messages } from "../../utils/messages"
 import axios from "axios"
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { GlobalContext } from "../../store"
 import UpdateObjectForm from "./UpdateObjectForm"
+import {hideModal, showModal} from "../../utils/utils"
+import {USER_DESTROY_ENDPOINT} from "../../utils/constans"
 
 const { Meta } = Card
 
@@ -16,8 +18,6 @@ const UserAccount = ({ user }: User): JSX.Element => {
   const [isEditingModalVisible, setIsEditingModalVisible] = useState(false)
   const [editingObjectId, setEditingObjectId] = useState()
   const [status, setStatus] = useState("")
-
-  const USER_DESTROY_ENDPOINT = process.env.REACT_APP_USER_DESTROY
 
   const history = useHistory()
   const token = sessionStorage.getItem("token")
@@ -34,16 +34,6 @@ const UserAccount = ({ user }: User): JSX.Element => {
     (object: any) => object.user_id === user.id
   )
 
-  const showModal = (
-    modalMethod: (value: ((prevState: boolean) => boolean) | boolean) => void
-  ) => {
-    modalMethod(true)
-  }
-  const hideModal = (
-    modalMethod: (value: ((prevState: boolean) => boolean) | boolean) => void
-  ) => {
-    modalMethod(false)
-  }
 
   const handleUserDelete = () => {
     axios
@@ -107,9 +97,11 @@ const UserAccount = ({ user }: User): JSX.Element => {
           footer={[]}
         >
           <PostForm>
-            <UpdateObjectForm editingObjectId={editingObjectId} setIsEditingModalVisible={setIsEditingModalVisible}/>
+            <UpdateObjectForm
+              editingObjectId={editingObjectId}
+              setIsEditingModalVisible={setIsEditingModalVisible}
+            />
           </PostForm>
-
         </Modal>
       </UserInfoSection>
       <UserInfoSection>
@@ -131,7 +123,12 @@ const UserAccount = ({ user }: User): JSX.Element => {
             >
               Nie
             </Button>,
-            <Button danger key="submit" type="primary" onClick={handleUserDelete}>
+            <Button
+              danger
+              key="submit"
+              type="primary"
+              onClick={handleUserDelete}
+            >
               Tak, usuwam
             </Button>,
           ]}

@@ -13,22 +13,25 @@ import pinFitness from "../assets/icons/pin-fit.svg"
 import pinBeauty from "../assets/icons/pin-beauty.svg"
 import pinHotel from "../assets/icons/pin-hotel.svg"
 import pinOther from "../assets/icons/pin-other.svg"
+import {
+  address,
+  cat,
+  city,
+  lat,
+  lng,
+  name,
+  phone,
+  type_1,
+  type_2,
+  type_3,
+  type_4,
+  type_5,
+  website
+} from "../utils/constans"
 
 const MapUI = (): JSX.Element => {
   const { mapObjects } = useContext(GlobalContext)
-  const lat = process.env.REACT_APP_LAT
-  const lng = process.env.REACT_APP_LNG
-  const name = process.env.REACT_APP_NAME
-  const cat = process.env.REACT_APP_CAT
-  const address = process.env.REACT_APP_ADDRESS
-  const city = process.env.REACT_APP_CITY
-  const website = process.env.REACT_APP_WEBSITE
-  const phone = process.env.REACT_APP_PHONE
-  const type_1 = process.env.REACT_APP_TYPE_1
-  const type_2 = process.env.REACT_APP_TYPE_2
-  const type_3 = process.env.REACT_APP_TYPE_3
-  const type_4 = process.env.REACT_APP_TYPE_4
-  const type_5 = process.env.REACT_APP_TYPE_5
+
 
   const setIcon = (iconDir: string) => {
     return new L.Icon({

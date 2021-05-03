@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom"
 import { Form, Input, Button, Card } from "antd"
 import { messages } from "../../utils/messages"
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons"
+import {generateNumbers} from "../../utils/utils"
+import {REGISTER_ENDPOINT} from "../../utils/constans"
 
 const SignUpForm = (): JSX.Element => {
   const layout = {
@@ -23,11 +25,11 @@ const SignUpForm = (): JSX.Element => {
 
   const [status, setStatus] = useState("")
   const [disabled, setDisabled] = useState(true)
-  const firstNumber = Math.floor(Math.random() * 20) + 1
-  const secondNumber = Math.floor(Math.random() * 20) + 1
-  const answerNumber = firstNumber + secondNumber
+
+  const firstNumber = generateNumbers()
+  const secondNumber = generateNumbers()
+  const answer = firstNumber + secondNumber
   const history = useHistory()
-  const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT
 
   const onFinish = (data: any) => {
     if (REGISTER_ENDPOINT)
@@ -55,7 +57,7 @@ const SignUpForm = (): JSX.Element => {
 
   const setNumberAnswer = (e: any) => {
     const inputNumber = parseInt(e.target.value)
-    if (inputNumber === answerNumber) {
+    if (inputNumber === answer) {
       setDisabled(false)
     }
   }

@@ -15,6 +15,7 @@ import { GlobalContext } from "../../store"
 import { Button, Col, Row, Tooltip } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import { messages } from "../../utils/messages"
+import {cat} from "../../utils/constans"
 
 const Header = (): JSX.Element => {
   const location = useLocation()
@@ -22,7 +23,6 @@ const Header = (): JSX.Element => {
   const auth = Boolean(sessionStorage.getItem("auth"))
   const loginStorage = sessionStorage.getItem("token")
   const { categories } = useContext(GlobalContext)
-  const cat = process.env.REACT_APP_CAT
   const categoriesArray: { value: string; label: string }[] = []
 
   categories.map((category: { [x: string]: never }) => {

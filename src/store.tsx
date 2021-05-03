@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import {categoriesUrl, objectsUrl} from "./utils/constans"
 
 const GlobalContext: React.Context<any> = React.createContext({})
 
@@ -14,9 +15,6 @@ const ContextProvider: React.FC<ChildrenPropsType> = ({
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    const objectsUrl: string | any = process.env.REACT_APP_OBJECTS_API_ENDPOINT
-    const categoriesUrl: string | any =
-      process.env.REACT_APP_CATEGORIES_API_ENDPOINT
     const objectRequest = axios.get(objectsUrl)
     const categoriesRequest = axios.get(categoriesUrl)
 
