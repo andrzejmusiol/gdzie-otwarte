@@ -50,6 +50,7 @@ const MobileHeader = (): JSX.Element => {
   const showDrawer = () => {
     setVisible(true)
   }
+
   const onClose = () => {
     setVisible(false)
   }
@@ -72,7 +73,7 @@ const MobileHeader = (): JSX.Element => {
         onClose={onClose}
         visible={visible}
       >
-        <LogoWrapper>
+        <LogoWrapper onClick={onClose}>
           <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
@@ -97,19 +98,19 @@ const MobileHeader = (): JSX.Element => {
           <MobileLinksWrapper>
             {!auth && !loginStorage ? (
               <>
-                <Link to="/logowanie">Logowanie</Link>
-                <Button type="primary" icon={<PlusOutlined />}>
+                <Link to="/logowanie" onClick={onClose}>Logowanie</Link>
+                <Button type="primary" icon={<PlusOutlined />} onClick={onClose}>
                   <Link to="/rejestracja">{messages.account.addObject}</Link>
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/panel-klienta/dodaj-punkt">
-                  <Button type="primary" icon={<PlusOutlined />}>
+                  <Button type="primary" icon={<PlusOutlined />} onClick={onClose}>
                     {messages.account.addObject}
                   </Button>
                 </Link>
-                <LogoutButton onClick={handleLogout}>
+                <LogoutButton onClick={() => {handleLogout(); onClose()}} >
                   {messages.account.logOut}
                 </LogoutButton>
               </>

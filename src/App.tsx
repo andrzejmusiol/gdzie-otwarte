@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import React from "react"
+import {Switch, Route, HashRouter} from "react-router-dom"
 import WelcomePage from "./containers/WelcomePage"
 import MapUI from "./containers/Map"
 import { ContextProvider } from "./store"
@@ -21,7 +21,7 @@ const App = (): JSX.Element => {
   return (
     <ContextProvider>
       <div className="App">
-        <Router>
+        <HashRouter>
           {cookieStatus !== "confirmed" ? <CookieNotification /> : null}
           {width > 768 ? <Header /> : <MobileHeader />}
           <div>
@@ -49,7 +49,7 @@ const App = (): JSX.Element => {
               </Route>
             </Switch>
           </div>
-        </Router>
+        </HashRouter>
       </div>
     </ContextProvider>
   )

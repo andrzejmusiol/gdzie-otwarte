@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
 @import '~antd/dist/antd.css';
 
-
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -60,4 +59,14 @@ code {
 
 .site-layout-content {
   padding: 50px
+}
+
+
+@media(max-width: 768px){
+  .ant-layout-header {
+    padding: 0
+  }
+  .update-object-form .ant-form-item-label {
+    padding: 20px 10px;
+  }
 }

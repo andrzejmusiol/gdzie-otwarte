@@ -97,6 +97,7 @@ const UpdateObjectForm = ({
         {...layout}
         ref={formRef}
         name="post_object_form"
+        className="update-object-form"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
