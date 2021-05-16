@@ -45,7 +45,7 @@ const About = (): JSX.Element => {
           >
             <div className="site-layout-background" style={{ padding: 24 }}>
               <Title level={3}>O aplikacji</Title>
-              <Paragraph>Version: 0.1.0 | Licence: Open Source</Paragraph>
+              <Paragraph>Version: 0.1.1 | Licence: Open Source</Paragraph>
               <Paragraph>
                 <Link
                   href="https://github.com/bigeyedes/gdzie-otwarte"
