@@ -5,6 +5,7 @@ import { Button, Form, Input } from "antd"
 import { messages } from "../../utils/messages"
 import { UserOutlined, LockOutlined } from "@ant-design/icons"
 import {LOGIN_ENDPOINT} from "../../utils/constans"
+import Loader from "../map/Loader"
 
 const SignInForm = (): JSX.Element => {
   const layout = {
@@ -23,10 +24,12 @@ const SignInForm = (): JSX.Element => {
   }
 
   const [status, setStatus] = useState("")
+  const [loading, isLoading] = useState(false)
   const history = useHistory()
 
 
   const onFinish = (data: any) => {
+    isLoading(true)
     if (LOGIN_ENDPOINT)
       axios
         .post(LOGIN_ENDPOINT, {
@@ -34,6 +37,7 @@ const SignInForm = (): JSX.Element => {
           password: data.password,
         })
         .then((response) => {
+          isLoading(false)
           setStatus(messages.forms.signInSuccess)
           sessionStorage.setItem("token", response.data.jwt)
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
@@ -41,6 +45,7 @@ const SignInForm = (): JSX.Element => {
           history.push("/map")
         })
         .catch(() => {
+          isLoading(false)
           setStatus(messages.axios.axiosFailure)
         })
   }
@@ -95,13 +100,16 @@ const SignInForm = (): JSX.Element => {
           {status}
         </div>
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            data-testid="sign-in-button-test-id"
-          >
-            Wyślij
-          </Button>
+          {loading
+              ? <Loader />
+              :   <Button
+                  type="primary"
+                  htmlType="submit"
+                  data-testid="sign-in-button-test-id"
+              >
+                Wyślij
+              </Button>
+          }
         </Form.Item>
       </Form>
     </>

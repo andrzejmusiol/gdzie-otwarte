@@ -12,15 +12,14 @@ export const WelcomeWrapper = styled.div`
   text-align: center;
   .main-wrapper {
     padding: 50px 20px;
+    height: 100vh;
     @media (max-width: 600px) {
       padding: 100px 20px;
     }
   }
-  .info-wrapper {
-    max-width: 30rem;
-  }
   h1 {
-    font-size: 3vw;
+    font-size: 52px;
+    font-family: 'DM Serif Display', serif;
     @media (max-width: 600px) {
       font-size: 36px;
     }
@@ -37,6 +36,17 @@ export const WelcomeWrapper = styled.div`
   }
 `
 
+export const Ball = styled.div`
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 25vw;
+    background: ${colors.midBlue};
+    left: -10%;
+    top: 10%;
+    z-index: -1;
+`
+
 export const HowItWorksWrapper = styled.div`
   text-align: center;
   .how-it-works-wrapper {
@@ -45,6 +55,10 @@ export const HowItWorksWrapper = styled.div`
       padding: 30px 20px;
     }
   }
+      h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 36px;
+    }
   .ant-steps {
     padding: 30px 0;
   }

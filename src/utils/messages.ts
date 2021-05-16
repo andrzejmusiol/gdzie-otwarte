@@ -55,15 +55,15 @@ export const messages = {
     usersObjectsHeaderText: "Twoje punkty na mapie",
     signUpMessageHeaderText: "Zarejestruj się i dodaj swój lokal!",
     signUpMessageSubHeaderText: "Pozwól klientom Cię znaleźć",
-    siteName: "Gdzie-otwarte.pl",
+    siteName: "Jedno miejsce. Jedna mapa. Wszystko aktualne.",
     welcomePageHeaderTextP1:
-      "Ma na celu zaktualizowanie bazy punktów usługowych i stworzenie miejsca, w którym użytkownicy mogą sprawdzić aktualnie otwarte lokale w swojej okolicy.",
+      "Projekt na celu zaktualizowanie bazy punktów usługowych i stworzenie miejsca, w którym użytkownicy mogą sprawdzić aktualnie otwarte lokale w swojej okolicy.",
     welcomePageHeaderTextP2:
-      "Wiele z obecnych punktów na mapach niestety już nie istnieje lub zmieniło miejsce działalności. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
+      "Wiele z obecnych punktów na mapach niestety już nie istnieje lub zmieniło miejsce działalności po 2020 roku. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
     welcomePageSubHeaderText:
-      "Przejdź do mapy, wybierz kategorię, sprawdź wszystkie otwarte lokale w Twojej okolicy i baw się dobrze!",
+      "Przejdź do mapy, wybierz kategorię, sprawdź otwarte lokale w Twojej okolicy i baw się dobrze!",
     mapButton: "Mapa",
-    about: "O projekcie",
+    about: "Więcej o projekcie",
     howItWorks: "Jak to działa?",
     searchForObjects: "Jeśli chcesz znaleźć otwarty lokal w Twojej okolicy",
     goToMap: "Przejdź do mapy",

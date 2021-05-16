@@ -1,7 +1,7 @@
 import React from "react"
 import startImage from "../assets/icons/meditation.svg"
 import { Link } from "react-router-dom"
-import { WelcomeWrapper, HowItWorksWrapper } from "../utils/styled-components"
+import { WelcomeWrapper, HowItWorksWrapper, Ball } from "../utils/styled-components"
 import { Button, Row, Col, Typography, Divider, Steps } from "antd"
 import {
   SearchOutlined,
@@ -24,6 +24,7 @@ const WelcomePage = (): JSX.Element => {
   return (
     <>
       <WelcomeWrapper>
+        <Ball />
         <Row
           className="main-wrapper"
           justify="center"
@@ -34,7 +35,7 @@ const WelcomePage = (): JSX.Element => {
           <Col className="info-wrapper" md={12} sm={24}>
             <Title>{messages.site.siteName}</Title>
             <Title level={4}>{messages.site.welcomePageHeaderTextP1}</Title>
-            <Paragraph>{messages.site.welcomePageHeaderTextP2}</Paragraph>
+            <Title level={5}>{messages.site.welcomePageHeaderTextP2}</Title>
             <Divider />
             <Paragraph>{messages.site.welcomePageSubHeaderText}</Paragraph>
 
@@ -61,13 +62,6 @@ const WelcomePage = (): JSX.Element => {
                 <img src={fb} alt="gdzie-otwarte-facebook" />
               </Link>
             </Col>
-          </Col>
-          <Col span={12}>
-            <img
-              className="welcome-image"
-              src={startImage}
-              alt="gdzie-twarte-strona-glowna"
-            />
           </Col>
         </Row>
       </WelcomeWrapper>

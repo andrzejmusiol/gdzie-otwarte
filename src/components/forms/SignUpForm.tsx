@@ -13,13 +13,13 @@ const SignUpForm = (): JSX.Element => {
       xs: { span: 24 },
       sm: { span: 8 },
       md: { span: 8 },
-      lg: { span: 8 },
+      lg: { span: 10 },
     },
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 20 },
       md: { span: 20 },
-      lg: { span: 16 },
+      lg: { span: 14 },
     },
   }
 
