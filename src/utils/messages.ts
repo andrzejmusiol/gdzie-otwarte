@@ -59,7 +59,7 @@ export const messages = {
     welcomePageHeaderTextP1:
       "Projekt na celu zaktualizowanie bazy punktów usługowych i stworzenie miejsca, w którym użytkownicy mogą sprawdzić aktualnie otwarte lokale w swojej okolicy.",
     welcomePageHeaderTextP2:
-      "Wiele z obecnych punktów na mapach niestety już nie istnieje lub zmieniło miejsce działalności po 2020 roku. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
+      "Wiele z obecnych punktów na mapach niestety już nie istnieje, lub zmieniło miejsce działalności po 2020 roku. Czas na nowo określić rynki, co pozowoli Wam być na bieżąco.",
     welcomePageSubHeaderText:
       "Przejdź do mapy, wybierz kategorię, sprawdź otwarte lokale w Twojej okolicy i baw się dobrze!",
     mapButton: "Mapa",
@@ -78,7 +78,7 @@ export const messages = {
     publishObject:
       "Twój punkt stanie się widoczny dla wszystkich odwiedzających",
     aboutContent:
-      "Gdzie-otwarte.pl to miejsce, gdzie lokale usługowe mogą pokazać swoim użytkownikom, że są otwarte. Nadszedł czas, w który mpojawiła się potrzeba na nowo określenia rynków lokalnych usług, które przeszły wiele zmian w 2020 roku. Część z lokali przestała istnieć, przez co spora ilość danych w sieci stała się nieaktualna. Powoduje to sytuację, w której użytkownicy nie mogą być pewni, że lokale w ich mieście dalej istnieją, lub nie wiedzą, że zmieniły miejsce funkcjonowania.",
+      "Gdzie-otwarte.pl to miejsce, gdzie lokale usługowe mogą pokazać swoim użytkownikom, że są otwarte. Nadszedł czas, w który pojawiła się potrzeba na nowo określenia rynków lokalnych usług, które przeszły wiele zmian w 2020 roku. Część z lokali przestała istnieć, przez co spora ilość danych w sieci stała się nieaktualna. Powoduje to sytuację, w której użytkownicy nie mogą być pewni, że lokale w ich mieście dalej istnieją, lub nie wiedzą, że zmieniły miejsce funkcjonowania.",
     whatToDoTitle: "Co możesz zrobić?",
     mapLink: 'Przejdź do' +  '<Link href="/map">' + 'mapy</Link> zobacz którzy przedsiębiorcy prowadzą swoje lokale i po prostu ich odwiedź.',
     whatToDoContent:

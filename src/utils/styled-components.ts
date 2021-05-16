@@ -15,6 +15,7 @@ export const WelcomeWrapper = styled.div`
     height: 100vh;
     @media (max-width: 600px) {
       padding: 100px 20px;
+      height: auto;
     }
   }
   h1 {

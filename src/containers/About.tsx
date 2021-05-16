@@ -21,7 +21,7 @@ const About = (): JSX.Element => {
               <Paragraph>{messages.site.aboutContent}</Paragraph>
               <Divider />
               <Title>{messages.site.whatToDoTitle}</Title>
-              <Paragraph>Przejdź do <Button><Link href="/map">mapy</Link></Button> aby zobaczyć, gdzie przedsiębiorcy prowadzą swoje lokale i po prostu ich odwiedź.
+              <Paragraph>Przejdź do <Button><Link href="/#/map">mapy</Link></Button> aby zobaczyć, gdzie przedsiębiorcy prowadzą swoje lokale i po prostu ich odwiedź.
               </Paragraph>
               <Paragraph>{messages.site.whatToDoContent}</Paragraph>
             </div>

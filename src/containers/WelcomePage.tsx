@@ -1,5 +1,4 @@
 import React from "react"
-import startImage from "../assets/icons/meditation.svg"
 import { Link } from "react-router-dom"
 import { WelcomeWrapper, HowItWorksWrapper, Ball } from "../utils/styled-components"
 import { Button, Row, Col, Typography, Divider, Steps } from "antd"
@@ -17,7 +16,7 @@ import fb from "../assets/icons/fb.svg"
 import { messages } from "../utils/messages"
 import FooterContainer from "../components/Footer"
 
-const { Title, Paragraph } = Typography
+const { Title } = Typography
 const { Step } = Steps
 
 const WelcomePage = (): JSX.Element => {
@@ -34,10 +33,9 @@ const WelcomePage = (): JSX.Element => {
         >
           <Col className="info-wrapper" md={12} sm={24}>
             <Title>{messages.site.siteName}</Title>
-            <Title level={4}>{messages.site.welcomePageHeaderTextP1}</Title>
-            <Title level={5}>{messages.site.welcomePageHeaderTextP2}</Title>
+            <Title level={4}>{messages.site.welcomePageHeaderTextP2}</Title>
             <Divider />
-            <Paragraph>{messages.site.welcomePageSubHeaderText}</Paragraph>
+            <Title level={5}>{messages.site.welcomePageSubHeaderText}</Title>
 
             <Link to="/map">
               {" "}
